@@ -422,6 +422,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FoodSupplementsSystem.Data.Models\FoodSupplementsSystem.Data.Models.csproj">
+      <Project>{c965b70d-8269-4ad7-885c-201fb5d5a01d}</Project>
+      <Name>FoodSupplementsSystem.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FoodSupplementsSystem.Data\FoodSupplementsSystem.Data.csproj">
+      <Project>{94fc32d0-12ab-40f6-9427-01ef842f0e13}</Project>
+      <Name>FoodSupplementsSystem.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
