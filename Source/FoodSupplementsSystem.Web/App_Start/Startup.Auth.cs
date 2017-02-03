@@ -32,7 +32,7 @@ namespace FoodSupplementsSystem.Web
                 LoginPath = new PathString("/Account/Login"),
                 Provider = new CookieAuthenticationProvider
                 {
-                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, User>(
+                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<UserManager<User>, User>(
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
