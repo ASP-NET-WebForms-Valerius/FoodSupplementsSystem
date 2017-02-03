@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="FoodSupplementsSystemDbContext.cs" />
     <Compile Include="IFoodSupplementsSystemDbContext.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
