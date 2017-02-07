@@ -1,11 +1,8 @@
+using FoodSupplementsSystem.Data.Models;
+using System.Data.Entity.Migrations;
+
 namespace FoodSupplementsSystem.Data.Migrations
 {
-    using Models;
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
     public sealed class Configuration : DbMigrationsConfiguration<FoodSupplementsSystem.Data.FoodSupplementsSystemDbContext>
     {
         public Configuration()
