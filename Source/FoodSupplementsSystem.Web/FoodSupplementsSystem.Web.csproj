@@ -212,8 +212,10 @@
     </Content>
     <Content Include="Configuration\ConnectionStrings.config" />
     <Content Include="Configuration\SiteMap.config" />
-    <Content Include="Configuration\RewriteUrls.config" />
+    <Content Include="Configuration\RewriteMaps.config" />
+    <Content Include="Configuration\RewriteRules.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="FoodSupplements\Vitamins.aspx" />
     <Content Include="Images\Famous-Brands.jpg" />
     <Content Include="Images\Health-Topics-Main.jpg" />
     <Content Include="Images\Supplements-Main.jpg" />
@@ -252,8 +254,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
-    <Content Include="Supplements\Add.aspx" />
-    <Content Include="Supplements\Supplements.aspx" />
+    <Content Include="FoodSupplements\Add.aspx" />
+    <Content Include="FoodSupplements\Supplements.aspx" />
     <Content Include="TreeView.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -402,6 +404,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FoodSupplements\Vitamins.aspx.cs">
+      <DependentUpon>Vitamins.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FoodSupplements\Vitamins.aspx.designer.cs">
+      <DependentUpon>Vitamins.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -422,18 +431,18 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="Supplements\Add.aspx.cs">
+    <Compile Include="FoodSupplements\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Supplements\Add.aspx.designer.cs">
+    <Compile Include="FoodSupplements\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Supplements\Supplements.aspx.cs">
+    <Compile Include="FoodSupplements\Supplements.aspx.cs">
       <DependentUpon>Supplements.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Supplements\Supplements.aspx.designer.cs">
+    <Compile Include="FoodSupplements\Supplements.aspx.designer.cs">
       <DependentUpon>Supplements.aspx</DependentUpon>
     </Compile>
     <Compile Include="TreeView.aspx.cs">

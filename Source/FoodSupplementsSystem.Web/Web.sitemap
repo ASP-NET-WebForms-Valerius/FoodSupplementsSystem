@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode url="~/Home.aspx" title="Home" description="Home page">
-        <siteMapNode url="~/Supplements.aspx" title="Supplements" description="Supplements main page">
-          <siteMapNode url="~/Supplements/Add.aspx" title="Add Supplements" description="Add suplements page" />
+        <siteMapNode url="~/FoodSupplements/Supplements.aspx" title="Food Supplements" description="Food Supplements main page">
+          <siteMapNode url="~/FoodSupplements/Add.aspx" title="Add Supplement" description="Add suplements page" />
+          <siteMapNode url="~/FoodSupplements/Vitamins.aspx" title="Vitamins Supplements" description="Vitamins suplements page" />
         </siteMapNode>
         <siteMapNode url="~/HealthTopicks.aspx" title="Health Topicks" description="Health Topicks main page">
         </siteMapNode>
