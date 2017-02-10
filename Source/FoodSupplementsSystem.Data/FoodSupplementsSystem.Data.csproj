@@ -59,11 +59,14 @@
   <ItemGroup>
     <Compile Include="FoodSupplementsSystemDbContext.cs" />
     <Compile Include="IFoodSupplementsSystemDbContext.cs" />
+    <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="Repositories\SupplementRepository.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -75,6 +78,7 @@
       <Name>FoodSupplementsSystem.Data.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
