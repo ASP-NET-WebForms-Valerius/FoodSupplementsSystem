@@ -248,6 +248,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="Supplements\Add.aspx" />
+    <Content Include="Supplements\Supplements.aspx" />
     <Content Include="TreeView.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -416,6 +418,20 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Supplements\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supplements\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supplements\Supplements.aspx.cs">
+      <DependentUpon>Supplements.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supplements\Supplements.aspx.designer.cs">
+      <DependentUpon>Supplements.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TreeView.aspx.cs">
       <DependentUpon>TreeView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -433,7 +449,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Supplements\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FoodSupplementsSystem.Data.Models\FoodSupplementsSystem.Data.Models.csproj">
