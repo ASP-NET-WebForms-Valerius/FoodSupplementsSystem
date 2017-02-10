@@ -1,17 +1,17 @@
 # FoodSupplementsSystem Todo list
 
-- Model Interfaces;
-- Constants;
-	1. Models validation constants.
-	2. Global constatnts in separate const.xxx.config and a class wrapper;
-- Repositories and UnitOfWork;
-- Extract the connnectionStrings in separate file and add the file as sourceFile in all projects;
-- Add Services project;
-- MVP .Presenter project;
-- [Key] and other attributes;
+1. <del>Model Interfaces</del>;
+1. Constants;
+	- <del>Models validation constants;<del/>
+	- <del>Global constatnts in separate const.xxx.config and a class wrapper;<del/>
+1. Repositories and UnitOfWork;
+1. <del>Extract the connnectionStrings in separate file and add the file as sourceFile in all projects<del/>;
+1. Add Services project;
+1. MVP .Presenter project;
+1. <del>[Key] and other attributes<del/>; - ATo- 10.02.2017 ATo
 
-- Web crauler for geting seed data;
-- Documentation 
-	1. General writings;
-	2. Simple models description.
-- Automantion Testing.
+1. Web crauler for geting seed data;
+1. Documentation 
+	- General writings;
+	- Simple models description.
+1. Automantion Testing.
