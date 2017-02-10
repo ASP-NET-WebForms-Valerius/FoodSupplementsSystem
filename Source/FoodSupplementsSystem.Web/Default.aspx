@@ -2,39 +2,37 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
-
-    <div class="row">
+     <div class="row">
         <div class="col-md-4">
-            <h2>Getting started</h2>
+            <h2>Health Topics</h2>
+            <img src="Images/Health-Topics-Main.jpg" alt="Health-Topics" width="100%"/>
             <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
+                Rockwell Nutrition's Health Topics Categories
+                Many of products we carry are organized under specific health topics to help you find the vitamins and supplements as per your particular health interests. We have over 30 health categories such as anti-aging, musculoskeletal health, children & teen health, cardiovascular support, digestive GI health, weight loss, even pet health and more. Our wide-ranging health topics and supplement categories will be useful when you want to narrow down your choices to the most relevant products.
             </p>
             <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
+                <a class="btn btn-default" href="/home">Learn more &raquo;</a>
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Get more libraries</h2>
+            <h2>Food Supplements</h2>
+            <img src="Images/Supplements-Main.jpg" alt="Health-Topics" width="100%"/>
             <p>
                 NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
             </p>
             <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
+                <a class="btn btn-default" href="/Supplements/Supplements.aspx">Learn more &raquo;</a>
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Web Hosting</h2>
+            <h2>Famous Brands</h2>
+            <img src="Images/Famous-Brands.jpg" alt="Health-Topics" width="100%"/>
             <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
+                How are the brands that Rockwell Nutrition carries selected?  Do they go through quality assessments?
+                The professional-grade brands we carry on our site are excellent quality, they do go through rigorous vetting by our health professional distributors for purity, potency, and quality, this is a little more info on their quality program if you care to read about it, there is also a video on there site about their quality program:
             </p>
             <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
+                <a class="btn btn-default" href="~/brands">Learn more &raquo;</a>
             </p>
         </div>
     </div>
