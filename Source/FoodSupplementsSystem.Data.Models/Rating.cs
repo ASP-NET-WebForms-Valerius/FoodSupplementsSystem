@@ -9,6 +9,7 @@ namespace FoodSupplementsSystem.Data.Models
 {
     public class Rating : IRating
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]

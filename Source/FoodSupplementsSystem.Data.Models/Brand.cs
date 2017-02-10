@@ -16,6 +16,7 @@ namespace FoodSupplementsSystem.Data.Models
             this.supplements = new HashSet<Supplement>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         [Required]
