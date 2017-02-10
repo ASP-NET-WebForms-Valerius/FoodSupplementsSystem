@@ -472,6 +472,10 @@
       <Project>{94fc32d0-12ab-40f6-9427-01ef842f0e13}</Project>
       <Name>FoodSupplementsSystem.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FoodSupplementsSystem.Services\FoodSupplementsSystem.Services.csproj">
+      <Project>{16FE41E2-4365-489D-9464-565B23924D91}</Project>
+      <Name>FoodSupplementsSystem.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
