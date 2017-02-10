@@ -7,8 +7,13 @@ namespace FoodSupplementsSystem.Data
 {
     public class FoodSupplementsSystemDbContext : IdentityDbContext<User>, IFoodSupplementsSystemDbContext
     {
+        // Uncomment folowing lines if you want explicitly to use (LocalDb)
+        //public FoodSupplementsSystemDbContext()
+        //    : base("DefaultConnection", throwIfV1Schema: false)
+        //{
+        //}
         public FoodSupplementsSystemDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("name=FoodSupplementsContextConnectionString", throwIfV1Schema: false)
         {
         }
 

@@ -14,7 +14,7 @@ namespace FoodSupplementsSystem.Data.Models
 
         public Comment()
         {
-            this.likes = new HashSet<Like>();
+            this.likes = new HashSet<Like>();            
         }
 
         [Key]
