@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 using FoodSupplementsSystem.Data.Models.Contracts;
+using FoodSupplementsSystem.Data.Models.Constants;
 
 
 namespace FoodSupplementsSystem.Data.Models
@@ -23,7 +24,7 @@ namespace FoodSupplementsSystem.Data.Models
 
         [Required]
         [Index(IsUnique = true)]
-        [MaxLength(100)]
+        [MaxLength(Consts.Topic.NameMaxLength.Value)]
         public string Name { get; set; }
 
         public string Description { get; set; }

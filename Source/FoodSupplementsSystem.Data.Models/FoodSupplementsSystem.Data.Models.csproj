@@ -68,6 +68,7 @@
     <Compile Include="Contracts\ISupplement.cs" />
     <Compile Include="Contracts\ITopic.cs" />
     <Compile Include="Like.cs" />
+    <Compile Include="Constants\ModelsConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rating.cs" />
     <Compile Include="Supplement.cs" />

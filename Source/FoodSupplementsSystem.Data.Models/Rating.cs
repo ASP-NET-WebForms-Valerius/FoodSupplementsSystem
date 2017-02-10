@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 using FoodSupplementsSystem.Data.Models.Contracts;
+using FoodSupplementsSystem.Data.Models.Constants;
 
 
 namespace FoodSupplementsSystem.Data.Models
@@ -11,7 +12,7 @@ namespace FoodSupplementsSystem.Data.Models
         public int Id { get; set; }
 
         [Required]
-        [Range(1, 5, ErrorMessage = "Rating cannot be less than 1 or more than 5 inclusive")]
+        [Range(Consts.Rating.Value.Min, Consts.Rating.Value.Max, ErrorMessage = Consts.Rating.Value.ErrorMessage)]
         public int Value { get; set; }
 
         public string AuthorId { get; set; }

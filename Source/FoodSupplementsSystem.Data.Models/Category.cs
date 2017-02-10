@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 using FoodSupplementsSystem.Data.Models.Contracts;
-
+using FoodSupplementsSystem.Data.Models.Constants;
 
 namespace FoodSupplementsSystem.Data.Models
 {
@@ -16,11 +16,12 @@ namespace FoodSupplementsSystem.Data.Models
             this.supplements = new HashSet<Supplement>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         [Required]
         [Index(IsUnique = true)]
-        [MaxLength(100)]
+        [MaxLength(Consts.Category.NameMaxLength.Value)]
         public string Name { get; set; }
 
         public virtual ICollection<Supplement> Supplements
