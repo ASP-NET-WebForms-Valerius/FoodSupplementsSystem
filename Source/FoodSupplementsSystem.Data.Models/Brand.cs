@@ -2,9 +2,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using FoodSupplementsSystem.Data.Models.Contracts;
+
+
 namespace FoodSupplementsSystem.Data.Models
 {
-    public class Brand
+    public class Brand : IBrand
     {
         private ICollection<Supplement> supplements;
 

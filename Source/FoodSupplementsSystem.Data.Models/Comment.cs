@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using FoodSupplementsSystem.Data.Models.Contracts;
+
+
 namespace FoodSupplementsSystem.Data.Models
 {
-    public class Comment
+    public class Comment : IComment
     {
         private ICollection<Like> likes;
 
@@ -14,6 +17,7 @@ namespace FoodSupplementsSystem.Data.Models
             this.likes = new HashSet<Like>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         [Required]

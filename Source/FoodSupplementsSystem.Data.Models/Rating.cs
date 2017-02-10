@@ -1,9 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using FoodSupplementsSystem.Data.Models.Contracts;
+
+
 namespace FoodSupplementsSystem.Data.Models
 {
-    public class Rating
+    public class Rating : IRating
     {
         public int Id { get; set; }
 

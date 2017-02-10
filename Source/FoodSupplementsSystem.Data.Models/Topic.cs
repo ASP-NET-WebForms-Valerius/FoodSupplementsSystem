@@ -2,9 +2,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using FoodSupplementsSystem.Data.Models.Contracts;
+
+
 namespace FoodSupplementsSystem.Data.Models
 {
-    public class Topic
+    public class Topic : ITopic
     {
         private ICollection<Supplement> supplements;
         private ICollection<Comment> comments;
@@ -15,6 +18,7 @@ namespace FoodSupplementsSystem.Data.Models
             this.comments = new HashSet<Comment>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         [Required]

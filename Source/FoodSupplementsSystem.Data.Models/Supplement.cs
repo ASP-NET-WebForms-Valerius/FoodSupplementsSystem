@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using FoodSupplementsSystem.Data.Models.Contracts;
+
+
 namespace FoodSupplementsSystem.Data.Models
 {
-    public class Supplement
+    public class Supplement : ISupplement
     {
         private ICollection<Rating> ratingsReceived;
 
@@ -14,6 +17,7 @@ namespace FoodSupplementsSystem.Data.Models
             this.ratingsReceived = new HashSet<Rating>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         [Required]
