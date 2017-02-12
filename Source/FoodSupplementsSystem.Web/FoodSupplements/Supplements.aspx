@@ -7,6 +7,7 @@
     <asp:GridView ID="GridViewSupplements" runat="server" 
         ItemType="FoodSupplementsSystem.Data.Models.Supplement" DataKeyNames="Id" 
         AllowSorting="False" AllowPaging="True" PageSize="3"
+        AutoGenerateColumns="false"
         Height="147px"
         SelectMethod="GridViewSupplements_GetData"
         UpdateMethod="GridViewSupplements_UpdateItem"

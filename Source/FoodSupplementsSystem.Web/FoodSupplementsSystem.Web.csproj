@@ -214,6 +214,7 @@
     <Content Include="Configuration\SiteMap.config" />
     <Content Include="Configuration\RewriteMaps.config" />
     <Content Include="Configuration\RewriteRules.config" />
+    <None Include="Properties\PublishProfiles\My IIS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="FoodSupplements\Vitamins.aspx" />
     <Content Include="Images\Famous-Brands.jpg" />
