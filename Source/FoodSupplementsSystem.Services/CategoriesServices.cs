@@ -1,10 +1,11 @@
 ﻿using FoodSupplementsSystem.Data.Models;
 using FoodSupplementsSystem.Data.Repositories.Contracts;
+using FoodSupplementsSystem.Services.Contracts;
 using System.Linq;
 
 namespace FoodSupplementsSystem.Services
 {
-    public class CategoriesServices
+    public class CategoriesServices : ICategoriesServices
     {
         private IRepository<Category> categories;
 
