@@ -7,7 +7,9 @@
         AutoGenerateColumns="true" 
         AllowPaging="true" 
         PageSize="10" 
-        AllowSorting="true">
+        AllowSorting="true"
+        UpdateMethod="gvCategories_UpdateItem"
+        DeleteMethod="gvCategories_DeleteItem">
         <Columns>
             <asp:BoundField SortExpression="Name" DataField="Name" HeaderText="Sort by name"/>
             <asp:CommandField ShowEditButton="true" ControlStyle-CssClass="btn btn-info"/>
