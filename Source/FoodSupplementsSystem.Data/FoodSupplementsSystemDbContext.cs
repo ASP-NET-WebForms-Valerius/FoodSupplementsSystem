@@ -35,5 +35,16 @@ namespace FoodSupplementsSystem.Data
         {
             return new FoodSupplementsSystemDbContext();
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Entity<Supplement>()
+                .HasRequired(p => p.Category)
+                .WithMany(x => x.Supplements)
+                .WillCascadeOnDelete(true);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

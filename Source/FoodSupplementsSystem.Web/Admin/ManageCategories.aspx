@@ -16,4 +16,8 @@
             <asp:CommandField ShowDeleteButton="true" ControlStyle-CssClass="btn btn-info"/>
         </Columns>
     </asp:GridView>
+    <br />
+    <asp:TextBox runat="server" ID="tbInsert" />
+    <asp:Button Text="Insert" ID="btnInsert" runat="server" OnClick="btnInsert_Click" CssClass="btn btn-info" />
+    <asp:Button Text="Cancel" ID="btnCancel" runat="server" OnClick="btnCancel_Click" CssClass="btn btn-info" />
 </asp:Content>
