@@ -43,5 +43,17 @@ namespace FoodSupplementsSystem.Web.Admin
         {
             this.CategoriesServices.DeleteId(id);
         }
+
+        protected void btnInsert_Click(object sender, EventArgs e)
+        {
+            this.CategoriesServices.Create(this.tbInsert.Text);
+
+            this.tbInsert.Text = "";
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.tbInsert.Text = "";
+        }
     }
 }

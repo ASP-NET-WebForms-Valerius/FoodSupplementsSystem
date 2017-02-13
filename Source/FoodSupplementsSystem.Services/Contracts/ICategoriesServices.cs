@@ -12,5 +12,7 @@ namespace FoodSupplementsSystem.Services.Contracts
         void UpdateNameById(int id, string name);
 
         void DeleteId(int id);
+
+        Category GetById(int id);
     }
 }
