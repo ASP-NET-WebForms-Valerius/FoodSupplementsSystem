@@ -216,6 +216,8 @@
     <Content Include="Configuration\RewriteRules.config" />
     <None Include="Properties\PublishProfiles\My IIS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="FoodSupplements\Details.aspx" />
+    <Content Include="FoodSupplements\SupplementsList.aspx" />
     <Content Include="FoodSupplements\Vitamins.aspx" />
     <Content Include="Images\Famous-Brands.jpg" />
     <Content Include="Images\Health-Topics-Main.jpg" />
@@ -404,6 +406,20 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FoodSupplements\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FoodSupplements\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FoodSupplements\SupplementsList.aspx.cs">
+      <DependentUpon>SupplementsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FoodSupplements\SupplementsList.aspx.designer.cs">
+      <DependentUpon>SupplementsList.aspx</DependentUpon>
     </Compile>
     <Compile Include="FoodSupplements\Vitamins.aspx.cs">
       <DependentUpon>Vitamins.aspx</DependentUpon>

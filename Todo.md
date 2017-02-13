@@ -15,4 +15,8 @@
 	- General writings;
 	- Simple models description.
 1. Automantion Testing.
-2. Sitemap file and navigation
+1. Sitemap file and navigation
+1. IsDeleted field for all Models and Delete() Method change;
+1. Local IIS Deployment
+1. Rowrite and Redirects
+1. AdminPanel ???

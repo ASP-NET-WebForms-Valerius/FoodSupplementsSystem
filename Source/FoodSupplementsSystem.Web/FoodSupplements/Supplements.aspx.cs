@@ -22,7 +22,7 @@ namespace FoodSupplementsSystem.Web.Supplements
 
             if (!Page.IsPostBack)
             {
-                
+                return;
             }
         }
 
