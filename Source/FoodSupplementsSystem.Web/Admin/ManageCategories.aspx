@@ -4,7 +4,10 @@
         ItemType="FoodSupplementsSystem.Data.Models.Category" 
         DataKeyNames="Id" 
         SelectMethod="gvCategories_GetData" 
-        AutoGenerateColumns="true">
+        AutoGenerateColumns="true" 
+        AllowPaging="true" 
+        PageSize="10" 
+        AllowSorting="true">
         <Columns>
             <asp:BoundField SortExpression="Name" DataField="Name" HeaderText="Sort by name"/>
             <asp:CommandField ShowEditButton="true" ControlStyle-CssClass="btn btn-info"/>
