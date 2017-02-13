@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriesServices.cs" />
+    <Compile Include="Contracts\ICategoriesServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupplementsServices.cs" />
   </ItemGroup>
