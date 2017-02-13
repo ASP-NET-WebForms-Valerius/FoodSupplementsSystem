@@ -69,7 +69,7 @@ namespace FoodSupplementsSystem.Web.App_Start
             kernel.Bind(typeof(IFoodSupplementsSystemDbContext)).To(typeof(FoodSupplementsSystemDbContext));
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
 
-            kernel.Bind(b => b.From("FoodSupplementsSystem.Data.Services")
+            kernel.Bind(b => b.From("FoodSupplementsSystem.Services")
                               .SelectAllClasses()
                               .BindDefaultInterface());
         }
