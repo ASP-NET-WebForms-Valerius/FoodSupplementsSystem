@@ -8,8 +8,6 @@
             ItemType="FoodSupplementsSystem.Data.Models.Supplement">
             
             <EmptyDataTemplate>
-                
-                
                 <div>
                         <img src="<%#: Item.ImageUrl %>" alt="Supplements-Category-Brand-Name" />
                     </div>

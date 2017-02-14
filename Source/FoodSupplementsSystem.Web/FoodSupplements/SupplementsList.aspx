@@ -1,6 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SupplementsList.aspx.cs" Inherits="FoodSupplementsSystem.Web.FoodSupplements.SupplementsList" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <script>
+        $( function() {
+            $(".descriptin-ingredients-use-accordion").accordion();
+        } );
+    </script>
+
     <asp:ListView ID="ListViewSupplements" runat="server" 
         ItemType="FoodSupplementsSystem.Data.Models.Supplement">
         <LayoutTemplate>
@@ -96,35 +104,22 @@
                 </div>               
             </div>
 
-            <%--Row Descriptin--%>
-            <div class="row table-bordered">
-                <div class="col-md-10 table-bordered">
-                    <strong>Description: </strong>
-                    <p>
-                        <%#: Item.Description %>
-                    </p>
-                </div>
+
+            <div class="descriptin-ingredients-use-accordion">
+                <h3>Description</h3>
+                    <div>
+                        <p><%#: Item.Description %></p>
+                    </div>
+                <h3>Ingredients</h3>
+                    <div>
+                        <p><%#: Item.Ingredients %></p>
+                    </div>
+                <h3>Use</h3>
+                    <div>
+                        <p><%#: Item.Use %></p>
+                    </div>
             </div>
 
-            <%--Row Ingredients--%>
-            <div class="row table-bordered">
-                <div class="col-md-10 table-bordered">
-                    <strong>Ingredients: </strong>
-                    <p>
-                        <%#: Item.Ingredients %>
-                    </p>
-                </div>
-            </div>
-
-            <%--Row Use--%>
-            <div class="row table-bordered">
-                <div class="col-md-10 table-bordered">
-                    <strong>Use: </strong>
-                    <p>
-                        <%#: Item.Use %>
-                    </p>
-                </div>
-            </div>
 
             <asp:Panel ID="PanelItemTemplate" runat="server" BorderWidth="1px" BorderStyle="Solid" Width="80%">
                 <p>
