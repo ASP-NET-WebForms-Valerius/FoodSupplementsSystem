@@ -14,6 +14,118 @@
             </asp:Panel>
         </ItemSeparatorTemplate>
         <ItemTemplate>
+            <asp:Label ID="LabelId" runat="server" Text="<%#: Item.Id %>" Visible="false"></asp:Label>
+
+            <asp:SqlDataSource ID="SqlDataSourceRating" runat="server" 
+                ConnectionString="<%$ ConnectionStrings:FoodSupplementsContextConnectionString %>"
+                SelectCommand = "SELECT Count([Value]) AS VotesCount, AVG([Value]) AS AverageValue FROM [Ratings] WHERE SupplementId = @supplementId">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="LabelId" PropertyName="Text" Name="supplementId" DbType="Int32" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+
+            <%--Row with Main attributes--%>
+            <div class="row table-bordered">
+                <div class="col-md-2 table-bordered">
+                    <img src="<%#: Item.ImageUrl %>" alt="Supplements-Category-Brand-Name" />
+                </div>
+                <div class="col-md-8 table-bordered">
+                    <%--Name and Details button--%>
+                    <div class="row">                        
+                        <div class="col-md-8 table-bordered">
+                            <h4><a href="#"><%#: Item.Name %></a>  </h4>
+                        </div>   
+                        <div class="col-md-4 table-bordered">
+                            <asp:LinkButton ID="LinkButton1" runat="server"                             
+                                    Text="Detail product view" 
+                                    href='<%# "Details.aspx?id=" + Item.Id.ToString() %>'
+                                    CssClass="btn btn-primary btn-sm">Detail product view</asp:LinkButton>
+                        </div>                     
+                    </div>
+                    <%--Rating stars--%>
+                    <div class="row">                        
+                        <div class="col-md-8 table-bordered">
+                            <h4>
+                                <asp:Label ID="LabelRatingValue" runat="server"  Text="Stars come here"></asp:Label>                                
+                            </h4>
+                        </div>   
+                        <div class="col-md-4 table-bordered">
+                            <p><strong>Votes: </strong>
+                                <asp:DetailsView ID="DetailsViewRatingValue" runat="server" 
+                                    Height="50px" 
+                                    Width="125px" DataSourceID="SqlDataSourceRating"></asp:DetailsView>
+                            </p>
+                        </div>                     
+                    </div>
+                    <%--Category--%>
+                    <div class="row">                        
+                        <div class="col-md-2 table-bordered">
+                            <strong>Category: </strong>
+                        </div>   
+                        <div class="col-md-10 table-bordered">
+                            <p><%#: Item.Category.Name %></p>
+                        </div>          
+                    </div>
+                    <%--Topic--%>
+                    <div class="row">                        
+                        <div class="col-md-2 table-bordered">
+                            <strong>Topic: </strong>
+                        </div>   
+                        <div class="col-md-10 table-bordered">
+                            <p><%#: Item.Topic.Name %></p>
+                        </div>          
+                    </div>
+                    <%--Brand--%>
+                    <div class="row">                        
+                        <div class="col-md-2 table-bordered">
+                            <strong>Brand: </strong>
+                        </div>   
+                        <div class="col-md-10 table-bordered">
+                            <p><%#: Item.Brand.Name %></p>
+                        </div>          
+                    </div>
+                    <%--Web--%>
+                    <div class="row">                        
+                        <div class="col-md-2 table-bordered">
+                            <strong>Web Site: </strong>
+                        </div>   
+                        <div class="col-md-10 table-bordered">
+                            <a href="<%#: Item.Brand.WebSite %>" target="_blank"><%#: Item.Brand.WebSite %></a>
+                        </div>          
+                    </div>
+                </div>               
+            </div>
+
+            <%--Row Descriptin--%>
+            <div class="row table-bordered">
+                <div class="col-md-10 table-bordered">
+                    <strong>Description: </strong>
+                    <p>
+                        <%#: Item.Description %>
+                    </p>
+                </div>
+            </div>
+
+            <%--Row Ingredients--%>
+            <div class="row table-bordered">
+                <div class="col-md-10 table-bordered">
+                    <strong>Ingredients: </strong>
+                    <p>
+                        <%#: Item.Ingredients %>
+                    </p>
+                </div>
+            </div>
+
+            <%--Row Use--%>
+            <div class="row table-bordered">
+                <div class="col-md-10 table-bordered">
+                    <strong>Use: </strong>
+                    <p>
+                        <%#: Item.Use %>
+                    </p>
+                </div>
+            </div>
+
             <asp:Panel ID="PanelItemTemplate" runat="server" BorderWidth="1px" BorderStyle="Solid" Width="80%">
                 <p>
                     <div>

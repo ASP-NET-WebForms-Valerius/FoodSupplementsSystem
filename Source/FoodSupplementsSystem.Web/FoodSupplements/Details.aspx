@@ -1,10 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="FoodSupplementsSystem.Web.FoodSupplements.Details" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    
+    
     <h3>Supplement details</h3>
         <asp:DetailsView ID="DetailsViewSupplement" runat="server" 
             ItemType="FoodSupplementsSystem.Data.Models.Supplement">
+            
             <EmptyDataTemplate>
+                
+                
                 <div>
                         <img src="<%#: Item.ImageUrl %>" alt="Supplements-Category-Brand-Name" />
                     </div>
