@@ -3,11 +3,12 @@ using FoodSupplementsSystem.Services.Contracts;
 using Ninject;
 using System;
 using System.Linq;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace FoodSupplementsSystem.Web.Admin
 {
-    public partial class ManageCategories : System.Web.UI.Page
+    public partial class ManageCategories : Page
     {
         [Inject]
         public ICategoriesServices CategoriesServices { get; set; }
