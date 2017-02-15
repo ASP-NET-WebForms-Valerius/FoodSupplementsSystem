@@ -14,4 +14,14 @@
             <asp:CommandField ShowDeleteButton="true" ControlStyle-CssClass="btn btn-info" />
         </Columns>
     </asp:GridView>
+    <br/>
+    <h3>Add new Brand</h3>
+    <p>Name:</p>
+    <asp:TextBox runat="server" ID="tbInsertName" />
+    <br/>
+    <br/>
+    <p>WebSite:</p>
+    <asp:TextBox runat="server" ID="tbInsertWebSite" />
+    <asp:Button Text="Insert" ID="btnInsert" runat="server" OnClick="btnInsert_Click" CssClass="btn btn-info" />
+    <asp:Button Text="Cancel" ID="btnCancel" runat="server" OnClick="btnCancel_Click" CssClass="btn btn-danger" />
 </asp:Content>

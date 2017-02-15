@@ -43,5 +43,24 @@ namespace FoodSupplementsSystem.Web.Admin
         {
             this.BrandsServices.DeleteById(id);
         }
+
+        protected void btnInsert_Click(object sender, EventArgs e)
+        {
+            Brand brandToInsert = new Brand();
+
+            brandToInsert.Name = this.tbInsertName.Text;
+            brandToInsert.WebSite = this.tbInsertWebSite.Text;
+
+            this.BrandsServices.Create(brandToInsert);
+
+            this.tbInsertName.Text = "";
+            this.tbInsertWebSite.Text = "";
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.tbInsertName.Text = "";
+            this.tbInsertWebSite.Text = "";
+        }
     }
 }
