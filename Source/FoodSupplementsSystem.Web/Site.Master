@@ -17,6 +17,7 @@
     <%--Added references--%>
     <link rel="stylesheet" href="Content/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="Styles/jquery-ui.css">
+    <link rel="stylesheet" href="Styles/custom-food-supplements.css">
 
     <%--<script src="Scripts/jquery-1.12.4.js"></script>
     <script src="Scripts/jquery-ui.js"></script>--%>
