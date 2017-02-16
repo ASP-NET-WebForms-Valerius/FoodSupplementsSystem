@@ -48,6 +48,7 @@
     <Compile Include="Contracts\ICategoriesServices.cs" />
     <Compile Include="Contracts\ICommentsServices.cs" />
     <Compile Include="Contracts\ILikesServices.cs" />
+    <Compile Include="Contracts\ISupplementsServices.cs" />
     <Compile Include="Contracts\ITopicServices.cs" />
     <Compile Include="LikesServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

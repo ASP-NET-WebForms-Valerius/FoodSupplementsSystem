@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 using FoodSupplementsSystem.Data.Repositories;
 using FoodSupplementsSystem.Data.Models;
+using FoodSupplementsSystem.Services.Contracts;
 
 namespace FoodSupplementsSystem.Services
 {
-    public class SupplementsServices
+    public class SupplementsServices : ISupplementsServices
     {
         private readonly SupplementRepository supplementRepository;
 
