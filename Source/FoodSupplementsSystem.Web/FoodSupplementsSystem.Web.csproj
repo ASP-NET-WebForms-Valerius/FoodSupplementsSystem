@@ -211,6 +211,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ErrorPages\Oops.aspx" />
+    <Content Include="Oops.html" />
+    <Content Include="404.html" />
     <Content Include="About.aspx" />
     <Content Include="Account\AddPhoneNumber.aspx" />
     <Content Include="Account\Confirm.aspx" />
@@ -294,6 +297,9 @@
     <Content Include="Configuration\SiteMap.config" />
     <Content Include="Configuration\RewriteMaps.config" />
     <Content Include="Configuration\RewriteRules.config" />
+    <Content Include="Configuration\CustomErrors.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Properties\PublishProfiles\My IIS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="FoodSupplements\Details.aspx" />
@@ -363,7 +369,9 @@
     <Content Include="Styles\jquery-ui.css" />
     <Content Include="TreeView.aspx" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
@@ -573,6 +581,13 @@
     </Compile>
     <Compile Include="ErrorPages\404.aspx.designer.cs">
       <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPages\Oops.aspx.cs">
+      <DependentUpon>Oops.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\Oops.aspx.designer.cs">
+      <DependentUpon>Oops.aspx</DependentUpon>
     </Compile>
     <Compile Include="FoodSupplements\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>

@@ -19,5 +19,11 @@ namespace FoodSupplementsSystem.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             DbConfig.Initialize();
         }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            var exception = Server.GetLastError().GetBaseException();
+            // log the exception using your logger
+        }
     }
 }
