@@ -32,6 +32,13 @@ namespace FoodSupplementsSystem.Services
             return supplementsToReturn;
         }
 
+        public virtual IEnumerable<Supplement> GetFiltered(string categoryName)
+        {
+            IEnumerable<Supplement> supplementsToReturn = this.supplementRepository.GetFiltered(categoryName);
+
+            return supplementsToReturn;
+        }
+
         public virtual void Add(Supplement supplement)
         {
             this.supplementRepository.Add(supplement);
@@ -58,6 +65,11 @@ namespace FoodSupplementsSystem.Services
             this.supplementRepository.Delete(supplementId);
 
             this.supplementRepository.SaveChanges();
+        }
+
+        public virtual void Dispose()
+        {
+            this.supplementRepository.Dispose();
         }
     }
 }

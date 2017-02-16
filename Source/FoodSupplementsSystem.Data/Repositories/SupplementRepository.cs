@@ -15,5 +15,14 @@ namespace FoodSupplementsSystem.Data.Repositories
             : base(contex)
         {
         }
+
+        public virtual IEnumerable<Supplement> GetFiltered(string categoryName)
+        {
+            IEnumerable<Supplement> supplementsToReturn = null;
+
+            supplementsToReturn = this.DbSet.Where(s => s.Category.Name == categoryName).Select(s => s);
+
+            return supplementsToReturn;
+        }
     }
 }
