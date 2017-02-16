@@ -1,15 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-    <siteMapNode url="~/Home.aspx" title="Home" description="Home page">
-        <siteMapNode url="~/FoodSupplements/Supplements.aspx" title="Food Supplements" description="Food Supplements main page">
-          <siteMapNode url="~/FoodSupplements/Add.aspx" title="Add Supplement" description="Add suplements page" />
-          <siteMapNode url="~/FoodSupplements/Vitamins.aspx" title="Vitamins Supplements" description="Vitamins suplements page" />
-        </siteMapNode>
-        <siteMapNode url="~/HealthTopicks.aspx" title="Health Topicks" description="Health Topicks main page">
-        </siteMapNode>
-        <siteMapNode url="~/Brands.aspx" title="Brands" description="Brands page" />
-        <siteMapNode url="~/About.aspx" title="About" description="About page" />
-        <siteMapNode url="~/Contact.aspx" title="Contacts" description="Contacts page" />
-        <siteMapNode url="~/TreeView.aspx" title="Tree View" description="TreeView page" />
+  <siteMapNode url="~/Home.aspx" title="Home" description="Home page">
+    <siteMapNode url="~/Admin/aDefault.aspx" title="Admin" description="Admin main page">
+      <siteMapNode url="~/Admin/FoodSupplements/aSupplements.aspx" title="Manage Food Supplements" description="Admin Food Supplements main page">
+        <siteMapNode url="~/Admin/FoodSupplements/aAdd.aspx" title=" Add Supplement" description="Admin Add suplements page" />
+        <siteMapNode url="~/Admin/FoodSupplements/aDetails.aspx" title="Edit Supplement Datails" description="Admin Details suplements page" />
+      </siteMapNode>
+      <siteMapNode url="~/Admin/ManageCategories.aspx" title="Manage Categories" description="Admin Manage Categories page" />
+      <siteMapNode url="~/Admin/ManageTopics.aspx" title="Manage Topics" description="Admin Manage Topics page" />
+      <siteMapNode url="~/Admin/ManageBrands.aspx" title="Manage Brands" description="Admin Manage Brands page" />
     </siteMapNode>
+
+    <siteMapNode url="~/foodsupplements/supplements.aspx" title="Food Supplements" description="Food Supplements main page">
+    </siteMapNode>
+    <siteMapNode url="~/healthtopics.aspx" title="Health Topics" description="Health Topics main page">
+    </siteMapNode>
+    <siteMapNode url="~/brands.aspx" title="Brands" description="Brands page" />
+    <siteMapNode url="~/about.aspx" title="About" description="About page" />
+    <siteMapNode url="~/contact.aspx" title="Contacts" description="Contacts page" />
+    <siteMapNode url="~/treeview.aspx" title="Tree View" description="TreeView page" />
+  </siteMapNode>
 </siteMap>
