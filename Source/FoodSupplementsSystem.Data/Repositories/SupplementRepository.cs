@@ -9,7 +9,7 @@ using FoodSupplementsSystem.Data.Repositories.Contracts;
 
 namespace FoodSupplementsSystem.Data.Repositories
 {
-    public class SupplementRepository : GenericRepository<Supplement>, IRepository<Supplement>
+    public class SupplementRepository : GenericRepository<Supplement>, IRepository<Supplement>, ISupplementRepository
     {
         public SupplementRepository(FoodSupplementsSystemDbContext contex) 
             : base(contex)
