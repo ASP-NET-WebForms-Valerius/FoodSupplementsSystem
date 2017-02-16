@@ -1,0 +1,95 @@
+﻿
+
+.descriptin-ingredients-use-accordion .ui-accordion-header {    
+    background-color: whitesmoke;
+    font-weight: bold;
+}
+
+.descriptin-ingredients-use-accordion .ui-accordion-header a {
+  color: #808080;
+}
+
+.descriptin-ingredients-use-accordion .ui-accordion-header-collapsed {    
+    font-weight: bold;
+}
+
+.descriptin-ingredients-use-accordion .ui-accordion-content {    
+    
+}
+
+/*Custom styles form maing table cols small same size aside thead table row*/
+/*.table-row {
+    display: table;
+}
+.table-cell {    
+    display: table-cell;
+}*/
+
+
+/*.ratingStar {
+    font-size: 0pt;
+    width: 17px;
+    height: 17px;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+    display: block;
+    /*background-repeat: no-repeat;
+}*/
+
+/* Rating */
+.ratingStar {
+    background-image: url(Images/EmptyStar.gif);    
+    width: 25px;
+    height: 25px;
+}
+.emptyRatingStar {
+    background-image: url(Images/EmptyStar.gif);
+    width: 25px;
+    height: 25px;
+}
+.filledRatingStar {
+    background-image: url(Images/FilledStar.gif);
+    width: 25px;
+    height: 25px;
+}
+.savedRatingStar {
+    background-image: url(Images/SavedStar.gif);
+    width: 25px;
+    height: 25px;
+}
+
+
+
+.Star
+{
+    background-image: url(Images/EmptyStar.gif);
+    height: 17px;
+    width: 17px;
+}
+.EmptyStar
+{
+    background-image: url(Images/EmptyStar.gif);
+    height: 17px;
+    width: 17px;
+}
+.WaitingStar
+{
+    background-image: url(Images/WaitingStar.gif);
+    height: 17px;
+    width: 17px;
+}
+.FilledStar
+{
+    background-image: url(Images/FilledStar.gif);
+    height: 17px;
+    width: 17px;
+}
+
+/* My Colors */
+.red-bg{
+    background-color: red
+}
+.red-fg{
+    color: red
+}
