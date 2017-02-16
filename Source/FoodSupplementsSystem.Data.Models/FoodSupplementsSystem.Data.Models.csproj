@@ -62,6 +62,7 @@
     <Compile Include="Category.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Constants\GeneralConstants.cs" />
+    <Compile Include="Constants\UrlConstants.cs" />
     <Compile Include="Contracts\IBrand.cs" />
     <Compile Include="Contracts\ICategory.cs" />
     <Compile Include="Contracts\IRating.cs" />
