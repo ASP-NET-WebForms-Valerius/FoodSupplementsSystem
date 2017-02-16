@@ -300,6 +300,7 @@
     <Content Include="Configuration\CustomErrors.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="FoodSupplements\Web.config" />
     <None Include="Properties\PublishProfiles\My IIS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="FoodSupplements\Details.aspx" />
