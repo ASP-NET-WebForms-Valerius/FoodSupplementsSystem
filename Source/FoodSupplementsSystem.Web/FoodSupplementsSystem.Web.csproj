@@ -223,6 +223,10 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Admin\aDefault.aspx" />
+    <Content Include="Admin\FoodSupplements\aAdd.aspx" />
+    <Content Include="Admin\FoodSupplements\aDetails.aspx" />
+    <Content Include="Admin\FoodSupplements\aSupplements.aspx" />
     <Content Include="Admin\ManageBrands.aspx" />
     <Content Include="Admin\ManageCategories.aspx" />
     <Content Include="Admin\ManageTopics.aspx" />
@@ -455,6 +459,34 @@
     </Compile>
     <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\aDefault.aspx.cs">
+      <DependentUpon>aDefault.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\aDefault.aspx.designer.cs">
+      <DependentUpon>aDefault.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\FoodSupplements\aAdd.aspx.cs">
+      <DependentUpon>aAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\FoodSupplements\aAdd.aspx.designer.cs">
+      <DependentUpon>aAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\FoodSupplements\aDetails.aspx.cs">
+      <DependentUpon>aDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\FoodSupplements\aDetails.aspx.designer.cs">
+      <DependentUpon>aDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\FoodSupplements\aSupplements.aspx.cs">
+      <DependentUpon>aSupplements.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\FoodSupplements\aSupplements.aspx.designer.cs">
+      <DependentUpon>aSupplements.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ManageBrands.aspx.cs">
       <DependentUpon>ManageBrands.aspx</DependentUpon>
