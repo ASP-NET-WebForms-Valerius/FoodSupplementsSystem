@@ -36,6 +36,8 @@ namespace FoodSupplementsSystem.Data.Migrations
 
             seed.Brands.ForEach(x => context.Brands.Add(x));
 
+            seed.Comments.ForEach(x => context.Comments.Add(x));
+
             seed.Supplements.ForEach(x => context.Supplements.Add(x));
 
             context.SaveChanges();

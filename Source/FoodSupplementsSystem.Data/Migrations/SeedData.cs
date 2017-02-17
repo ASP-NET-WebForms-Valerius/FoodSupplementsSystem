@@ -19,6 +19,10 @@ namespace FoodSupplementsSystem.Data.Migrations
 
         public List<Supplement> Supplements;
 
+        public List<Comment> Comments;
+
+        public List<Rating> Rating;
+
         public User Author { get; set; }
 
         public SeedData(User author)
@@ -161,6 +165,44 @@ namespace FoodSupplementsSystem.Data.Migrations
                 ImageUrl = "http://www.rockwellnutrition.com/assets/images/pure-encapsulations-cardiovascular-support-cardio-c-180-vcaps.jpg",
                 Ingredients = "Vitamin C (as PureWay-C®) 270 mg., PhytoCardio proprietary blend 80 mg., providing wild blueberry(vaccinium angustifolium) extract(fruit), cran",
                 Use = "Take one (1) capsule daily.",
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+            });
+
+            this.Comments = new List<Comment>();
+            Comments.Add(new Comment()
+            {
+                Topic = Topics[0],
+                Content = "hvgcfdxetryuiokl,mknjbhvgfcdxser5t6y7uiolkmnjhbvgfcdxsertyuik",
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+            });
+            Comments.Add(new Comment()
+            {
+                Topic = Topics[1],
+                Content = "hvgcfdxetryuiokl,mknjbhvgfcdxser5t6y7uiolkmnjhbvgfcdxsertyuik",
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+            });
+            Comments.Add(new Comment()
+            {
+                Topic = Topics[2],
+                Content = "hvgcfdxetryuiokl,mknjbhvgfcdxser5t6y7uiolkmnjhbvgfcdxsertyuik",
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+            });
+            Comments.Add(new Comment()
+            {
+                Topic = Topics[4],
+                Content = "hvgcfdxetryuiokl,mknjbhvgfcdxser5t6y7uiolkmnjhbvgfcdxsertyuik",
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+            });
+            Comments.Add(new Comment()
+            {
+                Topic = Topics[3],
+                Content = "hvgcfdxetryuiokl,mknjbhvgfcdxser5t6y7uiolkmnjhbvgfcdxsertyuik",
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+            });
+            Comments.Add(new Comment()
+            {
+                Topic = Topics[5],
+                Content = "hvgcfdxetryuiokl,mknjbhvgfcdxser5t6y7uiolkmnjhbvgfcdxsertyuik",
                 CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
             });
         }
