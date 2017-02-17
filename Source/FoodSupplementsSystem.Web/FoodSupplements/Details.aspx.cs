@@ -19,11 +19,8 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
         // https://bytes.com/topic/net/answers/737309-event-getting-called-2-times-indside-update-panel
         private bool isFired = false;
 
-        protected string ErrorMessage
-        {
-            get;
-            private set;
-        }
+        protected string ErrorMessage { get; private set; }
+        protected string SuccessMessage { get; private set; }
 
         public int Id { get; private set; }
 
@@ -54,7 +51,7 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             int suppId = -1;
             if (!int.TryParse(this.Request.Params["id"], out suppId))
             {
-                this.Response.Redirect("~/supplements");
+                this.Response.Redirect("~/foodsupplements/supplements");
             }
             this.Id = suppId;
             this.Supplement = this.GetSupplement().ToList();
@@ -62,8 +59,7 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
 
             this.PlaceHolderErrorMessage.DataBind();
             this.BindListViewSupplements();
-            //this.BindListBoxRateValues();
-            
+            this.BindListBoxRateValues();            
         }
 
 
@@ -83,9 +79,11 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
 
         private void BindListBoxRateValues()
         {
-            List<int> rateValues = new List<int>(new int[]{ 1, 2, 3, 4, 5 }) ;
+            List<int> rateValues = new List<int>(new int[]{ 1, 2, 3, 4, 5 });
             this.ListBoxRateValues.DataSource = rateValues;
             this.ListBoxRateValues.DataBind();
+
+            this.ListBoxRateValues.SelectedValue = this.GetAverageRatingValue().ToString();
         }
 
         protected void SupplementRating_Changed(object sender, AjaxControlToolkit.RatingEventArgs e)
@@ -98,27 +96,40 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             else
             {
                 isFired = true;
-                this.CheckIfLoggedIn();                
+                //this.CheckIfLoggedIn();                
             }    
         }
 
-        protected void CheckIfLoggedIn()
+        protected void MessageAuthenticatedToVote()
         {           
             // TODO implement real check
-            bool userIsLoggedIn = false;
-            if (!userIsLoggedIn)
+            bool userIsAuthenticated = this.User.Identity.IsAuthenticated;
+            if (!userIsAuthenticated)
             {
                 this.ErrorMessage = "You have to be logged in if you want to voute!";
-
-                // Form.Action = ResolveUrl("~/details?id=" + this.Id);
                 this.PlaceHolderErrorMessage.Visible = !string.IsNullOrEmpty(this.ErrorMessage);
                 this.PlaceHolderErrorMessage.DataBind();
-
-                return;
             }
-
-            //this.ErrorMessage = string.Empty;
+            else
+            {
+                this.SuccessMessage = "You have voted successfully!";
+                this.PlaceHolderSuccessMessage.Visible = !string.IsNullOrEmpty(this.SuccessMessage);
+                this.PlaceHolderSuccessMessage.DataBind();
+            }            
         }
+        protected void ButtonAcknoledgeErrorMessages_Click(object sender, EventArgs e)
+        {
+            this.ErrorMessage = string.Empty;
+            this.PlaceHolderErrorMessage.Visible = !string.IsNullOrEmpty(this.ErrorMessage);
+            this.PlaceHolderErrorMessage.DataBind();
+        }
+        protected void ButtonAcknoledgeSuccessMessages_Click(object sender, EventArgs e)
+        {
+            this.SuccessMessage = string.Empty;
+            this.PlaceHolderSuccessMessage.Visible = !string.IsNullOrEmpty(this.SuccessMessage);
+            this.PlaceHolderSuccessMessage.DataBind();
+        }
+
 
         private bool UserHasVoutedAllready()
         {
@@ -131,63 +142,30 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             return false; ;
         }
 
-        protected void ListBoxRateValues_DataBinding(object sender, EventArgs e)
-        {
-            string vav = string.Empty;
-            if (this.ViewState["Country"] != null)
-            {
-                vav = ViewState["VotesAverageValue"].ToString();
-                this.ListBoxRateValues.SelectedIndex = int.Parse(vav);
-
-                return;
-            }
-
-            this.ListBoxRateValues.SelectedIndex = 1;
-        }
-
         protected void ListBoxRateValues_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.CheckIfLoggedIn();
+            this.MessageAuthenticatedToVote();
 
-            var newValue = this.ListBoxRateValues.SelectedValue;
-
-            //if (this.UserHasVoutedAllready())
-            //{
-            //    // Update
-            //}
-            //else
-            //{
-            //    // Insert
-            //}
-        }
-
-        protected void LabelVotesAverageValueHelper_DataBinding(object sender, EventArgs e)
-        {
-            string vav = string.Empty;
-            if (this.ViewState["VotesAverageValue"] != null)
+            if (!this.User.Identity.IsAuthenticated)
             {
-                vav = ViewState["VotesAverageValue"].ToString();
-                this.ListBoxRateValues.SelectedIndex = int.Parse(vav);
-
                 return;
             }
 
-            this.ListBoxRateValues.SelectedIndex = 1;
-        }
-
-        protected void LabelVotesAverageValueHelper_Load(object sender, EventArgs e)
-        {
-            string vav = string.Empty;
-            if (this.ViewState["VotesAverageValue"] != null)
+            bool userHasVoutedAllready = false;
+            if (userHasVoutedAllready)
             {
-                vav = ViewState["VotesAverageValue"].ToString();
-                this.ListBoxRateValues.SelectedIndex = int.Parse(vav);
-
-                return;
+                // Update
+            }
+            else
+            {
+                // Insert
             }
 
-            this.ListBoxRateValues.SelectedIndex = 1;
+            
+            // Get new Average value
+            
         }
+
 
         protected IEnumerable<Rating> GetSupplementRatings()
         {
@@ -228,5 +206,7 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
 
             return averageValue;
         }
+
+        
     }
 }

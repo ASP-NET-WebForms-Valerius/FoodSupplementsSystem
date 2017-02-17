@@ -13,6 +13,15 @@ namespace FoodSupplementsSystem.Web.FoodSupplements {
     public partial class Details {
         
         /// <summary>
+        /// ListBoxRateValues control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ListBoxRateValues;
+        
+        /// <summary>
         /// PlaceHolderErrorMessage control.
         /// </summary>
         /// <remarks>
@@ -22,13 +31,31 @@ namespace FoodSupplementsSystem.Web.FoodSupplements {
         protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderErrorMessage;
         
         /// <summary>
-        /// ListBoxRateValues control.
+        /// ButtonAcknoledgeErrorMessages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ListBoxRateValues;
+        protected global::System.Web.UI.WebControls.Button ButtonAcknoledgeErrorMessages;
+        
+        /// <summary>
+        /// PlaceHolderSuccessMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderSuccessMessage;
+        
+        /// <summary>
+        /// ButtonAcknoledgeSuccessMessages control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAcknoledgeSuccessMessages;
         
         /// <summary>
         /// ListViewSupplementDetails control.

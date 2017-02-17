@@ -4,22 +4,34 @@
         
     <h3>Supplement details</h3>
 
+    <asp:ListBox ID="ListBoxRateValues" runat="server" 
+        AutoPostBack="true"        
+        OnSelectedIndexChanged="ListBoxRateValues_SelectedIndexChanged">        
+    </asp:ListBox>
+    
     <asp:PlaceHolder ID="PlaceHolderErrorMessage" runat="server" 
         Visible="false" 
         EnableViewState="false">
-        <p class="text-danger"><%: this.ErrorMessage %></p>
+        <span class="text-danger text-center"><%: this.ErrorMessage %></span>
+        <asp:Button ID="ButtonAcknoledgeErrorMessages" runat="server" 
+            CssClass="btn btn-danger btn-sm"
+            Visible="true"
+            Text="x" 
+            OnClick="ButtonAcknoledgeErrorMessages_Click" />
+    </asp:PlaceHolder>
+    <asp:PlaceHolder ID="PlaceHolderSuccessMessage" runat="server" 
+        Visible="false" 
+        EnableViewState="false">
+        <span class="text-success text-center"><%: this.SuccessMessage %></span>
+        <asp:Button ID="ButtonAcknoledgeSuccessMessages" runat="server" 
+            CssClass="btn btn-success btn-sm"
+            Visible="true"
+            Text="x" 
+            OnClick="ButtonAcknoledgeSuccessMessages_Click" />
     </asp:PlaceHolder>
 
-    <asp:ListBox ID="ListBoxRateValues" runat="server" 
-        AutoPostBack="true"        
-        OnDataBinding="ListBoxRateValues_DataBinding" 
-        OnSelectedIndexChanged="ListBoxRateValues_SelectedIndexChanged">
-        <asp:ListItem>1</asp:ListItem>
-        <asp:ListItem>2</asp:ListItem>
-        <asp:ListItem>3</asp:ListItem>
-        <asp:ListItem>4</asp:ListItem>
-        <asp:ListItem>5</asp:ListItem>
-    </asp:ListBox>
+
+    
 
     <asp:ListView ID="ListViewSupplementDetails" runat="server" 
         ItemType="FoodSupplementsSystem.Data.Models.Supplement" >
@@ -30,36 +42,6 @@
         </LayoutTemplate>
         <ItemTemplate>
             <li>
-                <%--Helpers hidden fields--%>
-                <asp:Label ID="LabelId" runat="server" 
-                    Text="<%#: Item.Id %>" 
-                    Visible="true">
-                </asp:Label>
-                <%--End-Helpers hidden fields--%>
-
-                <%--Additional data source, used for Rating Control--%>
-                <asp:SqlDataSource ID="SqlDataSourceRating" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:FoodSupplementsContextConnectionString %>"
-                    SelectCommand = "SELECT Count([Value]) AS VotesCount, AVG([Value]) AS VotesAverageValue FROM [Ratings] WHERE SupplementId = @supplementId" >
-                    <SelectParameters>
-                        <asp:ControlParameter ControlID="LabelId" PropertyName="Text" Name="supplementId" DbType="Int32" />
-                    </SelectParameters>
-                </asp:SqlDataSource>
-                <%--End-Additional data source, used for Rating Control--%>
-
-                <asp:FormView ID="FormViewRatingHelper" runat="server" DataSourceID="SqlDataSourceRating">
-                    <ItemTemplate>
-                        <asp:Label ID="LabelVotesCountHelper" runat="server" 
-                            Text='<%# "VotesCount: " + Eval("VotesCount") %>' 
-                            Visible="true">
-                        </asp:Label>
-                        <asp:Label ID="LabelVotesAverageValueHelper" runat="server" 
-                            Text='<%# "VotesAverageValue: " + Eval("VotesAverageValue") %>' 
-                            Visible="true" OnDataBinding="LabelVotesAverageValueHelper_DataBinding" 
-                            OnLoad="LabelVotesAverageValueHelper_Load">
-                        </asp:Label>
-                    </ItemTemplate>
-                </asp:FormView>
                 
                 <%--Supplement Item Row--%>
                 <div class="row table-bordered-none-byMe">
