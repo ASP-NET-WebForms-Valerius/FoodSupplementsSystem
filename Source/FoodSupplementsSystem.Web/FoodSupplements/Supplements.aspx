@@ -15,22 +15,38 @@
 
     <h3><strong>Supplemts ListView</strong></h3>
 
+    <div class="btn-group" role="group" aria-label="..." >
+        <asp:Button ID="Button1" runat="server" 
+        CssClass="btn btn-default btn-sm"
+        Text="Category Filter" 
+        Visible="<%# this.SupplementFilters.CategoryEnabled %>" 
+        OnClick="ButtonRemoveCategoryFilter_Click"/>
+
+        <asp:Button ID="Button2" runat="server" 
+        CssClass="btn btn-danger btn-sm"
+        Text="X" 
+        Visible="<%# this.SupplementFilters.CategoryEnabled %>" 
+        OnClick="ButtonRemoveCategoryFilter_Click"/>
+    </div>
     <asp:Button ID="ButtonRemoveCategoryFilter" runat="server" 
+        CssClass="btn btn-danger btn-sm"
         Text="Category Filter X" 
         Visible="<%# this.SupplementFilters.CategoryEnabled %>" 
         OnClick="ButtonRemoveCategoryFilter_Click"/>
 
     <asp:Button ID="ButtonRemoveTopicFilter" runat="server" 
+        CssClass="btn btn-danger btn-sm"
         Text="Topic Filter X" 
         Visible="<%# this.SupplementFilters.TopicEnabled %>" 
         OnClick="ButtonRemoveTopicFilter_Click"/>
 
     <asp:Button ID="ButtonRemoveBrandFilter" runat="server" 
+        CssClass="btn btn-danger btn-sm"
         Text="Brand Filter X" 
         Visible="<%# this.SupplementFilters.BrandEnabled %>" 
         OnClick="ButtonRemoveBrandFilter_Click"/>
 
-    <asp:ListView ID="ListViewSupplements" runat="server" 
+    <asp:ListView ID="ListViewSupplements" runat="server"         
         ItemType="FoodSupplementsSystem.Data.Models.Supplement"
         OnPagePropertiesChanging="ListViewSupplements_PagePropertiesChanging" >
         <LayoutTemplate>            
@@ -38,6 +54,9 @@
                 <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
             </ul>
         </LayoutTemplate>
+        <ItemSeparatorTemplate>
+            <br />
+        </ItemSeparatorTemplate>
         <ItemTemplate>
             <li>
                 <%--Helpers hidden fields--%>
@@ -79,21 +98,21 @@
 
 
                 <%--Supplement Item Row--%>
-                <div class="row table-bordered">
+                <div class="row table-bordered-none-byMe">
                     <%--First Row with Main attributes--%>
-                    <div class="row table-bordered">
-                        <div class="col-md-2 table-bordered">
+                    <div class="row table-bordered-none-byMe">
+                        <div class="col-md-2 table-bordered-none-byMe">
                             <img src="<%#: Item.ImageUrl %>" alt="Supplements-Category-Brand-Name" />
                         </div>
-                        <div class="col-md-8 table-bordered">
+                        <div class="col-md-8 jumbotron-gray-bg table-bordered-none-byMe">
                             <%--Name and Details button--%>
-                            <div class="row">                        
-                                <div class="col-md-8 table-bordered">
+                            <div class="row ">                        
+                                <div class="col-md-8 table-bordered-none-byMe">
                                     <h4>
                                         <a href="<%# this.GetDetailsUrl(Item.Id) %>"><%#: Item.Name %></a>
                                     </h4>
                                 </div>   
-                                <div class="col-md-4 table-bordered">
+                                <div class="col-md-4 table-bordered-none-byMe">
                                     <asp:LinkButton ID="LinkButton1" runat="server"                             
                                         Text="Detail product view" 
                                         href='<%# this.GetDetailsUrl(Item.Id) %>'
@@ -102,17 +121,31 @@
                             </div>
                             <%--Rating stars--%>
                             <div class="row"> 
-                                <div class="col-md-8 table-bordered">
+                                <div class="col-md-8 table-bordered-none-byMe">
                                     <asp:FormView ID="FormViewVotesAverageValue" runat="server" DataSourceID="SqlDataSourceRating">
                                         <ItemTemplate>
                                             <asp:Label ID="LabelVotesAverageValue" runat="server" 
                                                 Text='<%# Eval("VotesAverageValue") %>' 
                                                 Visible="true">
                                             </asp:Label>
+                                            
+                                            <asp:FormView ID="FormViewRatingValue" runat="server" DataSourceID="SqlDataSourceRating">
+                                                <ItemTemplate>
+                                                    <ajaxToolkit:Rating ID="SupplementRating" runat="server"                                    
+                                                        CurrentRating='<%# Eval("VotesAverageValue") %>'
+                                                        MaxRating="5"
+                                                        StarCssClass="ratingStar"
+                                                        EmptyStarCssClass="emptyRatingStar"
+                                                        FilledStarCssClass="filledRatingStar"
+                                                        WaitingStarCssClass="savedRatingStar"
+                                                        OnChanged="SupplementRating_Changed" />       
+                                                </ItemTemplate>  
+                                            </asp:FormView>    
+
                                         </ItemTemplate>
                                     </asp:FormView>
                                 </div>   
-                                <div class="col-md-4 table-bordered pull-right">
+                                <div class="col-md-4 table-bordered-none-byMe pull-right">
                                     <strong>Votes: </strong>    
                                     <asp:FormView ID="FormView1" runat="server" 
                                         DataSourceID="SqlDataSourceRating"
@@ -128,10 +161,10 @@
                             </div>
                             <%--Category--%>
                             <div class="row">                        
-                                <div class="col-md-2 table-bordered">
+                                <div class="col-md-2 table-bordered-none-byMe">
                                     <strong>Category: </strong>
                                 </div>   
-                                <div class="col-md-10 table-bordered">
+                                <div class="col-md-10 table-bordered-none-byMe">
                                     <asp:LinkButton ID="LinkButtonSetCategoryFilter" runat="server" 
                                         OnCommand="LinkButtonSetCategoryFilter_Command"
                                         CommandArgument="<%# Item.Category.Name %>">
@@ -141,10 +174,10 @@
                             </div>
                             <%--Topic--%>
                             <div class="row">                        
-                                <div class="col-md-2 table-bordered">
+                                <div class="col-md-2 table-bordered-none-byMe">
                                     <strong>Topic: </strong>
                                 </div>   
-                                <div class="col-md-10 table-bordered">
+                                <div class="col-md-10 table-bordered-none-byMe">
                                     <asp:LinkButton ID="LinkButtonSetTopicFilter" runat="server" 
                                         OnCommand="LinkButtonSetTopicFilter_Command"
                                         CommandArgument="<%# Item.Topic.Name %>">
@@ -154,10 +187,10 @@
                             </div>
                             <%--Brand--%>
                             <div class="row">                        
-                                <div class="col-md-2 table-bordered">
+                                <div class="col-md-2 table-bordered-none-byMe">
                                     <strong>Brand: </strong>
                                 </div>   
-                                <div class="col-md-10 table-bordered">
+                                <div class="col-md-10 table-bordered-none-byMe">
                                     <asp:LinkButton ID="LinkButtonSetBrandFilter" runat="server" 
                                         OnCommand="LinkButtonSetBrandFilter_Command"
                                         CommandArgument="<%# Item.Brand.Name %>">
@@ -167,10 +200,10 @@
                             </div>
                             <%--Web--%>
                             <div class="row">                        
-                                <div class="col-md-2 table-bordered">
+                                <div class="col-md-2 table-bordered-none-byMe">
                                     <strong>Web Site: </strong>
                                 </div>   
-                                <div class="col-md-10 table-bordered">
+                                <div class="col-md-10 table-bordered-none-byMe">
                                     <a href="<%#: Item.Brand.WebSite %>" target="_blank"><%#: Item.Brand.WebSite %></a>
                                 </div>          
                             </div>
@@ -179,10 +212,10 @@
                     <%--End-First Row with Main attributes--%>
 
                     <%--Second Row with Description, Ingredients and Use attributes--%>
-                    <div class="row table-bordered">
-                        <div class="col-md-2 table-bordered">                    
+                    <div class="row table-bordered-none-byMe">
+                        <div class="col-md-2 table-bordered-none-byMe">                    
                         </div>
-                        <div class="col-md-8 table-bordered">   
+                        <div class="col-md-8 jumbotron-gray-bg table-bordered-none-byMe">   
                             <div class="descriptin-ingredients-use-accordion">
                                 <h3><a>Description</a></h3>
                                     <div>

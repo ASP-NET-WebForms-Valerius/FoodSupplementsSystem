@@ -13,13 +13,13 @@ namespace FoodSupplementsSystem.Web.FoodSupplements {
     public partial class Details {
         
         /// <summary>
-        /// DetailsViewSupplement control.
+        /// ListViewSupplementDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView DetailsViewSupplement;
+        protected global::System.Web.UI.WebControls.ListView ListViewSupplementDetails;
         
         /// <summary>
         /// ButtonGoBack control.

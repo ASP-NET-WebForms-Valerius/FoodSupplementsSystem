@@ -28,12 +28,16 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             int suppId = -1;
             if (!int.TryParse(this.Request.Params["id"], out suppId))
             {
-                this.Response.Redirect("SupplementsList.aspx");
+                this.Response.Redirect("~/supplements");
             }
             this.Id = suppId;
 
-            this.DetailsViewSupplement.DataSource = this.Supplements.ToList();
-            this.DetailsViewSupplement.DataBind();
+
+
+            this.BindListViewSupplements();
+
+            this.ListViewSupplementDetails.DataSource = this.Supplement.ToList();
+            this.ListViewSupplementDetails.DataBind();
         }
 
         public FoodSupplementsSystemDbContext DbContext { get; private set; }
@@ -44,7 +48,7 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
 
         public int Id { get; private set; }
 
-        protected IList<Supplement> Supplements
+        protected IList<Supplement> Supplement
         {
             get
             {
@@ -58,6 +62,17 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
         protected void ButtonGoBack_Click(object sender, EventArgs e)
         {
             this.Response.Redirect("supplements.aspx");
+        }
+
+        private void BindListViewSupplements()
+        {
+            this.ListViewSupplementDetails.DataSource = this.Supplement;
+            this.ListViewSupplementDetails.DataBind();
+        }
+
+        protected void SupplementRating_Changed(object sender, AjaxControlToolkit.RatingEventArgs e)
+        {
+
         }
     }
 }

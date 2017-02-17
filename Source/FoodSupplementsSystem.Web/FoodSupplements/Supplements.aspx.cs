@@ -66,11 +66,7 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             }
         }
 
-        protected SupplementFilters SupplementFilters
-        {
-            get;
-            private set;
-        }
+        protected SupplementFilters SupplementFilters { get; private set; }
 
         
         private void BindListViewSupplements()
@@ -174,6 +170,11 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             this.BindListViewSupplements();
             this.BindDataPagersSupplements();
             this.ButtonRemoveBrandFilter.DataBind();
+        }
+
+        protected void SupplementRating_Changed(object sender, RatingEventArgs e)
+        {
+
         }
     }
 }
