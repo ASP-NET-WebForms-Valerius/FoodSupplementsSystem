@@ -20,7 +20,7 @@ BEGIN
 	    
 	SELECT Id
 		,Value as Value
-		,AuthorId as UserId
+		,AuthorId as AuthorId
 		,SupplementId as SupplementId
 	FROM [dbo].[Ratings] as r
 	WHERE (@SupplementId= r.SupplementId)

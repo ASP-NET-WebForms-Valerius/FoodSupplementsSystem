@@ -14,24 +14,6 @@ namespace FoodSupplementsSystem.Data.Repositories
         public RatingRepository(FoodSupplementsSystemDbContext context)
             : base(context)
         {
-        }
-
-        public virtual IEnumerable<Rating> GetByCustomParams(int supplementId)
-        {
-            IEnumerable<Rating> ratingToReturn = null;
-
-            ratingToReturn = base.ExecuteStoredProcedure("usp_GetSupplementRatingBySupplementId", supplementId).Select(s => s);
-
-            return ratingToReturn;
-        }
-
-        public virtual IEnumerable<Rating> GetByCustomParams(string username, int supplementId)
-        {
-            IEnumerable<Rating> ratingToReturn = null;
-
-            ratingToReturn = base.ExecuteStoredProcedure("usp_GetRatingByUsernameAndSupplementId", username, supplementId).Select(s => s);
-
-            return ratingToReturn;
-        }
+        }       
     }
 }

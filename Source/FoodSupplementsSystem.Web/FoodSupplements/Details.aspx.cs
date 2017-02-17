@@ -25,6 +25,19 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             private set;
         }
 
+        public int Id { get; private set; }
+
+        protected IList<Supplement> Supplement { get; private set; }
+
+        protected IList<Rating> Ratings { get; private set; }
+
+        protected FoodSupplementsSystemDbContext DbContext { get; private set; }
+
+        protected UnitOfWork UnitOfWork { get; private set; }
+
+        protected SupplementsServices SupplementsServices { get; set; }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -44,38 +57,18 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
                 this.Response.Redirect("~/supplements");
             }
             this.Id = suppId;
+            this.Supplement = this.GetSupplement().ToList();
+            this.Ratings = this.GetSupplementRatings().ToList();
 
             this.PlaceHolderErrorMessage.DataBind();
             this.BindListViewSupplements();
             //this.BindListBoxRateValues();
-
-            this.GetRating();
+            
         }
 
-        public FoodSupplementsSystemDbContext DbContext { get; private set; }
-
-        public UnitOfWork UnitOfWork { get; private set; }
-
-        protected SupplementsServices SupplementsServices { get; set; }
-
-        //protected RatingService RatingService { get; set; }
 
         protected RatingRepository RatingRepository { get; set; }
 
-        public int Id { get; private set; }
-
-        //protected Rating Rating { get; private set; }
-
-        protected IList<Supplement> Supplement
-        {
-            get
-            {
-                IList<Supplement> supplementsToReturn= new List<Supplement>();
-                supplementsToReturn.Add(this.SupplementsServices.GetById(this.Id));
-
-                return supplementsToReturn;
-            }
-        }
 
         protected void ButtonGoBack_Click(object sender, EventArgs e)
         {
@@ -196,13 +189,44 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             this.ListBoxRateValues.SelectedIndex = 1;
         }
 
-        protected void GetRating()
+        protected IEnumerable<Rating> GetSupplementRatings()
         {
             string username = this.User.Identity.Name;
 
-            IEnumerable<Rating> ratingToReturn = null;
+            IEnumerable<Rating> ratingsToReturn = null;
 
-            var ratingTest = this.RatingRepository.ExecuteStoredProcedure("[dbo].[usp_GetSupplementRatingBySupplementId]", this.Id).Select(s => s);
+            ratingsToReturn = this.RatingRepository.ExecuteStoredProcedure("usp_GetSupplementRatingBySupplementId", this.Id).Select(s => s);
+
+            return ratingsToReturn;
+        }
+
+        protected IEnumerable<Supplement> GetSupplement()
+        {
+            IList<Supplement> supplementsToReturn = new List<Supplement>();
+            Supplement dbSupplement = this.SupplementsServices.GetById(this.Id);
+
+            if (dbSupplement == null)
+            {
+                string errorMessage = string.Format("No supplements were found by Id {0}", this.Id);
+                throw new ArgumentNullException(errorMessage);
+            }
+            supplementsToReturn.Add(dbSupplement);
+
+            return supplementsToReturn;
+        }
+
+        protected int GetAverageRatingValue()
+        {
+            int sum = 0;
+
+            foreach(var rating in Ratings)
+            {
+                sum += rating.Value;
+            }
+
+            int averageValue = sum / Ratings.Count;
+
+            return averageValue;
         }
     }
 }

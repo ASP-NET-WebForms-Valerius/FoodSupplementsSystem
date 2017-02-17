@@ -5,6 +5,8 @@ using System.Linq;
 
 using FoodSupplementsSystem.Data.Repositories.Contracts;
 using System.Data.SqlClient;
+using System.Data;
+using System.Collections.Generic;
 
 namespace FoodSupplementsSystem.Data.Repositories
 {
@@ -40,12 +42,12 @@ namespace FoodSupplementsSystem.Data.Repositories
             // http://stackoverflow.com/questions/4873607/how-to-use-dbcontext-database-sqlquerytelementsql-params-with-stored-proced
             // https://msdn.microsoft.com/en-US/data/jj592907
 
-            string param1Name = "param1";
-            string sqlCommand = spName + " @" + param1Name;
-            SqlParameter sqlParam1 = new SqlParameter(param1Name, param1Value);
+            string param1Key = "@param1";
+            string sqlCommand = "EXECUTE [dbo].["+ spName + "] " + param1Key + " ";
+            SqlParameter sqlParam1 = new SqlParameter(param1Key, SqlDbType.Int);
+            sqlParam1.Value = param1Value;
 
-            // DbRawSqlQuery<T> commandResult = this.Db.SqlQuery<T>(sqlCommand, sqlParam1);
-            DbRawSqlQuery<T> commandResult = this.Db.SqlQuery<T>("exec [dbo].[usp_GetSupplementRatingBySupplementId] @param1 ", 1);
+            ICollection<T> commandResult = this.Db.SqlQuery<T>(sqlCommand, sqlParam1).ToList<T>();
 
             //"[dbo].[usp_GetSupplementRatingBySupplementId]", this.Id
 

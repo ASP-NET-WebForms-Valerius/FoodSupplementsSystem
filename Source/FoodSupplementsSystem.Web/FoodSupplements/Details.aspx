@@ -80,41 +80,24 @@
                             <%--Rating stars--%>
                             <div class="row"> 
                                 <div class="col-md-8 table-bordered-none-byMe">
-                                    <asp:FormView ID="FormViewVotesAverageValue" runat="server" DataSourceID="SqlDataSourceRating">
-                                        <ItemTemplate>
-                                            <asp:Label ID="LabelVotesAverageValue" runat="server" 
-                                                Text='<%# Eval("VotesAverageValue") %>' 
-                                                Visible="true">
-                                            </asp:Label>
+                                    
+                                    <asp:Label ID="LabelVotesAverageValue" runat="server" 
+                                        Text='<%# this.GetAverageRatingValue() %>' 
+                                        Visible="true">
+                                    </asp:Label>
                                             
-                                            <asp:FormView ID="FormViewRatingValue" runat="server" DataSourceID="SqlDataSourceRating">
-                                                <ItemTemplate>
-                                                    <ajaxToolkit:Rating ID="SupplementRating" runat="server"                                    
-                                                        CurrentRating='<%# Eval("VotesAverageValue") %>'
-                                                        MaxRating="5"
-                                                        StarCssClass="ratingStar"
-                                                        EmptyStarCssClass="emptyRatingStar"
-                                                        FilledStarCssClass="filledRatingStar"
-                                                        WaitingStarCssClass="savedRatingStar"
-                                                        OnChanged="SupplementRating_Changed" />       
-                                                </ItemTemplate>  
-                                            </asp:FormView>
-
-                                        </ItemTemplate>
-                                    </asp:FormView>
+                                    <ajaxToolkit:Rating ID="SupplementRating" runat="server"                                    
+                                        CurrentRating='<%# this.GetAverageRatingValue() %>'
+                                        MaxRating="5"
+                                        StarCssClass="ratingStar"
+                                        EmptyStarCssClass="emptyRatingStar"
+                                        FilledStarCssClass="filledRatingStar"
+                                        WaitingStarCssClass="savedRatingStar"
+                                        OnChanged="SupplementRating_Changed" />       
                                 </div>   
                                 <div class="col-md-4 table-bordered-none-byMe pull-right">
-                                    <strong>Votes: </strong>    
-                                    <asp:FormView ID="FormView1" runat="server" 
-                                        DataSourceID="SqlDataSourceRating"
-                                        CssClass="form-inline">
-                                        <ItemTemplate>
-                                            <asp:Label ID="LabelVotesCount" runat="server" 
-                                                Text='<%# Eval("VotesCount") %>' 
-                                                Visible="true">
-                                            </asp:Label>
-                                        </ItemTemplate>
-                                    </asp:FormView>                     
+                                    <strong>Votes: </strong>   
+                                    <p><%# Ratings.Count %></p>  
                                 </div>
                             </div>
                             <%--Category--%>
