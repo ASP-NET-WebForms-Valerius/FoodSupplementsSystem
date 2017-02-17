@@ -4,6 +4,23 @@
         
     <h3>Supplement details</h3>
 
+    <asp:PlaceHolder ID="PlaceHolderErrorMessage" runat="server" 
+        Visible="false" 
+        EnableViewState="false">
+        <p class="text-danger"><%: this.ErrorMessage %></p>
+    </asp:PlaceHolder>
+
+    <asp:ListBox ID="ListBoxRateValues" runat="server" 
+        AutoPostBack="true"        
+        OnDataBinding="ListBoxRateValues_DataBinding" 
+        OnSelectedIndexChanged="ListBoxRateValues_SelectedIndexChanged">
+        <asp:ListItem>1</asp:ListItem>
+        <asp:ListItem>2</asp:ListItem>
+        <asp:ListItem>3</asp:ListItem>
+        <asp:ListItem>4</asp:ListItem>
+        <asp:ListItem>5</asp:ListItem>
+    </asp:ListBox>
+
     <asp:ListView ID="ListViewSupplementDetails" runat="server" 
         ItemType="FoodSupplementsSystem.Data.Models.Supplement" >
         <LayoutTemplate>            
@@ -13,7 +30,6 @@
         </LayoutTemplate>
         <ItemTemplate>
             <li>
-              
                 <%--Helpers hidden fields--%>
                 <asp:Label ID="LabelId" runat="server" 
                     Text="<%#: Item.Id %>" 
@@ -39,12 +55,12 @@
                         </asp:Label>
                         <asp:Label ID="LabelVotesAverageValueHelper" runat="server" 
                             Text='<%# "VotesAverageValue: " + Eval("VotesAverageValue") %>' 
-                            Visible="true">
+                            Visible="true" OnDataBinding="LabelVotesAverageValueHelper_DataBinding" 
+                            OnLoad="LabelVotesAverageValueHelper_Load">
                         </asp:Label>
                     </ItemTemplate>
                 </asp:FormView>
-
-
+                
                 <%--Supplement Item Row--%>
                 <div class="row table-bordered-none-byMe">
                     <%--First Row with Main attributes--%>
@@ -82,7 +98,7 @@
                                                         WaitingStarCssClass="savedRatingStar"
                                                         OnChanged="SupplementRating_Changed" />       
                                                 </ItemTemplate>  
-                                            </asp:FormView>    
+                                            </asp:FormView>
 
                                         </ItemTemplate>
                                     </asp:FormView>
@@ -176,4 +192,5 @@
         CssClass="btn btn-default"
         Text="Go back" 
         OnClick="ButtonGoBack_Click" />
+
 </asp:Content>

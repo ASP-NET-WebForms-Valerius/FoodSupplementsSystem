@@ -6,6 +6,8 @@ namespace FoodSupplementsSystem.Data.Contracts
     {
         SupplementRepository SupplementRepository { get; }
 
+        RatingRepository RatingRepository { get; }
+
         void Save();
     }
 }

@@ -17,6 +17,13 @@ namespace FoodSupplementsSystem.Data
         {
         }
 
+        public Database Db {
+            get
+            {
+                return base.Database;
+            }
+        }
+
         public IDbSet<Brand> Brands { get; set; }
         
         public IDbSet<Category> Categories { get; set; }
@@ -34,7 +41,7 @@ namespace FoodSupplementsSystem.Data
         public static FoodSupplementsSystemDbContext Create()
         {
             return new FoodSupplementsSystemDbContext();
-        }
+        }        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

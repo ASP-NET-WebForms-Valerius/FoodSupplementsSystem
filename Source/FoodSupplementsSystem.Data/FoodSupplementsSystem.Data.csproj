@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IExtendedRepository.cs" />
     <Compile Include="FoodSupplementsSystemDbContext.cs" />
     <Compile Include="IFoodSupplementsSystemDbContext.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\ISupplementRepository.cs" />
+    <Compile Include="Repositories\RatingRepository.cs" />
     <Compile Include="Repositories\SupplementRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>

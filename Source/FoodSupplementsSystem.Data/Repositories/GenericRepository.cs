@@ -4,10 +4,11 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 
 using FoodSupplementsSystem.Data.Repositories.Contracts;
+using System.Data.SqlClient;
 
 namespace FoodSupplementsSystem.Data.Repositories
 {
-    public class GenericRepository<T> : IRepository<T> where T : class
+    public class GenericRepository<T> : IRepository<T>, IExtendedRepository<T> where T : class
     {
         public GenericRepository(IFoodSupplementsSystemDbContext context)
         {
@@ -18,11 +19,62 @@ namespace FoodSupplementsSystem.Data.Repositories
 
             this.Context = context;
             this.DbSet = this.Context.Set<T>();
+            this.Db = this.Context.Db;
         }
+
+        protected IFoodSupplementsSystemDbContext Context { get; set; }
 
         protected IDbSet<T> DbSet { get; set; }
 
-        protected IFoodSupplementsSystemDbContext Context { get; set; }
+        protected Database Db { get; set; }
+
+        public virtual IQueryable<T> ExecuteStoredProcedure(string spName, Object param1Value)
+        {
+            //context.Database.SqlQuery<myEntityType>(
+            //    "mySpName @param1, @param2, @param3",
+            //    new SqlParameter("param1", param1),
+            //    new SqlParameter("param2", param2),
+            //    new SqlParameter("param3", param3)
+            //);
+            // Sourcees:
+            // http://stackoverflow.com/questions/4873607/how-to-use-dbcontext-database-sqlquerytelementsql-params-with-stored-proced
+            // https://msdn.microsoft.com/en-US/data/jj592907
+
+            string param1Name = "param1";
+            string sqlCommand = spName + " @" + param1Name;
+            SqlParameter sqlParam1 = new SqlParameter(param1Name, param1Value);
+
+            // DbRawSqlQuery<T> commandResult = this.Db.SqlQuery<T>(sqlCommand, sqlParam1);
+            DbRawSqlQuery<T> commandResult = this.Db.SqlQuery<T>("exec [dbo].[usp_GetSupplementRatingBySupplementId] @param1 ", 1);
+
+            //"[dbo].[usp_GetSupplementRatingBySupplementId]", this.Id
+
+
+            return commandResult.AsQueryable<T>();
+        }
+
+        public virtual IQueryable<T> ExecuteStoredProcedure(string spName, Object param1Value, Object param2Value)
+        {
+            //context.Database.SqlQuery<myEntityType>(
+            //    "mySpName @param1, @param2, @param3",
+            //    new SqlParameter("param1", param1),
+            //    new SqlParameter("param2", param2),
+            //    new SqlParameter("param3", param3)
+            //);
+            // Sourcees:
+            // http://stackoverflow.com/questions/4873607/how-to-use-dbcontext-database-sqlquerytelementsql-params-with-stored-proced
+            // https://msdn.microsoft.com/en-US/data/jj592907
+
+            string param1Name = "param1";
+            string param2Name = "param2";
+            string sqlCommand = spName + " @" + param1Name + ", @" + param2Name;
+            SqlParameter sqlParam1 = new SqlParameter(param1Name, param1Value);
+            SqlParameter sqlParam2 = new SqlParameter(param2Name, param2Value);
+
+            DbRawSqlQuery<T> commandResult = this.Db.SqlQuery<T>(sqlCommand, sqlParam1, sqlParam2);
+
+            return commandResult.AsQueryable<T>();
+        }
 
         public virtual IQueryable<T> All()
         {

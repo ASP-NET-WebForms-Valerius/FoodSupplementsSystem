@@ -13,6 +13,7 @@ namespace FoodSupplementsSystem.Data
     {
         private readonly FoodSupplementsSystemDbContext context;
         private SupplementRepository supplementRepository;
+        private RatingRepository ratingRepository;
 
         private bool disposed = false;
 
@@ -38,7 +39,21 @@ namespace FoodSupplementsSystem.Data
                 return this.supplementRepository;
             }
         }
-                
+
+        public RatingRepository RatingRepository
+        {
+            get
+            {
+                if (this.ratingRepository == null)
+                {
+                    this.ratingRepository = new RatingRepository(this.context);
+                }
+
+                return this.ratingRepository;
+            }
+        }
+
+
         public void Save()
         {
             this.context.SaveChanges();

@@ -13,7 +13,7 @@ namespace FoodSupplementsSystem.Web.App_Start
         public static void Initialize()
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<FoodSupplementsSystemDbContext, Configuration>());
-            FoodSupplementsSystemDbContext.Create().Database.Initialize(true);
+            FoodSupplementsSystemDbContext.Create().Db.Initialize(true);
         }
     }
 }

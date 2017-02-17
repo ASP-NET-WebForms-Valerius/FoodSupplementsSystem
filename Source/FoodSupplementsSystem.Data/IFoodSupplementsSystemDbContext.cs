@@ -9,6 +9,8 @@ namespace FoodSupplementsSystem.Data
     {
         int SaveChanges();
 
+        Database Db { get; }
+
         IDbSet<User> Users { get; set; }
 
         IDbSet<Supplement> Supplements { get; set; }
