@@ -315,6 +315,7 @@
     <Content Include="Images\RatingStars\SavedStar.png" />
     <Content Include="Images\Supplements-Main.jpg" />
     <Content Include="Public\ViewBrands.aspx" />
+    <Content Include="Public\ViewTopics.aspx" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -617,6 +618,13 @@
     </Compile>
     <Compile Include="Public\ViewBrands.aspx.designer.cs">
       <DependentUpon>ViewBrands.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Public\ViewTopics.aspx.cs">
+      <DependentUpon>ViewTopics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Public\ViewTopics.aspx.designer.cs">
+      <DependentUpon>ViewTopics.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
