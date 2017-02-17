@@ -16,11 +16,29 @@ namespace FoodSupplementsSystem.Data.Repositories
         {
         }
 
-        public virtual IEnumerable<Supplement> GetFiltered(string categoryName)
+        public virtual IEnumerable<Supplement> GetFilteredByCategory(string categoryName)
         {
             IEnumerable<Supplement> supplementsToReturn = null;
 
             supplementsToReturn = this.DbSet.Where(s => s.Category.Name == categoryName).Select(s => s);
+
+            return supplementsToReturn;
+        }
+
+        public virtual IEnumerable<Supplement> GetFilteredByTopic(string topicName)
+        {
+            IEnumerable<Supplement> supplementsToReturn = null;
+
+            supplementsToReturn = this.DbSet.Where(s => s.Topic.Name == topicName).Select(s => s);
+
+            return supplementsToReturn;
+        }
+
+        public virtual IEnumerable<Supplement> GetFilteredByBrand(string brandName)
+        {
+            IEnumerable<Supplement> supplementsToReturn = null;
+
+            supplementsToReturn = this.DbSet.Where(s => s.Brand.Name == brandName).Select(s => s);
 
             return supplementsToReturn;
         }

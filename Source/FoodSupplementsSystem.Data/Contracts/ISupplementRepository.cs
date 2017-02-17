@@ -5,6 +5,10 @@ namespace FoodSupplementsSystem.Data.Repositories.Contracts
 {
     public interface ISupplementRepository
     {
-        IEnumerable<Supplement> GetFiltered(string categoryName);
+        IEnumerable<Supplement> GetFilteredByCategory(string categoryName);
+
+        IEnumerable<Supplement> GetFilteredByTopic(string topicName);
+
+        IEnumerable<Supplement> GetFilteredByBrand(string brandName);
     }
 }

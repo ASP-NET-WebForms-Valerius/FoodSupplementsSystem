@@ -597,6 +597,7 @@
     <Compile Include="FoodSupplements\Details.aspx.designer.cs">
       <DependentUpon>Details.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FoodSupplements\SupplementFilters.cs" />
     <Compile Include="FoodSupplements\Supplements.aspx.cs">
       <DependentUpon>Supplements.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

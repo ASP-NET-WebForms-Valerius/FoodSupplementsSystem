@@ -20,5 +20,6 @@ namespace FoodSupplementsSystem.Data.Models.Constants
 
         // First General Group
         public static string MyCustomConst { get { return General.Get("MyCustomConst"); } }
+        public static string AnySecondFromTheConfig { get { return General.Get("Any"); } }
     }
 }

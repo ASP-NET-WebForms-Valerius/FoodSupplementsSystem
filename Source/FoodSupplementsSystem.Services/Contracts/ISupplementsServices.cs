@@ -14,9 +14,13 @@ namespace FoodSupplementsSystem.Services.Contracts
         void Delete(Supplement supplement);
         void Delete(int supplementId);
         void Dispose();
+
         IEnumerable<Supplement> GetAll();
         Supplement GetById(int id);
-        IEnumerable<Supplement> GetFiltered(string categoryName);
+        IEnumerable<Supplement> GetFilteredByCategory(string categoryName);
+        IEnumerable<Supplement> GetFilteredByTopic(string topicName);
+        IEnumerable<Supplement> GetFilteredByBrand(string brandName);
+
         void Update(Supplement supplement);
     }
 }

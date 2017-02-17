@@ -33,9 +33,23 @@ namespace FoodSupplementsSystem.Services
             return supplementsToReturn;
         }
 
-        public virtual IEnumerable<Supplement> GetFiltered(string categoryName)
+        public virtual IEnumerable<Supplement> GetFilteredByCategory(string categoryName)
         {
-            IEnumerable<Supplement> supplementsToReturn = this.supplementRepository.GetFiltered(categoryName);
+            IEnumerable<Supplement> supplementsToReturn = this.supplementRepository.GetFilteredByCategory(categoryName);
+
+            return supplementsToReturn;
+        }
+
+        public virtual IEnumerable<Supplement> GetFilteredByTopic(string topicName)
+        {
+            IEnumerable<Supplement> supplementsToReturn = this.supplementRepository.GetFilteredByTopic(topicName);
+
+            return supplementsToReturn;
+        }
+
+        public virtual IEnumerable<Supplement> GetFilteredByBrand(string brandName)
+        {
+            IEnumerable<Supplement> supplementsToReturn = this.supplementRepository.GetFilteredByBrand(brandName);
 
             return supplementsToReturn;
         }

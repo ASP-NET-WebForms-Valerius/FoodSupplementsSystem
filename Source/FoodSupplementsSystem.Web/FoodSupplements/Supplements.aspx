@@ -14,14 +14,25 @@
     </script>
 
     <h3><strong>Supplemts ListView</strong></h3>
+
     <asp:Button ID="ButtonRemoveCategoryFilter" runat="server" 
         Text="Category Filter X" 
-        Visible="<%# this.CategoryFilterEnabled %>" 
+        Visible="<%# this.SupplementFilters.CategoryEnabled %>" 
         OnClick="ButtonRemoveCategoryFilter_Click"/>
+
+    <asp:Button ID="ButtonRemoveTopicFilter" runat="server" 
+        Text="Topic Filter X" 
+        Visible="<%# this.SupplementFilters.TopicEnabled %>" 
+        OnClick="ButtonRemoveTopicFilter_Click"/>
+
+    <asp:Button ID="ButtonRemoveBrandFilter" runat="server" 
+        Text="Brand Filter X" 
+        Visible="<%# this.SupplementFilters.BrandEnabled %>" 
+        OnClick="ButtonRemoveBrandFilter_Click"/>
 
     <asp:ListView ID="ListViewSupplements" runat="server" 
         ItemType="FoodSupplementsSystem.Data.Models.Supplement"
-        OnPagePropertiesChanging="ListViewSupplements_PagePropertiesChanging">
+        OnPagePropertiesChanging="ListViewSupplements_PagePropertiesChanging" >
         <LayoutTemplate>            
             <ul class="list-unstyled">
                 <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
@@ -40,7 +51,6 @@
                     Text='<%# "Details.aspx?id=" + Item.Id.ToString() %>'
                     Visible="true">
                 </asp:Label>
-
                 <%--End-Helpers hidden fields--%>
 
                 <%--Additional data source, used for Rating Control--%>
@@ -122,8 +132,8 @@
                                     <strong>Category: </strong>
                                 </div>   
                                 <div class="col-md-10 table-bordered">
-                                    <asp:LinkButton ID="LinkButtonCategory" runat="server" 
-                                        OnCommand="LinkButtonCategory_Command"
+                                    <asp:LinkButton ID="LinkButtonSetCategoryFilter" runat="server" 
+                                        OnCommand="LinkButtonSetCategoryFilter_Command"
                                         CommandArgument="<%# Item.Category.Name %>">
                                         <%# Item.Category.Name %>
                                     </asp:LinkButton>
@@ -135,7 +145,11 @@
                                     <strong>Topic: </strong>
                                 </div>   
                                 <div class="col-md-10 table-bordered">
-                                    <p><%#: Item.Topic.Name %></p>
+                                    <asp:LinkButton ID="LinkButtonSetTopicFilter" runat="server" 
+                                        OnCommand="LinkButtonSetTopicFilter_Command"
+                                        CommandArgument="<%# Item.Topic.Name %>">
+                                        <%# Item.Topic.Name %>
+                                    </asp:LinkButton>
                                 </div>          
                             </div>
                             <%--Brand--%>
@@ -144,7 +158,11 @@
                                     <strong>Brand: </strong>
                                 </div>   
                                 <div class="col-md-10 table-bordered">
-                                    <p><%#: Item.Brand.Name %></p>
+                                    <asp:LinkButton ID="LinkButtonSetBrandFilter" runat="server" 
+                                        OnCommand="LinkButtonSetBrandFilter_Command"
+                                        CommandArgument="<%# Item.Brand.Name %>">
+                                        <%# Item.Brand.Name %>
+                                    </asp:LinkButton>
                                 </div>          
                             </div>
                             <%--Web--%>

@@ -16,25 +16,15 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
 {
     public partial class Supplements : Page
     {
-        private bool categoryFilterEnabled;
-        private string categoryFilterName;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(this.DbContext == null)
-            {
-                this.DbContext = new FoodSupplementsSystemDbContext();
-            }
-            if (this.UnitOfWork == null)
-            {
-                this.UnitOfWork = new UnitOfWork(this.DbContext);
-            }
-            if (this.SupplementsServices == null)
-            {
-                this.SupplementsServices = new SupplementsServices(this.UnitOfWork.SupplementRepository);
-            }
 
+            this.DbContext = new FoodSupplementsSystemDbContext();
+            this.UnitOfWork = new UnitOfWork(this.DbContext);
+            this.SupplementsServices = new SupplementsServices(this.UnitOfWork.SupplementRepository);
+            this.SupplementFilters = new SupplementFilters(this.SupplementsServices);
             this.ItemsPerPaga = 2;
+
 
             if (this.Page.IsPostBack)
             {
@@ -43,39 +33,26 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
 
             this.BindListViewSupplements();
             this.BindDataPagersSupplements();
+            this.BindDataButtonsRemoveFilters();
         }
 
         public FoodSupplementsSystemDbContext DbContext { get; private set; }
 
         public UnitOfWork UnitOfWork { get; private set; }
 
-        protected SupplementsServices SupplementsServices { get; set; }
+        protected SupplementsServices SupplementsServices { get; private set; }
 
-        protected  IEnumerable<Supplement> AllSuppelments
-        {
-            get
-            {
-                IEnumerable<Supplement> supplementsToReturn = null;
+        //protected  IEnumerable<Supplement> AllSuppelments
+        //{
+        //    get
+        //    {
+        //        IEnumerable<Supplement> supplementsToReturn = null;
 
-                if (this.CategoryFilterEnabled)
-                {
-                    if (this.categoryFilterName == string.Empty)
-                    {
-                        DisableCategoryFilter();
-                        throw new ArgumentNullException("Could not enable empty Category filter!");
-                    }
+        //        supplementsToReturn = this.SupplementFilters.GetFilteredSupplements();
 
-                    supplementsToReturn = this.SupplementsServices.GetFiltered(this.categoryFilterName);
-                }
-
-                if (supplementsToReturn == null)
-                {
-                    supplementsToReturn = this.SupplementsServices.GetAll(); 
-                }
-
-                return supplementsToReturn;
-            }
-        }
+        //        return supplementsToReturn;
+        //    }
+        //}
 
         public int ItemsPerPaga { get; set; }
 
@@ -89,23 +66,17 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             }
         }
 
-        protected bool CategoryFilterEnabled
+        protected SupplementFilters SupplementFilters
         {
-            get
-            {
-                return this.categoryFilterEnabled;
-            }
-            private set
-            {
-                this.categoryFilterEnabled = value;
-            }
+            get;
+            private set;
         }
 
-
-
+        
         private void BindListViewSupplements()
         {
-            this.ListViewSupplements.DataSource = this.AllSuppelments.ToList();
+            //this.ListViewSupplements.DataSource = this.AllSuppelments.ToList();
+            this.ListViewSupplements.DataSource = this.SupplementFilters.GetFilteredSupplements();
             this.ListViewSupplements.DataBind();
         }
 
@@ -114,6 +85,13 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             this.DataPagersSupplements.PagedControlID = this.ListViewSupplements.ID.ToString(); // "ListViewSupplements";
             this.DataPagersSupplements.DataBind();
             this.DataPagersSupplements.PageSize = this.ItemsPerPaga;
+        }
+
+        private void BindDataButtonsRemoveFilters()
+        {
+            this.ButtonRemoveCategoryFilter.DataBind();
+            this.ButtonRemoveTopicFilter.DataBind();
+            this.ButtonRemoveBrandFilter.DataBind();
         }
 
         protected void ListViewSupplements_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
@@ -138,53 +116,64 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             return urlToReturn;
         }
 
-        protected void SetCategoryFilter(string categoryName)
+          
+        protected void LinkButtonSetCategoryFilter_Command(object sender, CommandEventArgs e)
         {
-            string categoryFilterName = string.Empty;
-
-            // TODO perform category name exist check
-            bool categoryNameExist = true;
-            if (!categoryNameExist)
-            {
-                throw new MissingMemberException("Category name does not exist in the categories collection!");
-            }
-
-            // TODO perform category name null or empty check
-            bool categoryNameIsNullOrEmpty = false;
-            if (categoryNameIsNullOrEmpty)
-            {
-                throw new MissingMemberException("Category name is null ot empty!");
-            }
-
-            EnableCategoryFilter();
-            this.categoryFilterName = categoryName;
-        }
-
-        protected void EnableCategoryFilter()
-        {
-            this.CategoryFilterEnabled = true;
-        }
-        protected void DisableCategoryFilter()
-        {
-            this.CategoryFilterEnabled = false;
-            this.categoryFilterName = null;
-        }
-
-        protected void LinkButtonCategory_Command(object sender, CommandEventArgs e)
-        {
-            var n = e.CommandArgument.ToString();
-            this.SetCategoryFilter(n);
+            var name = e.CommandArgument.ToString();
+            this.SupplementFilters.CategoryEnabled = true;
+            this.SupplementFilters.CategoryName = name;
 
             this.BindListViewSupplements();
             this.BindDataPagersSupplements();
+            this.ButtonRemoveCategoryFilter.DataBind();
+        }
+        protected void LinkButtonSetTopicFilter_Command(object sender, CommandEventArgs e)
+        {
+            var name = e.CommandArgument.ToString();
+            this.SupplementFilters.TopicEnabled = true;
+            this.SupplementFilters.TopicName = name;
+
+            this.BindListViewSupplements();
+            this.BindDataPagersSupplements();
+            this.ButtonRemoveTopicFilter.DataBind();
+        }
+        protected void LinkButtonSetBrandFilter_Command(object sender, CommandEventArgs e)
+        {
+            var name = e.CommandArgument.ToString();
+            this.SupplementFilters.BrandEnabled = true;
+            this.SupplementFilters.BrandName = name;
+
+            this.BindListViewSupplements();
+            this.BindDataPagersSupplements();
+            this.ButtonRemoveBrandFilter.DataBind();
         }
 
         protected void ButtonRemoveCategoryFilter_Click(object sender, EventArgs e)
         {
-            this.DisableCategoryFilter();
+            this.SupplementFilters.CategoryEnabled = false;
+            this.SupplementFilters.CategoryName = null;
 
             this.BindListViewSupplements();
             this.BindDataPagersSupplements();
+            this.ButtonRemoveCategoryFilter.DataBind();
+        }
+        protected void ButtonRemoveTopicFilter_Click(object sender, EventArgs e)
+        {
+            this.SupplementFilters.TopicEnabled = false;
+            this.SupplementFilters.TopicName = null;
+
+            this.BindListViewSupplements();
+            this.BindDataPagersSupplements();
+            this.ButtonRemoveTopicFilter.DataBind();
+        }
+        protected void ButtonRemoveBrandFilter_Click(object sender, EventArgs e)
+        {
+            this.SupplementFilters.BrandEnabled = false;
+            this.SupplementFilters.BrandName = null;
+
+            this.BindListViewSupplements();
+            this.BindDataPagersSupplements();
+            this.ButtonRemoveBrandFilter.DataBind();
         }
     }
 }
