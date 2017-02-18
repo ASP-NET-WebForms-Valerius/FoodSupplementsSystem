@@ -76,7 +76,7 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
         private void BindDropDownListRateValues()
         {
             int value = this.GetCurrentUserVoteValue();
-            if (value >= 1 || value <= 5)
+            if (value >= 1 && value <= 5)
             {
                 this.DropDownListRateValues.SelectedValue = value.ToString();
             }            
@@ -196,17 +196,11 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
                 return;
             }
 
-            // string currentUsername = this.User.Identity.Name;
-            bool userHasVoutedAllready = false;
-            var uR = this.GetUserRating(this.User.Identity.Name, this.Id);
-            if (uR != null)
-            {
-                userHasVoutedAllready = true;
-            }
-
+            bool userHasVoutedAllready = this.CurrentUserHasVouted();
             if (userHasVoutedAllready)
             {
                 // Update
+                var uR = this.GetUserRating(this.User.Identity.Name, this.Id);
                 Rating userRatingToUpdate = uR.ToList<Rating>().FirstOrDefault(r => r.SupplementId == this.Id);
                 userRatingToUpdate.Value = int.Parse(this.DropDownListRateValues.SelectedValue);
 
@@ -217,7 +211,23 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             else
             {
                 // Insert
-            }
+                Rating newRating = new Rating();
+
+                //[Required]
+                //[Range(Consts.Rating.Value.Min, Consts.Rating.Value.Max, ErrorMessage = Consts.Rating.Value.ErrorMessage)]
+                //public int Value { get; set; }
+
+                //public string AuthorId { get; set; }
+
+                //[ForeignKey("AuthorId")]
+                //public virtual User Author { get; set; }
+
+                //public int SupplementId { get; set; }
+
+                //[ForeignKey("SupplementId")]
+                //public virtual Supplement Supplement { get; set; }
+                newRating.AuthorId = this.User.Identity.
+    }
             
 
             //if (nameTextBox != null)
@@ -273,8 +283,9 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
                 return false;
             }
 
-            var uR = this.GetUserRating(this.User.Identity.Name, this.Id);
-            if (uR == null)
+            IEnumerable<Rating> userRating = this.GetUserRating(this.User.Identity.Name, this.Id);
+
+            if (userRating == null || userRating.Count() <= 0)
             {
                 return false;
             }
