@@ -4,7 +4,7 @@
         ItemType="FoodSupplementsSystem.Data.Models.Topic"
         SelectMethod="lvTopics_GetData">
         <LayoutTemplate>
-            <h2>All Brands</h2>
+            <h2>All Topics</h2>
             <div runat="server" id="itemPlaceholder"></div>
         </LayoutTemplate>
         <ItemTemplate>
