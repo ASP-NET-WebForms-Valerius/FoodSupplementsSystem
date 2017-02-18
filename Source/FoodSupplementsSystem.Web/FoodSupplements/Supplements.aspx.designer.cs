@@ -13,6 +13,15 @@ namespace FoodSupplementsSystem.Web.FoodSupplements {
     public partial class Supplements {
         
         /// <summary>
+        /// PlaceHolderRemoveCategoryFilterButtons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderRemoveCategoryFilterButtons;
+        
+        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>
@@ -20,15 +29,6 @@ namespace FoodSupplementsSystem.Web.FoodSupplements {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// Button2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
         /// ButtonRemoveCategoryFilter control.
@@ -40,6 +40,24 @@ namespace FoodSupplementsSystem.Web.FoodSupplements {
         protected global::System.Web.UI.WebControls.Button ButtonRemoveCategoryFilter;
         
         /// <summary>
+        /// PlaceHolderRemoveTopicFilterButtons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderRemoveTopicFilterButtons;
+        
+        /// <summary>
+        /// Button2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
+        
+        /// <summary>
         /// ButtonRemoveTopicFilter control.
         /// </summary>
         /// <remarks>
@@ -47,6 +65,24 @@ namespace FoodSupplementsSystem.Web.FoodSupplements {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonRemoveTopicFilter;
+        
+        /// <summary>
+        /// PlaceHolderRemoveBrandFilterButtons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderRemoveBrandFilterButtons;
+        
+        /// <summary>
+        /// Button3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button3;
         
         /// <summary>
         /// ButtonRemoveBrandFilter control.

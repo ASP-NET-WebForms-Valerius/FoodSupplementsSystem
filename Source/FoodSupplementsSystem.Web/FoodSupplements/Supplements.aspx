@@ -13,38 +13,56 @@
         } );
     </script>
 
-    <h3><strong>Supplemts ListView</strong></h3>
+    <h3><strong class="dark-orange-fg">Supplements</strong></h3>
 
-    <div class="btn-group" role="group" aria-label="..." >
-        <asp:Button ID="Button1" runat="server" 
-        CssClass="btn btn-default btn-sm"
-        Text="Category Filter" 
-        Visible="<%# this.SupplementFilters.CategoryEnabled %>" 
-        OnClick="ButtonRemoveCategoryFilter_Click"/>
+    <asp:PlaceHolder ID="PlaceHolderRemoveCategoryFilterButtons" runat="server"
+        Visible="<%# this.SupplementFilters.CategoryEnabled %>">
+        
+        <div class="btn-group" role="group" aria-label="..." >
+            <asp:Button ID="Button1" runat="server"  
+                CssClass="btn btn-default btn-sm"               
+                Text="Category filter" 
+                Enabled="false"/>
 
-        <asp:Button ID="Button2" runat="server" 
-        CssClass="btn btn-danger btn-sm"
-        Text="X" 
-        Visible="<%# this.SupplementFilters.CategoryEnabled %>" 
-        OnClick="ButtonRemoveCategoryFilter_Click"/>
-    </div>
-    <asp:Button ID="ButtonRemoveCategoryFilter" runat="server" 
-        CssClass="btn btn-danger btn-sm"
-        Text="Category Filter X" 
-        Visible="<%# this.SupplementFilters.CategoryEnabled %>" 
-        OnClick="ButtonRemoveCategoryFilter_Click"/>
+            <asp:Button ID="ButtonRemoveCategoryFilter" runat="server" 
+                CssClass="btn btn-danger btn-sm"
+                Text="X" 
+                OnClick="ButtonRemoveCategoryFilter_Click"/>
+        </div>
+    </asp:PlaceHolder>
 
-    <asp:Button ID="ButtonRemoveTopicFilter" runat="server" 
-        CssClass="btn btn-danger btn-sm"
-        Text="Topic Filter X" 
-        Visible="<%# this.SupplementFilters.TopicEnabled %>" 
-        OnClick="ButtonRemoveTopicFilter_Click"/>
+    <asp:PlaceHolder ID="PlaceHolderRemoveTopicFilterButtons" runat="server"
+        Visible="<%# this.SupplementFilters.TopicEnabled %>">
+        
+        <div class="btn-group" role="group" aria-label="..." >
+            <asp:Button ID="Button2" runat="server"  
+                CssClass="btn btn-default btn-sm"               
+                Text="Toplic filter" 
+                Enabled="false"/>
 
-    <asp:Button ID="ButtonRemoveBrandFilter" runat="server" 
-        CssClass="btn btn-danger btn-sm"
-        Text="Brand Filter X" 
-        Visible="<%# this.SupplementFilters.BrandEnabled %>" 
-        OnClick="ButtonRemoveBrandFilter_Click"/>
+            <asp:Button ID="ButtonRemoveTopicFilter" runat="server" 
+                CssClass="btn btn-danger btn-sm"
+                Text="x" 
+                OnClick="ButtonRemoveTopicFilter_Click"/>
+        </div>
+    </asp:PlaceHolder>
+
+    <asp:PlaceHolder ID="PlaceHolderRemoveBrandFilterButtons" runat="server"
+        Visible="<%# this.SupplementFilters.BrandEnabled %>">
+        
+        <div class="btn-group" role="group" aria-label="..." >
+            <asp:Button ID="Button3" runat="server"  
+                CssClass="btn btn-default btn-sm"               
+                Text="Brand filter" 
+                Enabled="false"/>
+            <asp:Button ID="ButtonRemoveBrandFilter" runat="server" 
+                CssClass="btn btn-danger btn-sm"
+                Text="x" 
+                OnClick="ButtonRemoveBrandFilter_Click"/>
+        </div>
+    </asp:PlaceHolder>
+
+    
 
     <asp:ListView ID="ListViewSupplements" runat="server"         
         ItemType="FoodSupplementsSystem.Data.Models.Supplement"
@@ -104,7 +122,7 @@
                         <div class="col-md-2 table-bordered-none-byMe">
                             <img src="<%#: Item.ImageUrl %>" alt="Supplements-Category-Brand-Name" />
                         </div>
-                        <div class="col-md-8 jumbotron-gray-bg table-bordered-none-byMe">
+                        <div class="col-md-8 veryverylight-gray-bg table-bordered-none-byMe">
                             <%--Name and Details button--%>
                             <div class="row ">                        
                                 <div class="col-md-8 table-bordered-none-byMe">
@@ -216,7 +234,7 @@
                     <div class="row table-bordered-none-byMe">
                         <div class="col-md-2 table-bordered-none-byMe">                    
                         </div>
-                        <div class="col-md-8 jumbotron-gray-bg table-bordered-none-byMe">   
+                        <div class="col-md-8 veryverylight-gray-bg table-bordered-none-byMe">   
                             <div class="descriptin-ingredients-use-accordion">
                                 <h3><a>Description</a></h3>
                                     <div>

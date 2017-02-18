@@ -6,7 +6,7 @@
 
             <div class="raw table-bordered">
                 <div class="col-md-4 table-bordered">
-                    <h3><span class="dark-orange-fg">Supplement details</span></h3>
+                    <h3><strong class="dark-orange-fg">Supplement details</strong></h3>
                 </div>
                 <div class="col-md-6 table-bordered">
                     <span class="pull-right"> vote here!</span>
