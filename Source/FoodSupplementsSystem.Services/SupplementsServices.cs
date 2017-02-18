@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 using FoodSupplementsSystem.Data.Repositories;
 using FoodSupplementsSystem.Data.Models;
 using FoodSupplementsSystem.Services.Contracts;
+using FoodSupplementsSystem.Data.Repositories.Contracts;
 
 namespace FoodSupplementsSystem.Services
 {
     public class SupplementsServices : ISupplementsServices
     {
-        private readonly SupplementRepository supplementRepository;
+        private readonly ISupplementRepository supplementRepository;
 
-        public SupplementsServices(SupplementRepository supplementRepository)
+        public SupplementsServices(ISupplementRepository supplementRepository)
         {
             this.supplementRepository = supplementRepository;
         }

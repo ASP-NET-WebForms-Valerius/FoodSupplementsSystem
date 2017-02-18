@@ -67,6 +67,7 @@
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\ISupplementRepository.cs" />
+    <Compile Include="Contracts\IRatingRepository.cs" />
     <Compile Include="Repositories\RatingRepository.cs" />
     <Compile Include="Repositories\SupplementRepository.cs" />
     <Compile Include="UnitOfWork.cs" />

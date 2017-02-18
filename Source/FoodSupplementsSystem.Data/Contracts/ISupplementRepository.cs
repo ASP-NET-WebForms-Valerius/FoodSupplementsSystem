@@ -3,7 +3,7 @@ using FoodSupplementsSystem.Data.Models;
 
 namespace FoodSupplementsSystem.Data.Repositories.Contracts
 {
-    public interface ISupplementRepository
+    public interface ISupplementRepository : IRepository<Supplement>
     {
         IEnumerable<Supplement> GetFilteredByCategory(string categoryName);
 

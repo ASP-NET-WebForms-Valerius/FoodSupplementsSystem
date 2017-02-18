@@ -11,6 +11,7 @@ using FoodSupplementsSystem.Services;
 using FoodSupplementsSystem.Data.Models;
 using System.Threading;
 using FoodSupplementsSystem.Data.Repositories;
+using Microsoft.AspNet.Identity;
 
 namespace FoodSupplementsSystem.Web.FoodSupplements
 {
@@ -82,8 +83,6 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             }            
             this.DropDownListRateValues.DataBind();
         }
-
-        
 
         protected void SupplementRating_Changed(object sender, AjaxControlToolkit.RatingEventArgs e)
         {
@@ -206,29 +205,21 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
 
                 this.RatingRepository.Update(userRatingToUpdate);
                 this.RatingRepository.SaveChanges();
-                this.Ratings = this.GetSupplementRatings(this.Id).ToList();
             }
             else
             {
                 // Insert
                 Rating newRating = new Rating();
+                
+                newRating.AuthorId = this.User.Identity.GetUserId();
+                newRating.SupplementId = this.Id;
+                newRating.Value = int.Parse(this.DropDownListRateValues.SelectedValue);
 
-                //[Required]
-                //[Range(Consts.Rating.Value.Min, Consts.Rating.Value.Max, ErrorMessage = Consts.Rating.Value.ErrorMessage)]
-                //public int Value { get; set; }
+                this.RatingRepository.Add(newRating);
+                this.RatingRepository.SaveChanges();
+            }
 
-                //public string AuthorId { get; set; }
-
-                //[ForeignKey("AuthorId")]
-                //public virtual User Author { get; set; }
-
-                //public int SupplementId { get; set; }
-
-                //[ForeignKey("SupplementId")]
-                //public virtual Supplement Supplement { get; set; }
-                newRating.AuthorId = this.User.Identity.
-    }
-            
+            this.Ratings = this.GetSupplementRatings(this.Id).ToList();
 
             //if (nameTextBox != null)
             //{
@@ -245,7 +236,6 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             //Label labelTotalVotes = (Label)lvsd.Items[0].FindControl("LabelTotalVotes") as Label;
             //AjaxControlToolkit.Rating supplementRating = (AjaxControlToolkit.Rating)lvsd.Items[0].FindControl("SupplementRating");
 
-            Label labelVotesAverageValue = (Label)this.ListViewSupplementDetails.Items[0].FindControl("LabelVotesAverageValue");
             Label labelTotalVotes = (Label)this.ListViewSupplementDetails.Items[0].FindControl("LabelTotalVotes") as Label;
             Label labelYourVote = (Label)this.ListViewSupplementDetails.Items[0].FindControl("LabelYourVote") as Label;
             AjaxControlToolkit.Rating supplementRating = (AjaxControlToolkit.Rating)this.ListViewSupplementDetails.Items[0].FindControl("SupplementRating");
@@ -254,12 +244,7 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             string avg = this.GetAverageRatingValue().ToString();
             string userVote = this.GetCurrentUserVoteValue().ToString();
 
-            this.DropDownListRateValues.SelectedValue = avg;
-
-            if (labelVotesAverageValue != null)
-            {
-                labelVotesAverageValue.Text = avg;
-            }
+            this.DropDownListRateValues.SelectedValue = userVote;
             if (labelTotalVotes != null)
             {
                 labelTotalVotes.Text = this.Ratings.Count.ToString();

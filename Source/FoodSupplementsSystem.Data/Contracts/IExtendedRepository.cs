@@ -7,9 +7,9 @@ namespace FoodSupplementsSystem.Data.Repositories.Contracts
     {
         void Detach(T entity);
 
-        IQueryable<T> ExecuteStoredProcedure(string spName, Object firstParamValue);
+        IQueryable<T> ExecuteStoredProcedure(string spName, Object param1Value);
 
-        IQueryable<T> ExecuteStoredProcedure(string spName, Object firstParamValue, Object secondParamValue);
+        IQueryable<T> ExecuteStoredProcedure(string spName, Object param1Value, Object param2Value);
 
         int SaveChanges();
     }

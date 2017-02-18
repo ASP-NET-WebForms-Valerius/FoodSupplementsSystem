@@ -9,11 +9,13 @@ using FoodSupplementsSystem.Data.Repositories.Contracts;
 
 namespace FoodSupplementsSystem.Data.Repositories
 {
-    public class RatingRepository : GenericRepository<Rating>, IRepository<Rating>, IExtendedRepository<Rating>
+    public class RatingRepository : GenericRepository<Rating>, IRepository<Rating>, IExtendedRepository<Rating>, IRatingRepository
     {
         public RatingRepository(FoodSupplementsSystemDbContext context)
             : base(context)
         {
-        }       
+        }      
+        
+        //public bool PlaceHolder { get; } 
     }
 }
