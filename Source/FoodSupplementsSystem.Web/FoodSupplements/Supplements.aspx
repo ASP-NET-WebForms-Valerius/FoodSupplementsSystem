@@ -134,6 +134,7 @@
                                                     <ajaxToolkit:Rating ID="SupplementRating" runat="server"                                    
                                                         CurrentRating='<%# Eval("VotesAverageValue") %>'
                                                         MaxRating="5"
+                                                        Enabled="<%# this.User.Identity.IsAuthenticated %>"
                                                         StarCssClass="ratingStar"
                                                         EmptyStarCssClass="emptyRatingStar"
                                                         FilledStarCssClass="filledRatingStar"

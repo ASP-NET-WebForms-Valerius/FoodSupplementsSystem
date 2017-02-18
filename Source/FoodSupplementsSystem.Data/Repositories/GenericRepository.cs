@@ -67,13 +67,17 @@ namespace FoodSupplementsSystem.Data.Repositories
             // http://stackoverflow.com/questions/4873607/how-to-use-dbcontext-database-sqlquerytelementsql-params-with-stored-proced
             // https://msdn.microsoft.com/en-US/data/jj592907
 
-            string param1Name = "param1";
-            string param2Name = "param2";
-            string sqlCommand = spName + " @" + param1Name + ", @" + param2Name;
-            SqlParameter sqlParam1 = new SqlParameter(param1Name, param1Value);
-            SqlParameter sqlParam2 = new SqlParameter(param2Name, param2Value);
+            string param1Key = "@param1";
+            string param2Key = "@param2";
+            string sqlCommand = "EXECUTE [dbo].[" + spName + "] " + param1Key + ", " + param2Key + " ";
+            SqlParameter sqlParam1 = new SqlParameter(param1Key, SqlDbType.VarChar);
+            SqlParameter sqlParam2 = new SqlParameter(param2Key, SqlDbType.Int);
+            sqlParam1.Value = param1Value;
+            sqlParam2.Value = param2Value;
 
-            DbRawSqlQuery<T> commandResult = this.Db.SqlQuery<T>(sqlCommand, sqlParam1, sqlParam2);
+            //SqlParameter sqlParam1 = new SqlParameter(param1Name, param1Value);
+            //SqlParameter sqlParam2 = new SqlParameter(param2Name, param2Value);
+            ICollection<T> commandResult = this.Db.SqlQuery<T>(sqlCommand, sqlParam1, sqlParam2).ToList<T>();
 
             return commandResult.AsQueryable<T>();
         }
