@@ -30,7 +30,7 @@ namespace FoodSupplementsSystem.Data.Repositories
 
         protected Database Db { get; set; }
 
-        public virtual IQueryable<T> ExecuteStoredProcedure(string spName, Object param1Value)
+        public virtual IQueryable<T> ExecuteStoredProcedure(string spName, SqlParameter sqlParam1)
         {
             //context.Database.SqlQuery<myEntityType>(
             //    "mySpName @param1, @param2, @param3",
@@ -44,8 +44,8 @@ namespace FoodSupplementsSystem.Data.Repositories
 
             string param1Key = "@param1";
             string sqlCommand = "EXECUTE [dbo].["+ spName + "] " + param1Key + " ";
-            SqlParameter sqlParam1 = new SqlParameter(param1Key, SqlDbType.Int);
-            sqlParam1.Value = param1Value;
+            //SqlParameter sqlParam1 = new SqlParameter(param1Key, SqlDbType.Int);
+            //sqlParam1.Value = param1Value;
 
             ICollection<T> commandResult = this.Db.SqlQuery<T>(sqlCommand, sqlParam1).ToList<T>();
 
@@ -55,7 +55,7 @@ namespace FoodSupplementsSystem.Data.Repositories
             return commandResult.AsQueryable<T>();
         }
 
-        public virtual IQueryable<T> ExecuteStoredProcedure(string spName, Object param1Value, Object param2Value)
+        public virtual IQueryable<T> ExecuteStoredProcedure(string spName, SqlParameter sqlParam1, SqlParameter sqlParam2)
         {
             //context.Database.SqlQuery<myEntityType>(
             //    "mySpName @param1, @param2, @param3",
@@ -70,13 +70,11 @@ namespace FoodSupplementsSystem.Data.Repositories
             string param1Key = "@param1";
             string param2Key = "@param2";
             string sqlCommand = "EXECUTE [dbo].[" + spName + "] " + param1Key + ", " + param2Key + " ";
-            SqlParameter sqlParam1 = new SqlParameter(param1Key, SqlDbType.VarChar);
-            SqlParameter sqlParam2 = new SqlParameter(param2Key, SqlDbType.Int);
-            sqlParam1.Value = param1Value;
-            sqlParam2.Value = param2Value;
-
-            //SqlParameter sqlParam1 = new SqlParameter(param1Name, param1Value);
-            //SqlParameter sqlParam2 = new SqlParameter(param2Name, param2Value);
+            //SqlParameter sqlParam1 = new SqlParameter(param1Key, SqlDbType.VarChar);
+            //SqlParameter sqlParam2 = new SqlParameter(param2Key, SqlDbType.Int);
+            //sqlParam1.Value = param1Value;
+            //sqlParam2.Value = param2Value;
+            
             ICollection<T> commandResult = this.Db.SqlQuery<T>(sqlCommand, sqlParam1, sqlParam2).ToList<T>();
 
             return commandResult.AsQueryable<T>();

@@ -31,12 +31,10 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
         protected IList<Rating> Ratings { get; private set; }
 
         protected FoodSupplementsSystemDbContext DbContext { get; private set; }
-
         protected UnitOfWork UnitOfWork { get; private set; }
-
         protected SupplementsServices SupplementsServices { get; set; }
-
-        protected RatingRepository RatingRepository { get; set; }
+        protected RatingsServices RatingsServices { get; set; }
+        //protected RatingRepository RatingRepository { get; set; }
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -44,7 +42,8 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             this.DbContext = new FoodSupplementsSystemDbContext();
             this.UnitOfWork = new UnitOfWork(this.DbContext);
             this.SupplementsServices = new SupplementsServices(this.UnitOfWork.SupplementRepository);
-            this.RatingRepository = this.UnitOfWork.RatingRepository;
+            this.RatingsServices = new RatingsServices(this.UnitOfWork.RatingRepository);
+            //this.RatingRepository = this.UnitOfWork.RatingRepository;
 
             int suppId = -1;
             if (!int.TryParse(this.Request.Params["id"], out suppId))
@@ -148,26 +147,26 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
         }
 
         protected IEnumerable<Rating> GetSupplementRatings(int supplementId)
-        {           
-            IQueryable<Rating> ratingsToReturn = null;
+        {
+            IEnumerable<Rating> ratingsToReturn = null;
 
             //EXEC @RC = [dbo].[usp_GetSupplementRatingBySupplementId]
             //  @SupplementId
             //GO
-            ratingsToReturn = this.RatingRepository.ExecuteStoredProcedure("usp_GetSupplementRatingBySupplementId", supplementId).Select(s => s);
+            ratingsToReturn = this.RatingsServices.ExecuteStoredProcedure("usp_GetSupplementRatingBySupplementId", supplementId).Select(s => s);
 
             return ratingsToReturn.AsEnumerable<Rating>();
         }
 
         protected IEnumerable<Rating> GetUserRating(string username, int itemId)
         {
-            IQueryable<Rating> userRating = null;
+            IEnumerable<Rating> userRating = null;
 
             //EXECUTE @RC = [dbo].[usp_GetRatingByUsernameAndSupplementId]
             //   @Username
             //  ,@SupplementId
             //GO
-            userRating = this.RatingRepository.ExecuteStoredProcedure("usp_GetRatingByUsernameAndSupplementId", username, itemId).Select(s => s);
+            userRating = this.RatingsServices.ExecuteStoredProcedure("usp_GetRatingByUsernameAndSupplementId", username, itemId).Select(s => s);
 
             return userRating.AsEnumerable<Rating>();
         }
@@ -203,8 +202,7 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
                 Rating userRatingToUpdate = uR.ToList<Rating>().FirstOrDefault(r => r.SupplementId == this.Id);
                 userRatingToUpdate.Value = int.Parse(this.DropDownListRateValues.SelectedValue);
 
-                this.RatingRepository.Update(userRatingToUpdate);
-                this.RatingRepository.SaveChanges();
+                this.RatingsServices.Update(userRatingToUpdate);
             }
             else
             {
@@ -215,8 +213,7 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
                 newRating.SupplementId = this.Id;
                 newRating.Value = int.Parse(this.DropDownListRateValues.SelectedValue);
 
-                this.RatingRepository.Add(newRating);
-                this.RatingRepository.SaveChanges();
+                this.RatingsServices.Add(newRating);
             }
 
             this.Ratings = this.GetSupplementRatings(this.Id).ToList();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace FoodSupplementsSystem.Data.Repositories.Contracts
@@ -7,10 +8,8 @@ namespace FoodSupplementsSystem.Data.Repositories.Contracts
     {
         void Detach(T entity);
 
-        IQueryable<T> ExecuteStoredProcedure(string spName, Object param1Value);
+        IQueryable<T> ExecuteStoredProcedure(string spName, SqlParameter sqlParam1);
 
-        IQueryable<T> ExecuteStoredProcedure(string spName, Object param1Value, Object param2Value);
-
-        int SaveChanges();
+        IQueryable<T> ExecuteStoredProcedure(string spName, SqlParameter sqlParam1, SqlParameter sqlParam2);
     }
 }

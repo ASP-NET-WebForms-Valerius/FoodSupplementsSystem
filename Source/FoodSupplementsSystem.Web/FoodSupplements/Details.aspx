@@ -6,7 +6,7 @@
 
             <div class="raw table-bordered">
                 <div class="col-md-4 table-bordered">
-                    <h3>Supplement details</h3>
+                    <h3><span class="dark-orange-fg">Supplement details</span></h3>
                 </div>
                 <div class="col-md-6 table-bordered">
                     <span class="pull-right"> vote here!</span>
@@ -169,9 +169,14 @@
 
         <!-- Add the extra clearfix for only the required viewport -->
         <div class="clearfix visible-md"></div>
-        <asp:Button ID="ButtonGoBack" runat="server" 
-            CssClass="btn btn-default"
-            Text="Go back" 
-            OnClick="ButtonGoBack_Click" />
+        <div class="raw">
+            <div class="col-md-4 table-bordered">
+                <asp:Button ID="ButtonGoBack" runat="server" 
+                    CssClass="btn btn-default"
+                    Text="Go back" 
+                    OnClick="ButtonGoBack_Click" />
+            </div>
+        </div>
+        
     </div>
 </asp:Content>
