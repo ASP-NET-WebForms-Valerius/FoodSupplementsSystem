@@ -14,6 +14,7 @@ namespace FoodSupplementsSystem.Data
         private readonly FoodSupplementsSystemDbContext context;
         private SupplementRepository supplementRepository;
         private RatingRepository ratingRepository;
+        private CategoryRepository categoryRepository;
 
         private bool disposed = false;
 
@@ -50,6 +51,19 @@ namespace FoodSupplementsSystem.Data
                 }
 
                 return this.ratingRepository;
+            }
+        }
+
+        public CategoryRepository CategoryRepository
+        {
+            get
+            {
+                if (this.categoryRepository == null)
+                {
+                    this.categoryRepository = new CategoryRepository(this.context);
+                }
+
+                return this.categoryRepository;
             }
         }
 

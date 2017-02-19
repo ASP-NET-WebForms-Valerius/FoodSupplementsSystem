@@ -30,7 +30,7 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
 
             this.SuccessMessage = "Succsess Succsess Succsess Succsess Succsess Succsess Succsess Succsess Succsess Succsess ";
 
-            if (!Page.IsPostBack)
+            if (this.Page.IsPostBack)
             {
                 return;
             }
@@ -49,22 +49,15 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
         {
             this.ErrorMessage = string.Empty;
             this.PlaceHolderErrorMessage.Visible = !string.IsNullOrEmpty(this.ErrorMessage);
-            this.PlaceHolderErrorMessage.DataBind();
+            //this.PlaceHolderErrorMessage.DataBind();
         }
         protected void ButtonAcknoledgeSuccessMessages_Click(object sender, EventArgs e)
         {
             this.SuccessMessage = string.Empty;
             this.PlaceHolderSuccessMessage.Visible = !string.IsNullOrEmpty(this.SuccessMessage);
-            this.PlaceHolderSuccessMessage.DataBind();
+            //this.PlaceHolderSuccessMessage.DataBind();
         }
-
-
-        // The id parameter name should match the DataKeyNames value set on the control
-        public void GridViewSupplements_UpdateItem(int id)
-        {
-            
-        }
-        
+       
 
         // The return type can be changed to IEnumerable, however to support
         // paging and sorting, the following parameters must be added:

@@ -11,5 +11,50 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements {
     
     
     public partial class aAdd {
+        
+        /// <summary>
+        /// PlaceHolderErrorMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderErrorMessage;
+        
+        /// <summary>
+        /// ButtonAcknoledgeErrorMessages control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAcknoledgeErrorMessages;
+        
+        /// <summary>
+        /// PlaceHolderSuccessMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderSuccessMessage;
+        
+        /// <summary>
+        /// ButtonAcknoledgeSuccessMessages control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAcknoledgeSuccessMessages;
+        
+        /// <summary>
+        /// FormViewAddSupplement control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FormView FormViewAddSupplement;
     }
 }
