@@ -9,7 +9,7 @@
         </LayoutTemplate>
         <ItemTemplate>
             <div class="col-md-6">
-                <b><h3><%#: Item.Name %></h3></b>
+                <b><h3><a href="../Private/ViewTopic.aspx?id=<%# Item.Id %>"><%# Item.Name %></a></h3></b>
                 <p>
                     Description: 
                     <p><%#: Item.Description %></p>

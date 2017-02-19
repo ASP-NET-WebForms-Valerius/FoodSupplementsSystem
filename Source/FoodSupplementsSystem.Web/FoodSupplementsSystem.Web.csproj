@@ -314,6 +314,7 @@
     <Content Include="Images\RatingStars\SavedStar.gif" />
     <Content Include="Images\RatingStars\SavedStar.png" />
     <Content Include="Images\Supplements-Main.jpg" />
+    <Content Include="Private\ViewTopic.aspx" />
     <Content Include="Public\ViewBrands.aspx" />
     <Content Include="Public\ViewTopics.aspx" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
@@ -611,6 +612,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Private\ViewTopic.aspx.cs">
+      <DependentUpon>ViewTopic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\ViewTopic.aspx.designer.cs">
+      <DependentUpon>ViewTopic.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Public\ViewBrands.aspx.cs">
       <DependentUpon>ViewBrands.aspx</DependentUpon>
