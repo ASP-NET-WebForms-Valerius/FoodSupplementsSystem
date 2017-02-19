@@ -14,23 +14,57 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
 {
     public partial class aSupplements : Page
     {
+
+        protected string ErrorMessage { get; private set; }
+        protected string SuccessMessage { get; private set; }
+
+        public FoodSupplementsSystemDbContext DbContext { get; private set; }
+        public UnitOfWork UnitOfWork { get; private set; }
+        protected SupplementsServices SupplementsServices { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             this.DbContext = new FoodSupplementsSystemDbContext();
             this.UnitOfWork = new UnitOfWork(this.DbContext);
             this.SupplementsServices = new SupplementsServices(this.UnitOfWork.SupplementRepository);
 
+            this.SuccessMessage = "Succsess Succsess Succsess Succsess Succsess Succsess Succsess Succsess Succsess Succsess ";
+
             if (!Page.IsPostBack)
             {
                 return;
             }
+
+            // Elements Bindings
+            this.BindPlaceHoldersMessages();
         }
 
-        public FoodSupplementsSystemDbContext DbContext { get; private set; }
+        private void BindPlaceHoldersMessages()
+        {
+            this.PlaceHolderErrorMessage.DataBind();
+            this.PlaceHolderSuccessMessage.DataBind();
+        }
 
-        public UnitOfWork UnitOfWork { get; private set; }
+        protected void ButtonAcknoledgeErrorMessages_Click(object sender, EventArgs e)
+        {
+            this.ErrorMessage = string.Empty;
+            this.PlaceHolderErrorMessage.Visible = !string.IsNullOrEmpty(this.ErrorMessage);
+            this.PlaceHolderErrorMessage.DataBind();
+        }
+        protected void ButtonAcknoledgeSuccessMessages_Click(object sender, EventArgs e)
+        {
+            this.SuccessMessage = string.Empty;
+            this.PlaceHolderSuccessMessage.Visible = !string.IsNullOrEmpty(this.SuccessMessage);
+            this.PlaceHolderSuccessMessage.DataBind();
+        }
 
-        protected SupplementsServices SupplementsServices { get; set; }
+
+        // The id parameter name should match the DataKeyNames value set on the control
+        public void GridViewSupplements_UpdateItem(int id)
+        {
+            
+        }
+        
 
         // The return type can be changed to IEnumerable, however to support
         // paging and sorting, the following parameters must be added:
@@ -38,7 +72,7 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
         //     int startRowIndex
         //     out int totalRowCount
         //     string sortByExpression
-        public IQueryable<Supplement> GridViewSupplements_GetData()
+        public IQueryable<Supplement> ListViewManageSupplements_GetData()
         {
             IQueryable<Supplement> supplementsToReturn = null;
             supplementsToReturn = this.SupplementsServices.GetAll().AsQueryable();
@@ -47,20 +81,7 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
         }
 
         // The id parameter name should match the DataKeyNames value set on the control
-        public void GridViewSupplements_UpdateItem(int id)
-        {
-            Supplement supplement = null;
-            supplement = this.SupplementsServices.GetById(id);
-
-            TryUpdateModel(supplement);
-            if (ModelState.IsValid)
-            {
-                this.SupplementsServices.Update(supplement);
-            }
-        }
-
-        // The id parameter name should match the DataKeyNames value set on the control
-        public void GridViewSupplements_DeleteItem(int id)
+        public void ListViewManageSupplements_DeleteItem(int id)
         {
             Supplement supplementToDelete = null;
             supplementToDelete = this.SupplementsServices.GetById(id);
@@ -78,6 +99,26 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
                     ModelState.AddModelError("", errorMessage);
                 }
             }
+        }
+
+        // The id parameter name should match the DataKeyNames value set on the control
+        public void ListViewManageSupplements_UpdateItem(int id)
+        {
+            Supplement supplement = null;
+            supplement = this.SupplementsServices.GetById(id);
+
+            if (supplement == null)
+            {
+                // The item wasn't found
+                ModelState.AddModelError("", String.Format("Item with id {0} was not found", id));
+                return;
+            }
+
+            TryUpdateModel(supplement);
+            if (ModelState.IsValid)
+            {
+                this.SupplementsServices.Update(supplement);
+            }           
         }
     }
 }
