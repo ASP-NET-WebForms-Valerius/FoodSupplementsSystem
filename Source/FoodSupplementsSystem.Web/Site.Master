@@ -59,7 +59,9 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/home">Home</a></li>
-                        <li><a runat="server" href="~/">Health Topics</a></li>
+                        <li><a runat="server" href="~/public/viewtopics">Health Topics</a></li>
+                        <li><a runat="server" href="~/public/viewcategories">Categories</a></li>
+                        <li><a runat="server" href="~/public/viewbrands">Brands</a></li>
                         <li><a runat="server" href="~/foodsupplements/supplements">Supplements</a></li>
                         <li><a runat="server" href="~/about-us">About</a></li>
                         <li><a runat="server" href="~/contact">Contact</a></li>
