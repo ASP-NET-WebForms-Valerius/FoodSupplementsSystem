@@ -314,8 +314,10 @@
     <Content Include="Images\RatingStars\SavedStar.gif" />
     <Content Include="Images\RatingStars\SavedStar.png" />
     <Content Include="Images\Supplements-Main.jpg" />
+    <Content Include="Private\ViewComment.aspx" />
     <Content Include="Private\ViewTopic.aspx" />
     <Content Include="Public\ViewBrands.aspx" />
+    <Content Include="Public\ViewCategories.aspx" />
     <Content Include="Public\ViewTopics.aspx" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -612,6 +614,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Private\ViewComment.aspx.cs">
+      <DependentUpon>ViewComment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\ViewComment.aspx.designer.cs">
+      <DependentUpon>ViewComment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Private\ViewTopic.aspx.cs">
       <DependentUpon>ViewTopic.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -626,6 +635,13 @@
     </Compile>
     <Compile Include="Public\ViewBrands.aspx.designer.cs">
       <DependentUpon>ViewBrands.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Public\ViewCategories.aspx.cs">
+      <DependentUpon>ViewCategories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Public\ViewCategories.aspx.designer.cs">
+      <DependentUpon>ViewCategories.aspx</DependentUpon>
     </Compile>
     <Compile Include="Public\ViewTopics.aspx.cs">
       <DependentUpon>ViewTopics.aspx</DependentUpon>
