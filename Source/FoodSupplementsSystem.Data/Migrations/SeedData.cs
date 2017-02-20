@@ -27,6 +27,9 @@ namespace FoodSupplementsSystem.Data.Migrations
 
         public SeedData(User author)
         {
+            this.Author = author;
+            User user = author;
+
             this.Categories = new List<Category>();
             Categories.Add(new Category() { Name = "Category1" });
             Categories.Add(new Category() { Name = "Category2" });
@@ -118,9 +121,6 @@ namespace FoodSupplementsSystem.Data.Migrations
                 WebSite = "https://www.douglaslabs.com"
             });
 
-            this.Author = author;
-            User user = author;
-
             this.Supplements = new List<Supplement>();
             Supplements.Add(new Supplement()
             {
@@ -131,7 +131,8 @@ namespace FoodSupplementsSystem.Data.Migrations
                 ImageUrl = "http://www.rockwellnutrition.com/assets/images/nordic-natural-prodha-eye1000mg-60g.jpg",
                 Ingredients = "purified deep sea fish oil (from anchovies and sardines), soft gel capsule (gelatin, purified water, glycerin, caramel color, natural lemon flavor), FloraGlo, lutein (in safflower oil), beeswax, d-alpha tocopherol, zeaxanthin (in corn oil), rosemary extract (a natural preservative).",
                 Use = "Two soft gels daily, with food, or as directed by your health care professional or pharmacist Warning: Consult with your physician before using this product if you are allergic to iodine, use blood thinners, or anticipate surgery.",
-                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5)),
+                Author = user
             });
             Supplements.Add(new Supplement()
             {
@@ -143,7 +144,8 @@ namespace FoodSupplementsSystem.Data.Migrations
                 Ingredients = "Vitamin C (as ascorbic acid) 100 mg., Niacin(as niacinamide) 20 mg., Folate(as Metafolin®, L - 5 - MTHF) 500 mcg., Magnesium(as di - magnesium malate) 100 mg., Zinc(as zinc picolinate) 10 mg., 5 - hydroxytryptophan 100 mg., Inositol(as myo - inositol) 500 mg., Taurine(free - form) 200 mg., Pyridoxal 5' phosphate (activated B6) 10 mg.",
                 Use = "Two capsules daily.",
                 Description = "SeroPlus was developed by Pure Encapsulations in conjunction with Dr. James Greenblatt as part of The Integrative Mental Health Series, a line of products based on scientific findings as well as decades of clinical experience. SeroPlus provides neurotransmitter precursors to help balance serotonin function in the brain for emotional wellness, relaxation, moderating occasional stress, and maintaining healthy eating behavior. Also critical to each formulation in this series is the inclusion of a vitamin B6 , zinc and Metafolin® L-5-MTHF cofactor complex. These nutrients are often depleted in individuals due to medications, inadequate diets, and toxic environmental exposures, compromising the ability to properly synthesize neurotransmitters. When replete, these cofactors enhance neurotransmitter function and play a complementary role in supporting emotional wellness.",
-                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5)),
+                Author = user
             });
             Supplements.Add(new Supplement()
             {
@@ -154,7 +156,8 @@ namespace FoodSupplementsSystem.Data.Migrations
                 ImageUrl = "http://www.rockwellnutrition.com/assets/images/life-extension-brain-shield-60-vcaps.jpg",
                 Ingredients = "Calcium (as dicalcium phosphate) 20 mg, Brain Shield Gastrodin 300 mg",
                 Use = "Take one (1) capsule twice daily with or without food, or as recommended by a healthcare practitioner.",
-                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5)),
+                Author = user
             });
             Supplements.Add(new Supplement()
             {
@@ -165,7 +168,8 @@ namespace FoodSupplementsSystem.Data.Migrations
                 ImageUrl = "http://www.rockwellnutrition.com/assets/images/pure-encapsulations-cardiovascular-support-cardio-c-180-vcaps.jpg",
                 Ingredients = "Vitamin C (as PureWay-C®) 270 mg., PhytoCardio proprietary blend 80 mg., providing wild blueberry(vaccinium angustifolium) extract(fruit), cran",
                 Use = "Take one (1) capsule daily.",
-                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5)),
+                Author = user
             });
 
             this.Comments = new List<Comment>();
@@ -173,37 +177,43 @@ namespace FoodSupplementsSystem.Data.Migrations
             {
                 Topic = Topics[0],
                 Content = "hvgcfdxetryuiokl,mknjbhvgfcdxser5t6y7uiolkmnjhbvgfcdxsertyuik",
-                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5)),
+                Author = user
             });
             Comments.Add(new Comment()
             {
                 Topic = Topics[1],
                 Content = "hvgcfdxetryuiokl,mknjbhvgfcdxser5t6y7uiolkmnjhbvgfcdxsertyuik",
-                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5)),
+                Author = user
             });
             Comments.Add(new Comment()
             {
                 Topic = Topics[2],
                 Content = "hvgcfdxetryuiokl,mknjbhvgfcdxser5t6y7uiolkmnjhbvgfcdxsertyuik",
-                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5)),
+                Author = user
             });
             Comments.Add(new Comment()
             {
                 Topic = Topics[4],
                 Content = "hvgcfdxetryuiokl,mknjbhvgfcdxser5t6y7uiolkmnjhbvgfcdxsertyuik",
-                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5)),
+                Author = user
             });
             Comments.Add(new Comment()
             {
                 Topic = Topics[3],
                 Content = "hvgcfdxetryuiokl,mknjbhvgfcdxser5t6y7uiolkmnjhbvgfcdxsertyuik",
-                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5)),
+                Author = user
             });
             Comments.Add(new Comment()
             {
                 Topic = Topics[5],
                 Content = "hvgcfdxetryuiokl,mknjbhvgfcdxser5t6y7uiolkmnjhbvgfcdxsertyuik",
-                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5))
+                CreationDate = DateTime.Now.AddDays(Rand.Next(-5, 5)),
+                Author = user
             });
         }
     }
