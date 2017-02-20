@@ -25,6 +25,8 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
 
         protected Supplement NewSupplement { get; private set; }
         protected Dictionary<string, int> Categories { get; private set; }
+        protected Dictionary<string, int> Topics { get; private set; }
+        protected Dictionary<string, int> Brands { get; private set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,9 +34,12 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
             this.UnitOfWork = new UnitOfWork(this.DbContext);
             this.SupplementsServices = new SupplementsServices(this.UnitOfWork.SupplementRepository);
             this.CategoriesServices = new CategoriesServices(this.UnitOfWork.CategoryRepository);
+            this.TopicsServices = new TopicsServices(this.UnitOfWork.TopicRepository);
+            this.BrandsServices = new BrandsServices(this.UnitOfWork.BrandRepository);
 
             this.SuccessMessage = "Succsess Succsess Succsess Succsess Succsess Succsess Succsess Succsess Succsess Succsess ";
             
+
 
             if (this.Page.IsPostBack)
             {
@@ -49,111 +54,6 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
             this.BindPlaceHoldersMessages();
             // Binded first in edit mode
             //this.BindDropDownListCategories();
-        }
-
-        private void SetSessionItems()
-        {
-            if (this.NewSupplement == null)
-            {
-                Supplement supplement = this.CreateNewEmptySupplement();
-                Session["NewSupplement"] = supplement;
-                this.NewSupplement = supplement;
-            }
-            if (this.Categories == null)
-            {
-                List<Category> categories = this.GetAllCategories().ToList<Category>();
-                Dictionary<string, int> categoriesLight = new Dictionary<string, int>();
-
-                foreach(Category category in categories)
-                {
-                    categoriesLight.Add(category.Name, category.Id);
-                }
-
-                Session["Categories"] = categoriesLight;
-                this.Categories = categoriesLight;
-            }
-        }
-
-        private void GetSessionItemsToProperties()
-        {
-            Supplement supplement = (Supplement)Session["NewSupplement"];
-            Dictionary<string, int> categories = (Dictionary<string, int>)Session["Categories"];
-
-            if (supplement == null)
-            {
-                string errorMessage = string.Format("Session item Supplement is null and can not be edited further.");
-                throw new ArgumentException(errorMessage);
-            }
-            this.NewSupplement = supplement;
-
-            if (categories == null)
-            {
-                string errorMessage = string.Format("Session item Categories is null and can not be edited further.");
-                throw new ArgumentException(errorMessage);
-            }
-            this.Categories = categories;
-        }
-
-        private void BindPlaceHoldersMessages()
-        {
-            this.PlaceHolderErrorMessage.Visible = !string.IsNullOrEmpty(this.ErrorMessage);
-            this.PlaceHolderSuccessMessage.Visible = !string.IsNullOrEmpty(this.SuccessMessage);
-            this.PlaceHolderErrorMessage.DataBind();
-            this.PlaceHolderSuccessMessage.DataBind();
-        }
-
-        private void BindDropDownListCategories()
-        {            
-            DropDownList dropDownListCategories = (DropDownList)this.FormViewAddSupplement.FindControl("DropDownListCategories");
-            if (dropDownListCategories == null)
-            {
-                string errorMessage = string.Format("DropDownList from Categoies is null and can not be edited further.");
-                throw new ArgumentException(errorMessage);
-            }
-
-            //List<Category> categories = this.GetAllCategories().ToList<Category>();
-
-            foreach (var category in this.Categories)
-            {
-                ListItem listItem = new ListItem(category.Key, category.Value.ToString());
-                dropDownListCategories.Items.Add(listItem);
-            }
-
-            if (this.NewSupplement.CategoryId > 0)
-            {
-                dropDownListCategories.SelectedIndex = this.NewSupplement.CategoryId;
-            }    
-            
-            //dropDownListCategories.DataBind();
-        }
-
-        protected string GetSelectedCategoryName()
-        {
-            string selectedCategoryName = string.Empty;
-
-            if (this.NewSupplement.CategoryId > 0)
-            {
-                selectedCategoryName = this.Categories
-                    .FirstOrDefault(category => category.Value == this.NewSupplement.CategoryId)
-                    .Key
-                    .ToString();
-            }
-
-            return selectedCategoryName;
-        }
-
-
-        protected void ButtonAcknoledgeErrorMessages_Click(object sender, EventArgs e)
-        {
-            this.ErrorMessage = string.Empty;
-            this.PlaceHolderErrorMessage.Visible = !string.IsNullOrEmpty(this.ErrorMessage);
-            // this.PlaceHolderErrorMessage.DataBind();
-        }
-        protected void ButtonAcknoledgeSuccessMessages_Click(object sender, EventArgs e)
-        {
-            this.SuccessMessage = string.Empty;
-            this.PlaceHolderSuccessMessage.Visible = !string.IsNullOrEmpty(this.SuccessMessage);
-            // this.PlaceHolderSuccessMessage.DataBind();
         }
 
         private Supplement CreateNewEmptySupplement()
@@ -183,7 +83,6 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
 
             return newSupplement;
         }
-
         protected IEnumerable<Category> GetAllCategories()
         {
             IEnumerable<Category> categoriesToReturn = null;
@@ -191,6 +90,224 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
 
             return categoriesToReturn;
         }
+        protected IEnumerable<Topic> GetAllTopics()
+        {
+            IEnumerable<Topic> topicsToReturn = null;
+            topicsToReturn = this.TopicsServices.GetAll();
+
+            return topicsToReturn;
+        }
+        protected IEnumerable<Brand> GetAllBrands()
+        {
+            IEnumerable<Brand> brandsToReturn = null;
+            brandsToReturn = this.BrandsServices.GetAll();
+
+            return brandsToReturn;
+        }
+
+        private void SetSessionItems()
+        {
+            if (this.NewSupplement == null)
+            {
+                Supplement supplement = this.CreateNewEmptySupplement();
+                Session["NewSupplement"] = supplement;
+                this.NewSupplement = supplement;
+            }
+
+            if (this.Categories == null)
+            {
+                List<Category> categories = this.GetAllCategories().ToList<Category>();
+                Dictionary<string, int> categoriesLight = new Dictionary<string, int>();
+
+                foreach(Category category in categories)
+                {
+                    categoriesLight.Add(category.Name, category.Id);
+                }
+
+                Session["Categories"] = categoriesLight;
+                this.Categories = categoriesLight;
+            }
+
+            if (this.Topics == null)
+            {
+                List<Topic> topics = this.GetAllTopics().ToList<Topic>();
+                Dictionary<string, int> topicsLight = new Dictionary<string, int>();
+
+                foreach (Topic topic in topics)
+                {
+                    topicsLight.Add(topic.Name, topic.Id);
+                }
+
+                Session["Topics"] = topicsLight;
+                this.Topics = topicsLight;
+            }
+
+            if (this.Brands == null)
+            {
+                List<Brand> brands = this.GetAllBrands().ToList<Brand>();
+                Dictionary<string, int> brandsLight = new Dictionary<string, int>();
+
+                foreach (Brand brand in brands)
+                {
+                    brandsLight.Add(brand.Name, brand.Id);
+                }
+
+                Session["Brands"] = brandsLight;
+                this.Brands = brandsLight;
+            }
+        }
+        private void GetSessionItemsToProperties()
+        {
+            Supplement supplement = (Supplement)Session["NewSupplement"];
+            Dictionary<string, int> categories = (Dictionary<string, int>)Session["Categories"];
+            Dictionary<string, int> topics = (Dictionary<string, int>)Session["Topics"];
+            Dictionary<string, int> brands = (Dictionary<string, int>)Session["Brands"];
+
+            if (supplement == null)
+            {
+                string errorMessage = string.Format("Session item Supplement is null and can not be edited further.");
+                throw new ArgumentException(errorMessage);
+            }
+            this.NewSupplement = supplement;
+
+            if (categories == null)
+            {
+                string errorMessage = string.Format("Session item Categories is null and can not be edited further.");
+                throw new ArgumentException(errorMessage);
+            }
+            this.Categories = categories;
+
+            if (topics == null)
+            {
+                string errorMessage = string.Format("Session item Topics is null and can not be edited further.");
+                throw new ArgumentException(errorMessage);
+            }
+            this.Topics = topics;
+
+            if (brands == null)
+            {
+                string errorMessage = string.Format("Session item Brands is null and can not be edited further.");
+                throw new ArgumentException(errorMessage);
+            }
+            this.Brands = brands;
+        }
+
+        private void BindPlaceHoldersMessages()
+        {
+            this.PlaceHolderErrorMessage.Visible = !string.IsNullOrEmpty(this.ErrorMessage);
+            this.PlaceHolderSuccessMessage.Visible = !string.IsNullOrEmpty(this.SuccessMessage);
+            this.PlaceHolderErrorMessage.DataBind();
+            this.PlaceHolderSuccessMessage.DataBind();
+        }
+        private void BindDropDownListCategories()
+        {            
+            DropDownList dropDownListCategories = (DropDownList)this.FormViewAddSupplement.FindControl("DropDownListCategories");
+            if (dropDownListCategories == null)
+            {
+                string errorMessage = string.Format("DropDownList from Categoies is null and can not be edited further.");
+                throw new ArgumentException(errorMessage);
+            }
+
+            foreach (var category in this.Categories)
+            {
+                ListItem listItem = new ListItem(category.Key, category.Value.ToString());
+                dropDownListCategories.Items.Add(listItem);
+            }
+
+            if (this.NewSupplement.CategoryId > 0)
+            {
+                dropDownListCategories.SelectedIndex = this.NewSupplement.CategoryId;
+            }    
+        }
+        private void BindDropDownListTopics()
+        {
+            DropDownList dsropDownListTopics = (DropDownList)this.FormViewAddSupplement.FindControl("DropDownListTopics");
+            if (dsropDownListTopics == null)
+            {
+                string errorMessage = string.Format("DropDownList from Topics is null and can not be edited further.");
+                throw new ArgumentException(errorMessage);
+            }
+
+            foreach (var topic in this.Topics)
+            {
+                ListItem listItem = new ListItem(topic.Key, topic.Value.ToString());
+                dsropDownListTopics.Items.Add(listItem);
+            }
+
+            if (this.NewSupplement.TopicId > 0)
+            {
+                dsropDownListTopics.SelectedIndex = this.NewSupplement.TopicId;
+            }
+        }
+        private void BindDropDownListBrands()
+        {
+            DropDownList dropDownListBrands = (DropDownList)this.FormViewAddSupplement.FindControl("DropDownListBrands");
+            if (dropDownListBrands == null)
+            {
+                string errorMessage = string.Format("DropDownList from Brands is null and can not be edited further.");
+                throw new ArgumentException(errorMessage);
+            }
+
+            foreach (var brand in this.Brands)
+            {
+                ListItem listItem = new ListItem(brand.Key, brand.Value.ToString());
+                dropDownListBrands.Items.Add(listItem);
+            }
+
+            if (this.NewSupplement.BrandId > 0)
+            {
+                dropDownListBrands.SelectedIndex = this.NewSupplement.BrandId;
+            }
+        }
+
+        protected string GetSelectedCategoryName()
+        {
+            string selectedCategoryName = string.Empty;
+
+            if (this.NewSupplement.CategoryId > 0)
+            {
+                selectedCategoryName = this.Categories.FirstOrDefault(c => c.Value == this.NewSupplement.CategoryId).Key.ToString();
+            }
+
+            return selectedCategoryName;
+        }
+        protected string GetSelectedTopicName()
+        {
+            string selectedTopicName = string.Empty;
+
+            if (this.NewSupplement.TopicId > 0)
+            {
+                selectedTopicName = this.Topics.FirstOrDefault(t => t.Value == this.NewSupplement.TopicId).Key.ToString();
+            }
+
+            return selectedTopicName;
+        }
+        protected string GetSelectedBrandName()
+        {
+            string selectedBrandName = string.Empty;
+
+            if (this.NewSupplement.BrandId > 0)
+            {
+                selectedBrandName = this.Brands.FirstOrDefault(b => b.Value == this.NewSupplement.BrandId).Key.ToString();
+            }
+
+            return selectedBrandName;
+        }
+
+        protected void ButtonAcknoledgeErrorMessages_Click(object sender, EventArgs e)
+        {
+            this.ErrorMessage = string.Empty;
+            this.PlaceHolderErrorMessage.Visible = !string.IsNullOrEmpty(this.ErrorMessage);
+            // this.PlaceHolderErrorMessage.DataBind();
+        }
+        protected void ButtonAcknoledgeSuccessMessages_Click(object sender, EventArgs e)
+        {
+            this.SuccessMessage = string.Empty;
+            this.PlaceHolderSuccessMessage.Visible = !string.IsNullOrEmpty(this.SuccessMessage);
+            // this.PlaceHolderSuccessMessage.DataBind();
+        }
+
+        
 
         // The id parameter should match the DataKeyNames value set on the control
         // or be decorated with a value provider attribute, e.g. [QueryString]int id
@@ -238,12 +355,17 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
             TextBox textBoxIngredients = (TextBox)this.FormViewAddSupplement.FindControl("TextBoxIngredients");
             TextBox textBoxUse = (TextBox)this.FormViewAddSupplement.FindControl("TextBoxUse");
             TextBox textBoxDescription = (TextBox)this.FormViewAddSupplement.FindControl("TextBoxDescription");
+            DropDownList dropDownListCategories = (DropDownList)this.FormViewAddSupplement.FindControl("DropDownListCategories");
+            DropDownList dropDownListTopics = (DropDownList)this.FormViewAddSupplement.FindControl("DropDownListTopics");
+            DropDownList dropDownListBrands = (DropDownList)this.FormViewAddSupplement.FindControl("DropDownListBrands");
+
 
             bool allBoxesAreNull = (textBoxName == null) && 
                 (textBoxImageUrl == null) && 
                 (textBoxIngredients == null) && 
                 (textBoxUse == null) && 
-                (textBoxDescription == null);
+                (textBoxDescription == null) &&
+                (dropDownListCategories == null);
 
             if (allBoxesAreNull)
             {
@@ -272,32 +394,29 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
             if (textBoxDescription != null)
             {
                 tempSupplement.Description = textBoxDescription.Text;
-            }
-
-            
-
-            //Supplement tempCategories = (Supplement)Session["Categories"];
-
-            DropDownList dropDownListCategories = (DropDownList)this.FormViewAddSupplement.FindControl("DropDownListCategories");
+            }          
 
             if (dropDownListCategories != null)
             {
                 tempSupplement.CategoryId = int.Parse(dropDownListCategories.SelectedValue);
             }
+            if (dropDownListTopics != null)
+            {
+                tempSupplement.TopicId = int.Parse(dropDownListTopics.SelectedValue);
+            }
+            if (dropDownListBrands != null)
+            {
+                tempSupplement.BrandId = int.Parse(dropDownListBrands.SelectedValue);
+            }
 
             Session["NewSupplement"] = tempSupplement;
         }
-
         protected void FormViewAddSupplement_ModeChanging(object sender, FormViewModeEventArgs e)
         {
             this.PreserverMainFormState();
         }
 
-        protected void Page_Unoad(object sender, EventArgs e)
-        {
-            this.PreserverMainFormState();
-        }
-
+        
         protected void DropDownListCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -316,6 +435,14 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
         protected void DropDownListCategories_DataBinding(object sender, EventArgs e)
         {
             this.BindDropDownListCategories();
+        }
+        protected void DropDownListTopics_DataBinding(object sender, EventArgs e)
+        {
+            this.BindDropDownListTopics();
+        }
+        protected void DropDownListBrands_DataBinding(object sender, EventArgs e)
+        {
+            this.BindDropDownListBrands();
         }
     }
 }

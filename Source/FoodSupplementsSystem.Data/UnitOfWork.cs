@@ -15,6 +15,8 @@ namespace FoodSupplementsSystem.Data
         private SupplementRepository supplementRepository;
         private RatingRepository ratingRepository;
         private CategoryRepository categoryRepository;
+        private TopicRepository topicRepository;
+        private BrandRepository brandRepository;
 
         private bool disposed = false;
 
@@ -28,6 +30,7 @@ namespace FoodSupplementsSystem.Data
             this.context = context;
         }
 
+        // TODO check how to do property injection
         public SupplementRepository SupplementRepository
         {
             get
@@ -41,6 +44,7 @@ namespace FoodSupplementsSystem.Data
             }
         }
 
+        // TODO check how to do property injection
         public RatingRepository RatingRepository
         {
             get
@@ -54,6 +58,7 @@ namespace FoodSupplementsSystem.Data
             }
         }
 
+        // TODO check how to do property injection
         public CategoryRepository CategoryRepository
         {
             get
@@ -64,6 +69,34 @@ namespace FoodSupplementsSystem.Data
                 }
 
                 return this.categoryRepository;
+            }
+        }
+
+        // TODO check how to do property injection
+        public TopicRepository TopicRepository
+        {
+            get
+            {
+                if (this.topicRepository == null)
+                {
+                    this.topicRepository = new TopicRepository(this.context);
+                }
+
+                return this.topicRepository;
+            }
+        }
+
+        // TODO check how to do property injection
+        public BrandRepository BrandRepository
+        {
+            get
+            {
+                if (this.brandRepository == null)
+                {
+                    this.brandRepository = new BrandRepository(this.context);
+                }
+
+                return this.brandRepository;
             }
         }
 

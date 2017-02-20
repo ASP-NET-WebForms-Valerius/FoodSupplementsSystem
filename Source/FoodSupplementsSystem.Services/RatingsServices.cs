@@ -17,6 +17,11 @@ namespace FoodSupplementsSystem.Services
 
         public RatingsServices(IRatingRepository ratingRepository)
         {
+            if (ratingRepository == null)
+            {
+                throw new ArgumentNullException("An instance of RatingRepository is required to use this RatingsServices.");
+            }
+
             this.ratingRepository = ratingRepository;
         }
 

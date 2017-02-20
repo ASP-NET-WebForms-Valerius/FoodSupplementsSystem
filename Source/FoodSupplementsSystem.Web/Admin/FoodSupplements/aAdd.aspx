@@ -65,8 +65,8 @@
                             
                                     <p><strong>Author: </strong><%#: Item.AuthorId %></p>                            
                                     <p><strong>Category: </strong><%#: this.GetSelectedCategoryName() %></p>                            
-                                    <p><strong>TopicId: </strong><%#: Item.TopicId %></p>                            
-                                    <p><strong>BrandId: </strong><%#: Item.BrandId %></p>
+                                    <p><strong>Topic: </strong><%#: this.GetSelectedTopicName() %></p>                            
+                                    <p><strong>Brand: </strong><%#: this.GetSelectedBrandName() %></p>
                                 </div>
                             </div>
                         
@@ -108,17 +108,16 @@
                                     <asp:DropDownList ID="DropDownListCategories" runat="server"
                                         AutoPostBack="true"
                                         OnDataBinding="DropDownListCategories_DataBinding"
-                                        OnSelectedIndexChanged="DropDownListCategories_SelectedIndexChanged"></asp:DropDownList>
-
-                                                             
+                                        OnSelectedIndexChanged="DropDownListCategories_SelectedIndexChanged"></asp:DropDownList>                                                             
                                     <p><strong>Select Topic</strong></p>     
                                     <asp:DropDownList ID="DropDownListTopics" runat="server"
                                         AutoPostBack="true"
-                                        OnSelectedIndexChanged="DropDownListTopics_SelectedIndexChanged"></asp:DropDownList>
-                       
+                                        OnDataBinding="DropDownListTopics_DataBinding"
+                                        OnSelectedIndexChanged="DropDownListTopics_SelectedIndexChanged"></asp:DropDownList>                       
                                     <p><strong>Select Brand</strong></p>
                                     <asp:DropDownList ID="DropDownListBrands" runat="server"
                                         AutoPostBack="true"
+                                        OnDataBinding="DropDownListBrands_DataBinding"
                                         OnSelectedIndexChanged="DropDownListBrands_SelectedIndexChanged"></asp:DropDownList>
 
                                 </div>

@@ -57,14 +57,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IBrandRepository.cs" />
     <Compile Include="Contracts\ICategoryRepository.cs" />
     <Compile Include="Contracts\IExtendedRepository.cs" />
+    <Compile Include="Contracts\ITopicRepository.cs" />
     <Compile Include="FoodSupplementsSystemDbContext.cs" />
     <Compile Include="IFoodSupplementsSystemDbContext.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BrandRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Contracts\IRepository.cs" />
@@ -72,6 +75,7 @@
     <Compile Include="Contracts\IRatingRepository.cs" />
     <Compile Include="Repositories\RatingRepository.cs" />
     <Compile Include="Repositories\SupplementRepository.cs" />
+    <Compile Include="Repositories\TopicRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>

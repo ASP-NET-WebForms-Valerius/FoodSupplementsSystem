@@ -10,9 +10,9 @@ using FoodSupplementsSystem.Data.Repositories.Contracts;
 
 namespace FoodSupplementsSystem.Data.Repositories
 {
-    public class CategoryRepository : GenericRepository<Category>, IRepository<Category>, ICategoryRepository
+    public class BrandRepository : GenericRepository<Brand>, IRepository<Brand>, IBrandRepository
     {
-        public CategoryRepository(FoodSupplementsSystemDbContext context) 
+        public BrandRepository(FoodSupplementsSystemDbContext context) 
             : base(context)
         {
         }
