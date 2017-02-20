@@ -69,6 +69,7 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
             //,[TopicId]
             //,[BrandId]
             Supplement newSupplement = new Supplement();
+            newSupplement.Id = null;
             newSupplement.Name = string.Empty;
             newSupplement.ImageUrl = string.Empty;
             newSupplement.Ingredients = string.Empty;
@@ -76,7 +77,9 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
             newSupplement.Description = string.Empty;
             newSupplement.CreationDate = DateTime.Now;
 
-            newSupplement.AuthorId = this.User.Identity.GetUserId();
+            //newSupplement.AuthorId = Guid.Parse(this.User.Identity.GetUserId());
+            //newSupplement.AuthorId = (this.User.Identity.GetUserId());
+            newSupplement.AuthorId = null;
             newSupplement.CategoryId = -1;
             newSupplement.TopicId = -1;
             newSupplement.BrandId = -1;
@@ -103,6 +106,30 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
             brandsToReturn = this.BrandsServices.GetAll();
 
             return brandsToReturn;
+        }
+        protected bool ItemIsReadyToBeInserted()
+        {
+            if (this.NewSupplement != null)
+            {
+                if(this.NewSupplement.Name.Length <= 2)
+                {
+                    return false;
+                }
+                if (this.NewSupplement.CategoryId <= 0)
+                {
+                    return false;
+                }
+                if (this.NewSupplement.TopicId <= 0)
+                {
+                    return false;
+                }
+                if (this.NewSupplement.BrandId <= 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private void SetSessionItems()
@@ -294,6 +321,19 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
             return selectedBrandName;
         }
 
+        
+        protected void ShowErrorMessage(string message)
+        {
+            this.ErrorMessage = message;
+            this.PlaceHolderErrorMessage.Visible = !string.IsNullOrEmpty(this.ErrorMessage);
+            //this.PlaceHolderErrorMessage.DataBind();
+        }
+        protected void ShowSuccessMessage(string message)
+        {
+            this.SuccessMessage = message;
+            this.PlaceHolderSuccessMessage.Visible = !string.IsNullOrEmpty(this.SuccessMessage);
+            //this.PlaceHolderErrorMessage.DataBind();
+        }
         protected void ButtonAcknoledgeErrorMessages_Click(object sender, EventArgs e)
         {
             this.ErrorMessage = string.Empty;
@@ -321,32 +361,29 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
         // The id parameter name should match the DataKeyNames value set on the control
         public void FormViewAddSupplement_UpdateItem()
         {
-            Supplement item = null;
-            // Load the item here, e.g. item = MyDataLayer.Find(id);
-            if (item == null)
-            {
-                // The item wasn't found
-                ModelState.AddModelError("", String.Format("Item with was not found"));
-                return;
-            }
-            TryUpdateModel(item);
-            if (ModelState.IsValid)
-            {
-                this.NewSupplement = item;
-                Session["NewSupplement"] = item;
-            }
-        }
+            //this.FormViewAddSupplement.ChangeMode(FormViewMode.Insert);
 
-        public void FormViewAddSupplement_InsertItem()
-        {
             Supplement item = this.NewSupplement;
 
             TryUpdateModel(item);
             if (ModelState.IsValid)
             {
-                // Save to db
+                this.SupplementsServices.Add(item);
             }
         }
+
+        //public void FormViewAddSupplement_InsertItem()
+        //{
+        //    Supplement item = this.NewSupplement;
+
+        //    TryUpdateModel(item);
+        //    if (ModelState.IsValid)
+        //    {
+        //        // Save to db
+        //    }
+        //}
+
+
 
         private void PreserverMainFormState()
         {
@@ -419,19 +456,22 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
         
         protected void DropDownListCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            this.PreserverMainFormState();
+            this.IsReadyMessage();
+            this.ToggleReadyInsertButtons();
         }
-
         protected void DropDownListTopics_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            this.PreserverMainFormState();
+            this.IsReadyMessage();
+            this.ToggleReadyInsertButtons();
         }
-
         protected void DropDownListBrands_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            this.PreserverMainFormState();
+            this.IsReadyMessage();
+            this.ToggleReadyInsertButtons();
         }
-
         protected void DropDownListCategories_DataBinding(object sender, EventArgs e)
         {
             this.BindDropDownListCategories();
@@ -444,5 +484,39 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
         {
             this.BindDropDownListBrands();
         }
+
+        protected void ButtonCheckIfReady_Click(object sender, EventArgs e)
+        {
+            this.PreserverMainFormState();
+            this.IsReadyMessage();
+            this.ToggleReadyInsertButtons();
+        }
+
+        private void ToggleReadyInsertButtons()
+        {
+            LinkButton linkButtonEdit = (LinkButton)this.FormViewAddSupplement.FindControl("LinkButtonEdit");
+            Button buttonCheckIfReady = (Button)this.FormViewAddSupplement.FindControl("ButtonCheckIfReady");
+
+            if (linkButtonEdit != null && buttonCheckIfReady != null) 
+            {
+                bool isReady = this.ItemIsReadyToBeInserted();
+                linkButtonEdit.Visible = isReady;
+                buttonCheckIfReady.Visible = !isReady;
+            }
+        }
+
+        private void IsReadyMessage()
+        {
+            if (this.ItemIsReadyToBeInserted())
+            {
+                this.ShowSuccessMessage("Supplement item is ready to be inserted!");
+            }
+            else
+            {
+                this.ShowErrorMessage("Supplement item is not ready to be inserted yet. Please, fill out the required fields!");
+            }
+        }
+            
+
     }
 }

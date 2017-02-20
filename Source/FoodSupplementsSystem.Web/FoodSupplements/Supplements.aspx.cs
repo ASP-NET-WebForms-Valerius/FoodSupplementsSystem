@@ -103,7 +103,7 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             this.DataPagersSupplements.PageSize = this.ItemsPerPaga;
         }
 
-        protected string GetDetailsUrl(int supplementid)
+        protected string GetDetailsUrl(int? supplementid)
         {
             string urlToReturn = string.Empty;
 

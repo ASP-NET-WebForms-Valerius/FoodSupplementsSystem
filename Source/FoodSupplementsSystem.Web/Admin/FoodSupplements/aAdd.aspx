@@ -128,7 +128,14 @@
                                         CssClass="btn btn-success btn-sm" 
                                         Width="75%"
                                         Text="Insert" 
+                                        Visible="<%# this.ItemIsReadyToBeInserted() %>"
                                         CommandName="Update"/>
+                                    <asp:Button ID="ButtonCheckIfReady" runat="server" 
+                                        CssClass="btn btn-primary btn-sm" 
+                                        Width="75%"
+                                        Text="Check if Ready" 
+                                        Visible="<%# !this.ItemIsReadyToBeInserted() %>"
+                                        OnClick="ButtonCheckIfReady_Click"/>
                                     <asp:LinkButton ID="LinkButtonCancel" runat="server" 
                                         CssClass="btn btn-warning btn-sm"
                                         Width="75%"
@@ -138,10 +145,11 @@
                             </div>
 
                         </EditItemTemplate>
-                        <%--<InsertItemTemplate>
+
+                        <InsertItemTemplate>
                             Insert mode
                             <!-- Add the extra clearfix for only the required viewport -->
-                            <div class="clearfix visible-md"></div>
+                            <%--<div class="clearfix visible-md"></div>
                             <div class="row">
                                 <div class="col-md-8 table-bordered">
                                     <asp:LinkButton ID="LinkButtonInsert" runat="server"
@@ -155,8 +163,8 @@
                                         Text="Preview Mode" 
                                         CommandName="Select"/>                                        
                                 </div>
-                            </div>
-                        </InsertItemTemplate>--%>
+                            </div>--%>
+                        </InsertItemTemplate>
 
                     </asp:FormView>
                 

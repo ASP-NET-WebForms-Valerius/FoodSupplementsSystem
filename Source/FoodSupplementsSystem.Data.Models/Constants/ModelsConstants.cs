@@ -12,7 +12,7 @@ namespace FoodSupplementsSystem.Data.Models.Constants
         {
             public struct NameMaxLength
             {
-                public const int Value = 30;
+                public const int Value = 100;
                 public const string ErrorMessage = "Brand name length should be less than 30 symbols.";
             }
 
@@ -27,7 +27,7 @@ namespace FoodSupplementsSystem.Data.Models.Constants
         {
             public struct NameMaxLength
             {
-                public const int Value = 30;
+                public const int Value = 100;
                 public const string ErrorMessage = "Category name length should be less than 30 symbols.";
             }
 
@@ -52,7 +52,7 @@ namespace FoodSupplementsSystem.Data.Models.Constants
         {
             public struct NameMaxLength
             {
-                public const int Value = 30;
+                public const int Value = 100;
                 public const string ErrorMessage = "Supplement name length should be less than 30 symbols.";
             }
 
@@ -67,7 +67,7 @@ namespace FoodSupplementsSystem.Data.Models.Constants
         {
             public struct NameMaxLength
             {
-                public const int Value = 30;
+                public const int Value = 100;
                 public const string ErrorMessage = "Topic name length should be less than 20 symbols.";
             }
 

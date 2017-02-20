@@ -20,7 +20,7 @@ namespace FoodSupplementsSystem.Data.Models.Contracts
         DateTime CreationDate { get; set; }
 
         string Description { get; set; }
-        int Id { get; set; }
+        int? Id { get; set; }
 
         string ImageUrl { get; set; }
 
