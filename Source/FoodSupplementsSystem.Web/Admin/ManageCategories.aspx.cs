@@ -1,5 +1,6 @@
 ﻿using FoodSupplementsSystem.Data.Models;
 using FoodSupplementsSystem.Services.Contracts;
+using FoodSupplementsSystem.Web.App_Start;
 using Ninject;
 using System;
 using System.Linq;
@@ -10,44 +11,38 @@ namespace FoodSupplementsSystem.Web.Admin
 {
     public partial class ManageCategories : Page
     {
-        [Inject]
-        public ICategoriesServices CategoriesServices { get; set; }
+        private ICategoriesServices categoriesServices;
+
+        public ManageCategories()
+        {
+            this.categoriesServices = NinjectWebCommon.Kernel.Get<ICategoriesServices>();
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        // The return type can be changed to IEnumerable, however to support
-        // paging and sorting, the following parameters must be added:
-        //     int maximumRows
-        //     int startRowIndex
-        //     out int totalRowCount
-        //     string sortByExpression
         public IQueryable<Category> gvCategories_GetData()
         {
-            return this.CategoriesServices.GetAll().OrderBy(x => x.Id);
+            return this.categoriesServices.GetAll().OrderBy(x => x.Id);
         }
 
-        // The id parameter name should match the DataKeyNames value set on the control
         public void gvCategories_UpdateItem(int id)
         {
             var editTitleBox = this.gvCategories.Rows[this.gvCategories.EditIndex].Controls[0].Controls[0] as TextBox;
 
-            // TODO: validate if null
-
-            this.CategoriesServices.UpdateNameById(id, editTitleBox.Text);
+            this.categoriesServices.UpdateNameById(id, editTitleBox.Text);
         }
 
-        // The id parameter name should match the DataKeyNames value set on the control
         public void gvCategories_DeleteItem(int id)
         {
-            this.CategoriesServices.DeleteId(id);
+            this.categoriesServices.DeleteId(id);
         }
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
-            this.CategoriesServices.Create(this.tbInsert.Text);
+            this.categoriesServices.Create(this.tbInsert.Text);
 
             this.tbInsert.Text = "";
         }
