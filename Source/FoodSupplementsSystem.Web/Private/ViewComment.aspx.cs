@@ -1,5 +1,6 @@
 ﻿using FoodSupplementsSystem.Data.Models;
 using FoodSupplementsSystem.Services.Contracts;
+using FoodSupplementsSystem.Web.App_Start;
 using Ninject;
 using System;
 using System.Web.ModelBinding;
@@ -9,21 +10,21 @@ namespace FoodSupplementsSystem.Web.Private
 {
     public partial class ViewComment : Page
     {
-        [Inject]
-        public ICommentsServices CommentsServices { get; set; }
+        private ICommentsServices commentsServices;
+
+        public ViewComment()
+        {
+            this.commentsServices = NinjectWebCommon.Kernel.Get<ICommentsServices>();
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        // The id parameter should match the DataKeyNames value set on the control
-        // or be decorated with a value provider attribute, e.g. [QueryString]int id
         public Comment fvCommentDetails_GetItem([QueryString]string id)
         {
-            // TODO: validate id
-
-            return this.CommentsServices.GetById(int.Parse(id));
+            return this.commentsServices.GetById(int.Parse(id));
         }
     }
 }
