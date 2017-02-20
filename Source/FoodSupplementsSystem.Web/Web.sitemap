@@ -13,9 +13,9 @@
 
     <siteMapNode url="~/foodsupplements/supplements.aspx" title="Food Supplements" description="Food Supplements main page">
     </siteMapNode>
-    <siteMapNode url="~/healthtopics.aspx" title="Health Topics" description="Health Topics main page">
+    <siteMapNode url="~/public/viewtopics.aspx" title="Health Topics" description="Health Topics main page">
     </siteMapNode>
-    <siteMapNode url="~/brands.aspx" title="Brands" description="Brands page" />
+    <siteMapNode url="~/public/viewbrands.aspx" title="Brands" description="Brands page" />
     <siteMapNode url="~/about.aspx" title="About" description="About page" />
     <siteMapNode url="~/contact.aspx" title="Contacts" description="Contacts page" />
     <siteMapNode url="~/treeview.aspx" title="Tree View" description="TreeView page" />
