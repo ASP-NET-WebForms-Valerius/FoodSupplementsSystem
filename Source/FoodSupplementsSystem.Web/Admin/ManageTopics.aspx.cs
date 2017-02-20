@@ -10,7 +10,7 @@ namespace FoodSupplementsSystem.Web.Admin
 {
     public partial class ManageTopics : Page
     {
-        private ITopicsServices topicsServices;
+        private readonly ITopicsServices topicsServices;
 
         public ManageTopics()
         {

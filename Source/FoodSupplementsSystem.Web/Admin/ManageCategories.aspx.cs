@@ -11,7 +11,7 @@ namespace FoodSupplementsSystem.Web.Admin
 {
     public partial class ManageCategories : Page
     {
-        private ICategoriesServices categoriesServices;
+        private readonly ICategoriesServices categoriesServices;
 
         public ManageCategories()
         {

@@ -10,7 +10,7 @@ namespace FoodSupplementsSystem.Web.Admin
 {
     public partial class ManageBrands : Page
     {
-        private IBrandsServices brandsServices;
+        private readonly IBrandsServices brandsServices;
 
         public ManageBrands()
         {

@@ -10,7 +10,7 @@ namespace FoodSupplementsSystem.Web.Public
 {
     public partial class ViewTopics : Page
     {
-        private ITopicsServices topicsServices;
+        private readonly ITopicsServices topicsServices;
 
         public ViewTopics()
         {

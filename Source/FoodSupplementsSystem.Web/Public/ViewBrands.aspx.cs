@@ -10,7 +10,7 @@ namespace FoodSupplementsSystem.Web.Public
 {
     public partial class ViewBrands : Page
     {
-        private IBrandsServices brandsServices;
+        private readonly IBrandsServices brandsServices;
 
         public ViewBrands()
         {

@@ -10,7 +10,7 @@ namespace FoodSupplementsSystem.Web.Private
 {
     public partial class ViewComment : Page
     {
-        private ICommentsServices commentsServices;
+        private readonly ICommentsServices commentsServices;
 
         public ViewComment()
         {
