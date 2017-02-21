@@ -23,25 +23,20 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
         public Supplements()
         {
             this.SupplementsServices = NinjectWebCommon.Kernel.Get<ISupplementsServices>();
+            this.SupplementFilters = NinjectWebCommon.Kernel.Get<ISupplementFilters>();
         }
 
         protected ISupplementsServices SupplementsServices { get; private set; }
-        protected SupplementFilters SupplementFilters { get; private set; }
+        protected ISupplementFilters SupplementFilters { get; private set; }
 
         public int ItemsPerPaga { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            //this.DbContext = new FoodSupplementsSystemDbContext();
-            //this.UnitOfWork = new UnitOfWork(this.DbContext);
-            //this.SupplementsServices = new SupplementsServices(this.UnitOfWork.SupplementRepository);
-
             // TODO bind to ninject
-            this.SupplementFilters = new SupplementFilters(this.SupplementsServices);
+            //this.SupplementFilters = new SupplementFilters(this.SupplementsServices);
 
-            // TODO to consts
-            this.ItemsPerPaga = 2;
+            this.ItemsPerPaga = Consts.ItemsPerPage;
 
 
             if (this.Page.IsPostBack)
@@ -53,37 +48,6 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             this.BindDataPagersSupplements();
             this.BindDataButtonsRemoveFilters();
         }
-
-        //public FoodSupplementsSystemDbContext DbContext { get; private set; }
-
-        //public UnitOfWork UnitOfWork { get; private set; }
-
-
-
-        //protected  IEnumerable<Supplement> AllSuppelments
-        //{
-        //    get
-        //    {
-        //        IEnumerable<Supplement> supplementsToReturn = null;
-
-        //        supplementsToReturn = this.SupplementFilters.GetFilteredSupplements();
-
-        //        return supplementsToReturn;
-        //    }
-        //}
-
-
-
-        //protected string DetailsLink
-        //{
-        //    get
-        //    {
-        //        string linkTo = "Details.aspx?id=" + "1";
-
-        //        return linkTo;
-        //    }
-        //}
-
 
 
         // ----------------------------------------------
@@ -121,8 +85,6 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
         // ----------------------------------------------
         // Events Folowing
         //      \/
-       
-
         protected void DataPagersSupplements_PreRender(object sender, EventArgs e)
         {           
             this.DataPagersSupplements.PageSize = this.ItemsPerPaga;
@@ -197,7 +159,5 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
         {
 
         }
-
-       
     }
 }

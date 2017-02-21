@@ -301,6 +301,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="FoodSupplements\Web.config" />
+    <Content Include="Configuration\Consts.general.config" />
     <None Include="Properties\PublishProfiles\My IIS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="FoodSupplements\Details.aspx" />
@@ -604,6 +605,7 @@
     <Compile Include="FoodSupplements\Details.aspx.designer.cs">
       <DependentUpon>Details.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FoodSupplements\ISupplementFilters.cs" />
     <Compile Include="FoodSupplements\SupplementFilters.cs" />
     <Compile Include="FoodSupplements\Supplements.aspx.cs">
       <DependentUpon>Supplements.aspx</DependentUpon>

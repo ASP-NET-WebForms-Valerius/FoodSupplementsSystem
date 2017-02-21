@@ -38,6 +38,7 @@ namespace FoodSupplementsSystem.Data
 
         public IDbSet<Topic> Topics { get; set; }
 
+        // TODO discuss if a good idea, when using container
         public static FoodSupplementsSystemDbContext Create()
         {
             return new FoodSupplementsSystemDbContext();

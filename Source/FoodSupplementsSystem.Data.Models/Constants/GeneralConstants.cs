@@ -1,25 +1,53 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FoodSupplementsSystem.Data.Models.Constants
 {
     public static partial class Consts
     {
+
         public static NameValueCollection General
         {
             get
             {
-                return (NameValueCollection)ConfigurationManager.GetSection("ConstantsGeneralConfig");
+                string sectionName = "ConstantsGeneralConfig";
+                NameValueCollection nvc = (NameValueCollection)ConfigurationManager.GetSection(sectionName);
+
+                return nvc; 
             }
         }
 
         // First General Group
-        public static string MyCustomConst { get { return General.Get("MyCustomConst"); } }
-        public static string AnySecondFromTheConfig { get { return General.Get("Any"); } }
+        public static string MyCustomConst
+        {
+            get
+            {
+                return General.Get("MyCustomConst");
+            }
+        }
+
+        public static string AnySecondFromTheConfig
+        {
+            get
+            {
+                return General.Get("Any");
+            }
+        }
+
+        public static int ItemsPerPage {
+            get
+            {
+                int itemsPerPage;
+                bool isErrorByParsing = int.TryParse(General["ItemsPerPage"], out itemsPerPage);
+                if (!isErrorByParsing)
+                {
+                    string errorMessage = "Items Per Page value in not in the expected format int";
+                    throw new FormatException(errorMessage);
+                }
+
+                return itemsPerPage;
+            }
+        }
     }
 }

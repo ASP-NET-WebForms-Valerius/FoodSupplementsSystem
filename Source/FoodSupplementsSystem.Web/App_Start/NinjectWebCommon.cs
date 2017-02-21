@@ -16,6 +16,7 @@ namespace FoodSupplementsSystem.Web.App_Start
     using Data.Repositories.Contracts;
     using Data.Repositories;
     using Data.Contracts;
+    using FoodSupplements;
 
     public static class NinjectWebCommon
     {
@@ -87,6 +88,7 @@ namespace FoodSupplementsSystem.Web.App_Start
                               .SelectAllClasses()
                               .BindDefaultInterface());
 
+            kernel.Bind<ISupplementFilters>().To<SupplementFilters>();
 
         }
     }

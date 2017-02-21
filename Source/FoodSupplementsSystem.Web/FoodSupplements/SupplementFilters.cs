@@ -10,7 +10,7 @@ using FoodSupplementsSystem.Services.Contracts;
 
 namespace FoodSupplementsSystem.Web.FoodSupplements
 {
-    public class SupplementFilters
+    public class SupplementFilters : ISupplementFilters
     {
         //private bool anyEnabled;
         //private bool categoryEnabled;
@@ -30,14 +30,21 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
         // Topic Category
         // Brand Category
         // And whatever other neaded
+        private readonly ISupplementsServices supplementsServices;
 
         public SupplementFilters(ISupplementsServices supplementsServices)
         {
-            this.SupplementsServices = supplementsServices;                           
+            this.supplementsServices = supplementsServices;                           
         }
 
-        private ISupplementsServices SupplementsServices { get; set; }
-
+        public ISupplementsServices SupplementsServices
+        {
+            get
+            {
+                return this.supplementsServices;
+            }
+        }
+        
         // Enabled filters
         public bool CategoryEnabled { get; set; }
 
