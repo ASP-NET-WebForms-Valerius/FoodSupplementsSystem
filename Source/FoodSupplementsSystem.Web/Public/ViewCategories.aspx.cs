@@ -1,30 +1,22 @@
 ﻿using FoodSupplementsSystem.Data.Models;
-using FoodSupplementsSystem.Services.Contracts;
-using FoodSupplementsSystem.Web.App_Start;
-using Ninject;
+using FoodSupplementsSystem.MVP.ViewCategories;
 using System;
 using System.Linq;
-using System.Web.UI;
+using WebFormsMvp;
+using WebFormsMvp.Web;
 
 namespace FoodSupplementsSystem.Web.Public
 {
-    public partial class ViewCategories : Page
+    [PresenterBinding(typeof(ViewCategoriesPresenter))]
+    public partial class ViewCategories : MvpPage<ViewCategoriesViewModel>, IViewCategoriesView
     {
-        private readonly ICategoriesServices categoriesServices;
-
-        public ViewCategories()
-        {
-            this.categoriesServices = NinjectWebCommon.Kernel.Get<ICategoriesServices>();
-        }
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
+        public event EventHandler OnCategoriesGetData;
 
         public IQueryable<Category> lvCategories_GetData()
         {
-            return this.categoriesServices.GetAll().OrderBy(x => x.Id);
+            this.OnCategoriesGetData?.Invoke(this, null);
+
+            return this.Model.Categories;
         }
     }
 }
