@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodSupplementsSystem.Web", "FoodSupplementsSystem.Web\FoodSupplementsSystem.Web.csproj", "{B280BC0F-D4B5-478D-97A5-DC006DA08755}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6F7346B4-DEB8-42F6-8FA1-6BCA3FB16876}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodSupplementsSystem.Services.Tests", "FoodSupplementsSystem.Services.Tests\FoodSupplementsSystem.Services.Tests.csproj", "{C778E148-3E75-4D17-BC34-911BE1E6A7E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodSupplementsSystem.MVP", "FoodSupplementsSystem.MVP\FoodSupplementsSystem.MVP.csproj", "{0BA5FC21-0E93-4E3C-BBD0-C92E3578800F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{C778E148-3E75-4D17-BC34-911BE1E6A7E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C778E148-3E75-4D17-BC34-911BE1E6A7E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C778E148-3E75-4D17-BC34-911BE1E6A7E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BA5FC21-0E93-4E3C-BBD0-C92E3578800F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BA5FC21-0E93-4E3C-BBD0-C92E3578800F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BA5FC21-0E93-4E3C-BBD0-C92E3578800F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BA5FC21-0E93-4E3C-BBD0-C92E3578800F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
