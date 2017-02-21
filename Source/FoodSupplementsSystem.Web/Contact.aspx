@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="FoodSupplementsSystem.Web.Contact" %>
 
+<%@ Register Src="~/Controls/FooterControl.ascx" TagPrefix="mainFC" TagName="FooterControl" %>
+
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
     <h3>Your contact page.</h3>
@@ -14,4 +17,8 @@
         <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
         <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
     </address>
+</asp:Content>
+
+<asp:Content ID="MainFooter" ContentPlaceHolderID="FooterContainer" runat="server"> 
+    <mainFC:FooterControl runat="server" ID="FooterControl" />
 </asp:Content>

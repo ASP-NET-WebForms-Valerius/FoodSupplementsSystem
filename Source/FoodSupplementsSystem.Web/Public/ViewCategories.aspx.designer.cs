@@ -20,5 +20,14 @@ namespace FoodSupplementsSystem.Web.Public {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView lvCategories;
+        
+        /// <summary>
+        /// FooterControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FoodSupplementsSystem.Web.Controls.FooterControl FooterControl;
     }
 }

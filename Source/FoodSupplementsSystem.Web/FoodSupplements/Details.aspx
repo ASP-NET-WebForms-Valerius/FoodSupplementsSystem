@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="FoodSupplementsSystem.Web.FoodSupplements.Details" %>
 
+<%@ Register Src="~/Controls/FooterControl.ascx" TagPrefix="mainFC" TagName="FooterControl" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="raw">
@@ -179,4 +182,8 @@
         </div>
         
     </div>
+</asp:Content>
+
+<asp:Content ID="MainFooter" ContentPlaceHolderID="FooterContainer" runat="server">   
+    <mainFC:FooterControl runat="server" ID="FooterControl" />
 </asp:Content>

@@ -223,6 +223,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Controls\FooterControl.ascx" />
     <Content Include="ErrorPages\Oops.aspx" />
     <Content Include="Oops.html" />
     <Content Include="404.html" />
@@ -581,6 +582,13 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FooterControl.ascx.cs">
+      <DependentUpon>FooterControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\FooterControl.ascx.designer.cs">
+      <DependentUpon>FooterControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\LikeHateControl.ascx.cs">
       <DependentUpon>LikeHateControl.ascx</DependentUpon>

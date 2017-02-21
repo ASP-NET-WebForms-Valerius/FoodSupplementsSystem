@@ -88,17 +88,23 @@
 
 /* My Colors */
 .red-bg{
-    background-color: red
+    background-color: red;
 }
 .red-fg{
-    color: red
+    color: red;
 }
 .veryverylight-gray-bg{
-    background-color: #f9f5f5
+    background-color: #f9f5f5;
 }
 .veryverylight-gray-fg{
-    color: #f9f5f5
+    color: #f9f5f5;
 }
 .dark-orange-fg{
-    color: #e26004
+    color: #e26004;
+}
+.footer-bg{
+    margin: 0;
+    padding: 0;
+    width:100%;
+    background-color: lightgrey;
 }

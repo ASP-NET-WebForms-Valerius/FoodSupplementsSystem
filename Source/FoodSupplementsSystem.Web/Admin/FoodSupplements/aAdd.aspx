@@ -173,3 +173,6 @@
         </div>
     </div>
 </asp:Content>
+
+<asp:Content ID="MainFooter" ContentPlaceHolderID="FooterContainer" runat="server">    
+</asp:Content>

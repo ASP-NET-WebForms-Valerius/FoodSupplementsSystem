@@ -1,4 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ViewCategories.aspx.cs" Inherits="FoodSupplementsSystem.Web.Public.ViewCategories" %>
+
+<%@ Register Src="~/Controls/FooterControl.ascx" TagPrefix="mainFC" TagName="FooterControl" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ListView runat="server" ID="lvCategories"
         ItemType="FoodSupplementsSystem.Data.Models.Category"
@@ -27,4 +30,8 @@
             </asp:ListView>
         </ItemTemplate>
     </asp:ListView>
+</asp:Content>
+
+<asp:Content ID="MainFooter" ContentPlaceHolderID="FooterContainer" runat="server">   
+    <mainFC:FooterControl runat="server" ID="FooterControl" />
 </asp:Content>

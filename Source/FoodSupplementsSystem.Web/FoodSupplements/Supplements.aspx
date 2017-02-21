@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Supplements.aspx.cs" Inherits="FoodSupplementsSystem.Web.FoodSupplements.Supplements" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+<%@ Register Src="~/Controls/FooterControl.ascx" TagPrefix="mainFC" TagName="FooterControl" %>
+
 
 <asp:Content ID="ContentAllSupplements" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -280,4 +282,8 @@
         </Fields>
     </asp:DataPager>
 
+</asp:Content>
+
+<asp:Content ID="MainFooter" ContentPlaceHolderID="FooterContainer" runat="server">    
+    <mainFC:FooterControl runat="server" ID="FooterControl" />
 </asp:Content>
