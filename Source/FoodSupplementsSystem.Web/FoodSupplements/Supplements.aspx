@@ -92,11 +92,17 @@
                 </asp:Label>
                 <%--End-Helpers hidden fields--%>
 
+                <%--CurrentRating='<%# Eval("VotesAverageValue") != null ? Eval("VotesAverageValue") : "0" %>'--%>
+                <%--<%#: Item.Id > 0 ? "SELECT Count([Value]) AS VotesCount, AVG([Value]) AS VotesAverageValue FROM [Ratings] WHERE SupplementId = @supplementId" : "SELECT 0 AS VotesCount, 0 AS VotesAverageValue" %>--%>
+
                 <%--Additional data source, used for Rating Control--%>
+
+                
+                <%--"SELECT Count([Value]) AS VotesCount, AVG([Value]) AS VotesAverageValue FROM [Ratings] WHERE SupplementId = @supplementId"--%> 
+                <%--EXECUTE [dbo].[usp_GetRatingCountAndAvgBySupplementId] @SupplementId--%>
                 <asp:SqlDataSource ID="SqlDataSourceRating" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:FoodSupplementsContextConnectionString %>"
-                    SelectCommand = "SELECT Count([Value]) AS VotesCount, AVG([Value]) AS VotesAverageValue FROM [Ratings] WHERE SupplementId = @supplementId" 
-                    >
+                    SelectCommand = "EXECUTE [dbo].[usp_GetRatingCountAndAvgBySupplementId] @SupplementId">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="LabelId" PropertyName="Text" Name="supplementId" DbType="Int32" />
                     </SelectParameters>
@@ -152,7 +158,7 @@
                                             <asp:FormView ID="FormViewRatingValue" runat="server" DataSourceID="SqlDataSourceRating">
                                                 <ItemTemplate>
                                                     <ajaxToolkit:Rating ID="SupplementRating" runat="server"                                    
-                                                        CurrentRating='<%# Eval("VotesAverageValue") %>'
+                                                        CurrentRating='<%# Eval("VotesAverageValue") %>' 
                                                         MaxRating="5"
                                                         Enabled="<%# this.User.Identity.IsAuthenticated %>"
                                                         StarCssClass="ratingStar"

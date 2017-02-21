@@ -180,7 +180,17 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
                 sum += rating.Value;
             }
 
-            int averageValue = sum / Ratings.Count;
+            // Deviding by Zero check
+            int averageValue = 0;
+            // TODO Refactore majic numbers
+            if(Ratings.Count > 0 && Ratings.Count <= 5)
+            {
+                averageValue = sum / Ratings.Count;
+            }
+            else
+            {
+                averageValue = 0;
+            }
 
             return averageValue;
         }
