@@ -30,7 +30,9 @@ namespace FoodSupplementsSystem.Data
             this.context = context;
         }
 
-        // TODO check how to do property injection
+        // use only without container ?! or with 
+        // source is Internet
+        // left for Victor to ask
         public SupplementRepository SupplementRepository
         {
             get
@@ -44,7 +46,9 @@ namespace FoodSupplementsSystem.Data
             }
         }
 
-        // TODO check how to do property injection
+        // use only without container ?! or with 
+        // source is Internet
+        // left for Victor to ask
         public RatingRepository RatingRepository
         {
             get
@@ -58,7 +62,9 @@ namespace FoodSupplementsSystem.Data
             }
         }
 
-        // TODO check how to do property injection
+        // use only without container ?! or with 
+        // source is Internet
+        // left for Victor to ask
         public CategoryRepository CategoryRepository
         {
             get
@@ -72,7 +78,9 @@ namespace FoodSupplementsSystem.Data
             }
         }
 
-        // TODO check how to do property injection
+        // use only without container ?! or with 
+        // source is Internet
+        // left for Victor to ask
         public TopicRepository TopicRepository
         {
             get
@@ -86,7 +94,9 @@ namespace FoodSupplementsSystem.Data
             }
         }
 
-        // TODO check how to do property injection
+        // use only without container ?! or with 
+        // source is Internet
+        // left for Victor to ask
         public BrandRepository BrandRepository
         {
             get

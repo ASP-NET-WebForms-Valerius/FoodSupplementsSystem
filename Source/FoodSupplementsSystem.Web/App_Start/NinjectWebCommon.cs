@@ -15,6 +15,7 @@ namespace FoodSupplementsSystem.Web.App_Start
     using Data;
     using Data.Repositories.Contracts;
     using Data.Repositories;
+    using Data.Contracts;
 
     public static class NinjectWebCommon
     {
@@ -73,11 +74,20 @@ namespace FoodSupplementsSystem.Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind(typeof(IFoodSupplementsSystemDbContext)).To(typeof(FoodSupplementsSystemDbContext));
+            kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
+
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
+            kernel.Bind<IBrandRepository>().To<BrandRepository>();
+            kernel.Bind<ICategoryRepository>().To<CategoryRepository>();
+            kernel.Bind<IRatingRepository>().To<RatingRepository>();
+            kernel.Bind<ISupplementRepository>().To<SupplementRepository>();
+            kernel.Bind<ITopicRepository>().To<TopicRepository>();
 
             kernel.Bind(b => b.From("FoodSupplementsSystem.Services")
                               .SelectAllClasses()
                               .BindDefaultInterface());
+
+
         }
     }
 }

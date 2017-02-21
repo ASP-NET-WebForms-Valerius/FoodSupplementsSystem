@@ -8,6 +8,13 @@ namespace FoodSupplementsSystem.Data.Contracts
 
         RatingRepository RatingRepository { get; }
 
+        CategoryRepository CategoryRepository { get; }
+
+        TopicRepository TopicRepository { get; }
+        
+        BrandRepository BrandRepository { get; }
+
         void Save();
     }
 }
+

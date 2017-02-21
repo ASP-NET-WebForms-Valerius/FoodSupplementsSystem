@@ -11,18 +11,36 @@ using FoodSupplementsSystem.Data;
 using FoodSupplementsSystem.Services;
 using FoodSupplementsSystem.Data.Models;
 using FoodSupplementsSystem.Data.Models.Constants;
+using FoodSupplementsSystem.Services.Contracts;
+using FoodSupplementsSystem.Web.App_Start;
+using Ninject;
 
 namespace FoodSupplementsSystem.Web.FoodSupplements
 {
     public partial class Supplements : Page
     {
+
+        public Supplements()
+        {
+            this.SupplementsServices = NinjectWebCommon.Kernel.Get<ISupplementsServices>();
+        }
+
+        protected ISupplementsServices SupplementsServices { get; private set; }
+        protected SupplementFilters SupplementFilters { get; private set; }
+
+        public int ItemsPerPaga { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            this.DbContext = new FoodSupplementsSystemDbContext();
-            this.UnitOfWork = new UnitOfWork(this.DbContext);
-            this.SupplementsServices = new SupplementsServices(this.UnitOfWork.SupplementRepository);
+            //this.DbContext = new FoodSupplementsSystemDbContext();
+            //this.UnitOfWork = new UnitOfWork(this.DbContext);
+            //this.SupplementsServices = new SupplementsServices(this.UnitOfWork.SupplementRepository);
+
+            // TODO bind to ninject
             this.SupplementFilters = new SupplementFilters(this.SupplementsServices);
+
+            // TODO to consts
             this.ItemsPerPaga = 2;
 
 
@@ -36,11 +54,11 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             this.BindDataButtonsRemoveFilters();
         }
 
-        public FoodSupplementsSystemDbContext DbContext { get; private set; }
+        //public FoodSupplementsSystemDbContext DbContext { get; private set; }
 
-        public UnitOfWork UnitOfWork { get; private set; }
+        //public UnitOfWork UnitOfWork { get; private set; }
 
-        protected SupplementsServices SupplementsServices { get; private set; }
+
 
         //protected  IEnumerable<Supplement> AllSuppelments
         //{
@@ -54,24 +72,25 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
         //    }
         //}
 
-        public int ItemsPerPaga { get; set; }
 
-        protected string DetailsLink
-        {
-            get
-            {
-                string linkTo = "Details.aspx?id=" + "1";
 
-                return linkTo;
-            }
-        }
+        //protected string DetailsLink
+        //{
+        //    get
+        //    {
+        //        string linkTo = "Details.aspx?id=" + "1";
 
-        protected SupplementFilters SupplementFilters { get; private set; }
+        //        return linkTo;
+        //    }
+        //}
 
-        
+
+
+        // ----------------------------------------------
+        // Helper Functions Folowing
+        //      \/
         private void BindListViewSupplements()
         {
-            //this.ListViewSupplements.DataSource = this.AllSuppelments.ToList();
             this.ListViewSupplements.DataSource = this.SupplementFilters.GetFilteredSupplements();
             this.ListViewSupplements.DataBind();
         }
@@ -90,19 +109,6 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             this.ButtonRemoveBrandFilter.DataBind();
         }
 
-        protected void ListViewSupplements_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
-        {
-            this.DataPagersSupplements.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
-
-            //rebind List View
-            this.BindListViewSupplements();
-        }
-
-        protected void DataPagersSupplements_PreRender(object sender, EventArgs e)
-        {           
-            this.DataPagersSupplements.PageSize = this.ItemsPerPaga;
-        }
-
         protected string GetDetailsUrl(int? supplementid)
         {
             string urlToReturn = string.Empty;
@@ -112,7 +118,22 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             return urlToReturn;
         }
 
-          
+        // ----------------------------------------------
+        // Events Folowing
+        //      \/
+       
+
+        protected void DataPagersSupplements_PreRender(object sender, EventArgs e)
+        {           
+            this.DataPagersSupplements.PageSize = this.ItemsPerPaga;
+        }
+
+        protected void ListViewSupplements_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
+        {
+            this.DataPagersSupplements.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+            this.BindListViewSupplements();
+        }
+
         protected void LinkButtonSetCategoryFilter_Command(object sender, CommandEventArgs e)
         {
             var name = e.CommandArgument.ToString();
@@ -176,5 +197,7 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
         {
 
         }
+
+       
     }
 }
