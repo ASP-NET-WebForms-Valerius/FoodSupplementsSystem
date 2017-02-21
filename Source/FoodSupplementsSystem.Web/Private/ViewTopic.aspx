@@ -4,7 +4,7 @@
         ItemType="FoodSupplementsSystem.Data.Models.Topic"
         SelectMethod="fvDetails_GetItem">
         <ItemTemplate>
-            <b><h3><%# Item.Name %></b></h3>
+            <b><h3><%# Item.Name %></b></h3>           
             <p>
                     <i>Description:</i>
                     <p><h2><%# Item.Description %></h2></p>
