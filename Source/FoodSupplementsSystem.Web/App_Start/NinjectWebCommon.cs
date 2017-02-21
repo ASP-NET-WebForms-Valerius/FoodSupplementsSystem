@@ -17,7 +17,8 @@ namespace FoodSupplementsSystem.Web.App_Start
     using Data.Repositories;
     using Data.Contracts;
     using FoodSupplements;
-
+    using NinjectBindingsModules;
+    using WebFormsMvp.Binder;
     public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -74,7 +75,11 @@ namespace FoodSupplementsSystem.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind(typeof(IFoodSupplementsSystemDbContext)).To(typeof(FoodSupplementsSystemDbContext));
+            kernel.Load(new MvpNinjectModule());
+
+            PresenterBinder.Factory = kernel.Get<IPresenterFactory>();
+
+            kernel.Bind(typeof(IFoodSupplementsSystemDbContext)).To(typeof(FoodSupplementsSystemDbContext)).InRequestScope();
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
 
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));

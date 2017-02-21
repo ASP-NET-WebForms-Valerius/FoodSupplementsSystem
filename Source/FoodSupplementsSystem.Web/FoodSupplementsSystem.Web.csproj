@@ -630,6 +630,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="NinjectBindingsModules\MvpNinjectModule.cs" />
+    <Compile Include="PresenterFactories\ICustomPresenterFactory.cs" />
+    <Compile Include="PresenterFactories\WebFormsMvpPresenterFactory.cs" />
     <Compile Include="Private\ViewComment.aspx.cs">
       <DependentUpon>ViewComment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
