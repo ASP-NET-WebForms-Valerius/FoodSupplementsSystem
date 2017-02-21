@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewCategories\IViewCategoriesView.cs" />
+    <Compile Include="ViewCategories\ViewCategoriesPresenter.cs" />
+    <Compile Include="ViewCategories\ViewCategoriesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
