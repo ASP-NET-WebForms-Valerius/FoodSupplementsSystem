@@ -626,6 +626,8 @@
       <DependentUpon>Details.aspx</DependentUpon>
     </Compile>
     <Compile Include="FoodSupplements\ISupplementFilters.cs" />
+    <Compile Include="FoodSupplements\ISupplementFiltersProperties.cs" />
+    <Compile Include="FoodSupplements\SessionSupplementFilters.cs" />
     <Compile Include="FoodSupplements\SupplementFilters.cs" />
     <Compile Include="FoodSupplements\Supplements.aspx.cs">
       <DependentUpon>Supplements.aspx</DependentUpon>

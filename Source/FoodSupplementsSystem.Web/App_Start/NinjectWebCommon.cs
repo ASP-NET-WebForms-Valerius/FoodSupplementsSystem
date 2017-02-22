@@ -93,7 +93,7 @@ namespace FoodSupplementsSystem.Web.App_Start
                               .SelectAllClasses()
                               .BindDefaultInterface());
 
-            kernel.Bind<ISupplementFilters>().To<SupplementFilters>();
+            kernel.Bind<ISupplementFilters>().To<SupplementFilters>().InRequestScope();
 
         }
     }

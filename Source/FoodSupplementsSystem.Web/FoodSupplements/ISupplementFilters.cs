@@ -4,17 +4,20 @@ using FoodSupplementsSystem.Services.Contracts;
 
 namespace FoodSupplementsSystem.Web.FoodSupplements
 {
-    public interface ISupplementFilters
+    public interface ISupplementFilters : ISupplementFiltersProperties
     {
-        bool AnyEnabled { get; }
-        bool BrandEnabled { get; set; }
-        string BrandName { get; set; }
-        bool CategoryEnabled { get; set; }
-        string CategoryName { get; set; }
+        //bool BrandEnabled { get; set; }
+        //string BrandName { get; set; }
+        //bool CategoryEnabled { get; set; }
+        //string CategoryName { get; set; }
+        ////bool TopicEnabled { get; set; }
+        //string TopicName { get; set; }
+
         ISupplementsServices SupplementsServices { get; }
-        bool TopicEnabled { get; set; }
-        string TopicName { get; set; }
 
         IEnumerable<Supplement> GetFilteredSupplements();
+
+        bool AnyEnabled { get; }
+
     }
 }

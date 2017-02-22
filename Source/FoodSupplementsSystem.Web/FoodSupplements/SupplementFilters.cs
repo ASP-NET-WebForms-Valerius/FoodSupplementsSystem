@@ -12,20 +12,7 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
 {
     public class SupplementFilters : ISupplementFilters
     {
-        //private bool anyEnabled;
-        //private bool categoryEnabled;
-        //private bool topicEnabled;
-        //private bool brandEnabled;
-
-        //private bool categoryReadyToUse;
-        //private bool topicReadyToUse;
-        //private bool brandReadyToUse;
-
-        //private string categoryName;
-        //private string topicName;
-        //private string brandName;
-
-        // TODO Refactore the whole class to one and use instances for 
+        // TODO Refactor the whole class to one and use instances for 
         // Supplement Category
         // Topic Category
         // Brand Category
@@ -34,7 +21,10 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
 
         public SupplementFilters(ISupplementsServices supplementsServices)
         {
-            this.supplementsServices = supplementsServices;                           
+            this.supplementsServices = supplementsServices;
+            this.BrandName = string.Empty;
+            this.CategoryName = string.Empty;
+            this.TopicName = string.Empty;                        
         }
 
         public ISupplementsServices SupplementsServices
@@ -61,7 +51,6 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
                 return anyEnabled;
             }
         }
-        
 
         // Filter Words
         public string CategoryName { get; set; }
@@ -69,7 +58,6 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
         public string TopicName { get; set; }
 
         public string BrandName { get; set; }
-
 
         // Ready To Use filters
         private bool CategoryReadyToUse()
@@ -127,7 +115,6 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
 
             return readyToUse;
         }
-        
 
         public IEnumerable<Supplement> GetFilteredSupplements()
         {
@@ -139,7 +126,6 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
 
                 return supplementsToReturn;
             }
-
             
             if (this.TopicEnabled && this.TopicReadyToUse())
             {
@@ -149,10 +135,15 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
                 }
                 else
                 {
-                    var suppsF = this.SupplementsServices.GetFilteredByTopic(this.TopicName).ToList();
+                    //var suppsF = this.SupplementsServices.GetFilteredByTopic(this.TopicName).ToList();
+                    //supplementsToReturn.AddRange(suppsF);
+
+                    var suppsF = supplementsToReturn.Where(s => s.Topic.Name == this.TopicName).ToList();
+                    supplementsToReturn.Clear();
                     supplementsToReturn.AddRange(suppsF);
                 }
             }
+
             if (this.CategoryEnabled && this.CategoryReadyToUse())
             {
 
@@ -162,10 +153,14 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
                 }
                 else
                 {
-                    var suppsF = this.SupplementsServices.GetFilteredByCategory(this.CategoryName).ToList();
+                    //var suppsF = this.SupplementsServices.GetFilteredByCategory(this.CategoryName).ToList();
+
+                    var suppsF = supplementsToReturn.Where(s => s.Category.Name == this.CategoryName).ToList();
+                    supplementsToReturn.Clear();
                     supplementsToReturn.AddRange(suppsF);
                 }
             }
+
             if (this.BrandEnabled && this.BrandReadyToUse())
             {
                 if (supplementsToReturn == null)
@@ -174,7 +169,10 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
                 }
                 else
                 {
-                    var suppsF = this.SupplementsServices.GetFilteredByBrand(this.BrandName).ToList();
+                    //var suppsF = this.SupplementsServices.GetFilteredByBrand(this.BrandName).ToList();
+
+                    var suppsF = supplementsToReturn.Where(s => s.Brand.Name == this.BrandName).ToList();
+                    supplementsToReturn.Clear();
                     supplementsToReturn.AddRange(suppsF);
                 }
             }

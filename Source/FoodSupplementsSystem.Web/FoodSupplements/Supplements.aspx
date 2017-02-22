@@ -19,11 +19,11 @@
 
     <asp:PlaceHolder ID="PlaceHolderRemoveCategoryFilterButtons" runat="server"
         Visible="<%# this.SupplementFilters.CategoryEnabled %>">
-        
+        <span>Category filter active </span>
         <div class="btn-group" role="group" aria-label="..." >
             <asp:Button ID="Button1" runat="server"  
                 CssClass="btn btn-default btn-sm"               
-                Text="Category filter" 
+                Text="<%#: this.SupplementFilters.CategoryName %>" 
                 Enabled="false"/>
 
             <asp:Button ID="ButtonRemoveCategoryFilter" runat="server" 
@@ -35,11 +35,11 @@
 
     <asp:PlaceHolder ID="PlaceHolderRemoveTopicFilterButtons" runat="server"
         Visible="<%# this.SupplementFilters.TopicEnabled %>">
-        
+        <span>Toplic filter active </span>
         <div class="btn-group" role="group" aria-label="..." >
             <asp:Button ID="Button2" runat="server"  
                 CssClass="btn btn-default btn-sm"               
-                Text="Toplic filter" 
+                Text="<%#: this.SupplementFilters.TopicName %>" 
                 Enabled="false"/>
 
             <asp:Button ID="ButtonRemoveTopicFilter" runat="server" 
@@ -51,11 +51,11 @@
 
     <asp:PlaceHolder ID="PlaceHolderRemoveBrandFilterButtons" runat="server"
         Visible="<%# this.SupplementFilters.BrandEnabled %>">
-        
+        <span>Brand filter active </span>
         <div class="btn-group" role="group" aria-label="..." >
             <asp:Button ID="Button3" runat="server"  
                 CssClass="btn btn-default btn-sm"               
-                Text="Brand filter" 
+                Text="<%#: this.SupplementFilters.TopicName %>" 
                 Enabled="false"/>
             <asp:Button ID="ButtonRemoveBrandFilter" runat="server" 
                 CssClass="btn btn-danger btn-sm"
@@ -63,8 +63,6 @@
                 OnClick="ButtonRemoveBrandFilter_Click"/>
         </div>
     </asp:PlaceHolder>
-
-    
 
     <asp:ListView ID="ListViewSupplements" runat="server"         
         ItemType="FoodSupplementsSystem.Data.Models.Supplement"
@@ -97,7 +95,7 @@
                 <%--EXECUTE [dbo].[usp_GetRatingCountAndAvgBySupplementId] @SupplementId--%>
                 <asp:SqlDataSource ID="SqlDataSourceRating" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:FoodSupplementsContextConnectionString %>"
-                    SelectCommand = "EXECUTE [dbo].[usp_GetRatingCountAndAvgBySupplementId] @SupplementId">
+                    SelectCommand = "EXECUTE [dbo].[usp_GetRatingCountAndAvgBySupplementId] @supplementId">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="LabelId" PropertyName="Text" Name="supplementId" DbType="Int32" />
                     </SelectParameters>
@@ -125,7 +123,7 @@
                         <div class="col-md-2 table-bordered-none-byMe">
                             <img src="<%#: Item.ImageUrl %>" alt="Supplements-Category-Brand-Name" />
                         </div>
-                        <div class="col-md-8 veryverylight-gray-bg table-bordered-none-byMe">
+                        <div class="col-md-8 table-bordered-none-byMe">
                             <%--Name and Details button--%>
                             <div class="row ">                        
                                 <div class="col-md-8 table-bordered-none-byMe">
@@ -149,21 +147,16 @@
                                                 Text='<%# Eval("VotesAverageValue") %>' 
                                                 Visible="true">
                                             </asp:Label>
-                                            
-                                            <asp:FormView ID="FormViewRatingValue" runat="server" DataSourceID="SqlDataSourceRating">
-                                                <ItemTemplate>
-                                                    <ajaxToolkit:Rating ID="SupplementRating" runat="server"                                    
-                                                        CurrentRating='<%# Eval("VotesAverageValue") %>' 
-                                                        MaxRating="5"
-                                                        Enabled="<%# this.User.Identity.IsAuthenticated %>"
-                                                        StarCssClass="ratingStar"
-                                                        EmptyStarCssClass="emptyRatingStar"
-                                                        FilledStarCssClass="filledRatingStar"
-                                                        WaitingStarCssClass="savedRatingStar"
-                                                        OnChanged="SupplementRating_Changed" />       
-                                                </ItemTemplate>  
-                                            </asp:FormView>    
 
+                                            <ajaxToolkit:Rating ID="SupplementRating" runat="server"                                    
+                                                CurrentRating='<%# Eval("VotesAverageValue") %>' 
+                                                MaxRating="5"
+                                                ReadOnly="true"
+                                                Enabled="<%# this.User.Identity.IsAuthenticated %>"
+                                                StarCssClass="ratingStar"
+                                                EmptyStarCssClass="emptyRatingStar"
+                                                FilledStarCssClass="filledRatingStar"
+                                                WaitingStarCssClass="savedRatingStar" />       
                                         </ItemTemplate>
                                     </asp:FormView>
                                 </div>   
@@ -237,7 +230,7 @@
                     <div class="row table-bordered-none-byMe">
                         <div class="col-md-2 table-bordered-none-byMe">                    
                         </div>
-                        <div class="col-md-8 veryverylight-gray-bg table-bordered-none-byMe">   
+                        <div class="col-md-8 table-bordered-none-byMe">   
                             <div class="descriptin-ingredients-use-accordion">
                                 <h3><a>Description</a></h3>
                                     <div>
