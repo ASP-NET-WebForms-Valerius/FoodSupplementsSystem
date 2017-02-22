@@ -1,6 +1,7 @@
 ﻿using FoodSupplementsSystem.Data.Models;
 using FoodSupplementsSystem.Data.Repositories.Contracts;
 using FoodSupplementsSystem.Services.Contracts;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FoodSupplementsSystem.Services
@@ -14,12 +15,12 @@ namespace FoodSupplementsSystem.Services
             this.comments = comments;
         }
 
-        public IQueryable<Comment> GetAll()
+        public IEnumerable<Comment> GetAll()
         {
             return this.comments.All();
         }
 
-        public IQueryable<Comment> GetTop(int count)
+        public IEnumerable<Comment> GetTop(int count)
         {
             return this.comments.All().OrderByDescending(x => x.Likes.Count()).Take(count);
         }

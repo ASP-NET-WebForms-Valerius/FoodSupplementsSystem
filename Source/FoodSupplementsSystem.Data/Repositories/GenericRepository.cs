@@ -80,7 +80,7 @@ namespace FoodSupplementsSystem.Data.Repositories
             return commandResult.AsQueryable<T>();
         }
 
-        public virtual IQueryable<T> All()
+        public virtual IEnumerable<T> All()
         {
             return this.DbSet.AsQueryable();
         }

@@ -1,10 +1,10 @@
 ﻿using FoodSupplementsSystem.Data.Models;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace FoodSupplementsSystem.MVP.ViewCategories
 {
     public class ViewCategoriesViewModel
     {
-        public IQueryable<Category> Categories { get; set; }
+        public IEnumerable<Category> Categories { get; set; }
     }
 }

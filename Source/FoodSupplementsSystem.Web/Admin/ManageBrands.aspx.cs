@@ -3,6 +3,7 @@ using FoodSupplementsSystem.Services.Contracts;
 using FoodSupplementsSystem.Web.App_Start;
 using Ninject;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 
@@ -22,7 +23,7 @@ namespace FoodSupplementsSystem.Web.Admin
 
         }
 
-        public IQueryable<Brand> gvBrands_GetData()
+        public IEnumerable<Brand> gvBrands_GetData()
         {
             return this.brandsServices.GetAll().OrderBy(x => x.Id);
         }

@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace FoodSupplementsSystem.Data.Repositories.Contracts
 {
     public interface IRepository<T> : IDisposable where T : class
     {
-        IQueryable<T> All();
+        IEnumerable<T> All();
 
         T GetById(int id);
 

@@ -1,13 +1,13 @@
 ﻿using FoodSupplementsSystem.Data.Models;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace FoodSupplementsSystem.Services.Contracts
 {
     public interface ICommentsServices
     {
-        IQueryable<Comment> GetTop(int count);
+        IEnumerable<Comment> GetTop(int count);
 
-        IQueryable<Comment> GetAll();
+        IEnumerable<Comment> GetAll();
 
         Comment GetById(int id);
 

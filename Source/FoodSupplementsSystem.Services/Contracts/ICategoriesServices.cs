@@ -1,11 +1,11 @@
 ﻿using FoodSupplementsSystem.Data.Models;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace FoodSupplementsSystem.Services.Contracts
 {
     public interface ICategoriesServices
     {
-        IQueryable<Category> GetAll();
+        IEnumerable<Category> GetAll();
 
         Category Create(string name);
 

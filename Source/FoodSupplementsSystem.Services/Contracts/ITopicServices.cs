@@ -1,11 +1,11 @@
 ﻿using FoodSupplementsSystem.Data.Models;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace FoodSupplementsSystem.Services.Contracts
 {
     public interface ITopicsServices
     {
-        IQueryable<Topic> GetAll();
+        IEnumerable<Topic> GetAll();
 
         Topic GetById(int id);
 

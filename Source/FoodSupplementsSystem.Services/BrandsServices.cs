@@ -1,7 +1,7 @@
 ﻿using FoodSupplementsSystem.Data.Models;
 using FoodSupplementsSystem.Data.Repositories.Contracts;
 using FoodSupplementsSystem.Services.Contracts;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace FoodSupplementsSystem.Services
 {
@@ -14,7 +14,7 @@ namespace FoodSupplementsSystem.Services
             this.brands = brands;
         }
 
-        public IQueryable<Brand> GetAll()
+        public IEnumerable<Brand> GetAll()
         {
             return this.brands.All();
         }
