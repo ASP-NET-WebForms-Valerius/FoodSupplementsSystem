@@ -59,6 +59,9 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="CategoriesServicesTests\Create_Should.cs" />
+    <Compile Include="CategoriesServicesTests\GetAll_Should.cs" />
+    <Compile Include="CategoriesServicesTests\GetById_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupplementsServicesTests\GetById_Should.cs" />
   </ItemGroup>
