@@ -17,6 +17,8 @@
     <br/>
     <h3>Add new Topic</h3>
     <p>Name:</p>
+    <asp:RequiredFieldValidator ForeColor="Red" ErrorMessage="Topic name is mandatory!" ControlToValidate="tbInsertName" runat="server" />
+    <br />
     <asp:TextBox runat="server" ID="tbInsertName" />
     <br/>
     <br/>

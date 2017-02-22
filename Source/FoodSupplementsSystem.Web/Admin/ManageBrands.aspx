@@ -17,6 +17,8 @@
     <br/>
     <h3>Add new Brand</h3>
     <p>Name:</p>
+    <asp:RequiredFieldValidator ForeColor="Red" ErrorMessage="Brand name is mandatory!" ControlToValidate="tbInsertName" runat="server" />
+    <br />
     <asp:TextBox runat="server" ID="tbInsertName" />
     <br/>
     <br/>
