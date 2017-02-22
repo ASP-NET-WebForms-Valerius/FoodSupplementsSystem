@@ -48,7 +48,6 @@ namespace FoodSupplementsSystem.Data.Migrations
             Categories.Add(new Category() { Name = "Category15" });
             Categories.Add(new Category() { Name = "Category16" });
             Categories.Add(new Category() { Name = "Category17" });
-            Categories.Add(new Category() { Name = "Category17" });
             Categories.Add(new Category() { Name = "Category18" });
             Categories.Add(new Category() { Name = "Category19" });
             Categories.Add(new Category() { Name = "Category20" });
