@@ -1,4 +1,5 @@
-﻿using FoodSupplementsSystem.Data.Models;
+﻿using Bytes2you.Validation;
+using FoodSupplementsSystem.Data.Models;
 using FoodSupplementsSystem.Data.Repositories.Contracts;
 using FoodSupplementsSystem.Services.Contracts;
 using System.Collections.Generic;
@@ -26,6 +27,8 @@ namespace FoodSupplementsSystem.Services
 
         public void Create(Topic topic)
         {
+            Guard.WhenArgument(topic, "topic").IsNull().Throw();
+
             this.topics.Add(topic);
             this.topics.SaveChanges();
         }
