@@ -33,11 +33,8 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // TODO bind to ninject
-            //this.SupplementFilters = new SupplementFilters(this.SupplementsServices);
 
             this.ItemsPerPaga = Consts.ItemsPerPage;
-
 
             if (this.Page.IsPostBack)
             {
@@ -68,6 +65,7 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
 
         private void BindDataButtonsRemoveFilters()
         {
+            this.PlaceHolderRemoveCategoryFilterButtons.DataBind();
             this.ButtonRemoveCategoryFilter.DataBind();
             this.ButtonRemoveTopicFilter.DataBind();
             this.ButtonRemoveBrandFilter.DataBind();

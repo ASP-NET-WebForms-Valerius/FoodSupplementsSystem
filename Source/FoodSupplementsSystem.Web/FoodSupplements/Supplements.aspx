@@ -92,12 +92,7 @@
                 </asp:Label>
                 <%--End-Helpers hidden fields--%>
 
-                <%--CurrentRating='<%# Eval("VotesAverageValue") != null ? Eval("VotesAverageValue") : "0" %>'--%>
-                <%--<%#: Item.Id > 0 ? "SELECT Count([Value]) AS VotesCount, AVG([Value]) AS VotesAverageValue FROM [Ratings] WHERE SupplementId = @supplementId" : "SELECT 0 AS VotesCount, 0 AS VotesAverageValue" %>--%>
-
                 <%--Additional data source, used for Rating Control--%>
-
-                
                 <%--"SELECT Count([Value]) AS VotesCount, AVG([Value]) AS VotesAverageValue FROM [Ratings] WHERE SupplementId = @supplementId"--%> 
                 <%--EXECUTE [dbo].[usp_GetRatingCountAndAvgBySupplementId] @SupplementId--%>
                 <asp:SqlDataSource ID="SqlDataSourceRating" runat="server" 
