@@ -24,23 +24,23 @@ namespace FoodSupplementsSystem.Data.Migrations
                 UserName = "Ana"
             };
 
-            //context.Users.Add(user);
+            context.Users.Add(user);
 
-            //context.SaveChanges();
+            context.SaveChanges();
 
-            //var seed = new SeedData(user);
+            var seed = new SeedData(user);
 
-            //seed.Categories.ForEach(x => context.Categories.Add(x));
+            seed.Categories.ForEach(x => context.Categories.Add(x));
 
-            //seed.Topics.ForEach(x => context.Topics.Add(x));
+            seed.Topics.ForEach(x => context.Topics.Add(x));
 
-            //seed.Brands.ForEach(x => context.Brands.Add(x));
+            seed.Brands.ForEach(x => context.Brands.Add(x));
 
-            //seed.Comments.ForEach(x => context.Comments.Add(x));
+            seed.Comments.ForEach(x => context.Comments.Add(x));
 
-            //seed.Supplements.ForEach(x => context.Supplements.Add(x));
+            seed.Supplements.ForEach(x => context.Supplements.Add(x));
 
-            //context.SaveChanges();
+            context.SaveChanges();
         }
     }
 }

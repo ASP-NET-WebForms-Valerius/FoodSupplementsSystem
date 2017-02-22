@@ -38,6 +38,20 @@ namespace FoodSupplementsSystem.Data.Migrations
             Categories.Add(new Category() { Name = "Category5" });
             Categories.Add(new Category() { Name = "Category6" });
             Categories.Add(new Category() { Name = "Category7" });
+            Categories.Add(new Category() { Name = "Category8" });
+            Categories.Add(new Category() { Name = "Category9" });
+            Categories.Add(new Category() { Name = "Category10" });
+            Categories.Add(new Category() { Name = "Category11" });
+            Categories.Add(new Category() { Name = "Category12" });
+            Categories.Add(new Category() { Name = "Category13" });
+            Categories.Add(new Category() { Name = "Category14" });
+            Categories.Add(new Category() { Name = "Category15" });
+            Categories.Add(new Category() { Name = "Category16" });
+            Categories.Add(new Category() { Name = "Category17" });
+            Categories.Add(new Category() { Name = "Category17" });
+            Categories.Add(new Category() { Name = "Category18" });
+            Categories.Add(new Category() { Name = "Category19" });
+            Categories.Add(new Category() { Name = "Category20" });
 
             this.Topics = new List<Topic>();
             //0
@@ -82,6 +96,48 @@ namespace FoodSupplementsSystem.Data.Migrations
                 Name = "Eye Health",
                 Description = "Your eyes are an important part of your health. There are many things you can do to keep them healthy and make sure you are seeing your best."
             });
+            //7
+            Topics.Add(new Topic()
+            {
+                Name = "Anti-Aging 2",
+                Description = "Hormones including DHEA and Progesterone, Antioxidants, and Face Cream with CoQ10."
+            });
+            //8
+            Topics.Add(new Topic()
+            {
+                Name = "Brain Health 2",
+                Description = "The brain controls almost all body processes, including heartbeat, breathing, digestion, muscle movement, and speech, as well as all five senses. The brain is also responsible for memory, emotion, and reasoning."
+            });
+            //9
+            Topics.Add(new Topic()
+            {
+                Name = "Cardiovascular Support 2",
+                Description = "Proper nutrition promotes healthy circulation."
+            });
+            //10
+            Topics.Add(new Topic()
+            {
+                Name = "Detox & Clensing 2",
+                Description = "Intestinal and Cellular Cleansing Products Including: Detoxification, Colon Cleanse, Toxin Absorption, and Heavy Metal Detox."
+            });
+            //11
+            Topics.Add(new Topic()
+            {
+                Name = "Emotional Well Being 2",
+                Description = "Emotional wellness influences the quality of life and also impacts physical health. It’s often debatable which comes first."
+            });
+            //12
+            Topics.Add(new Topic()
+            {
+                Name = "Energy Support 2",
+                Description = "Balancing family, work, health, errands and social engagements can be difficult to endure. It might not be possible to slow down the demands of life, but it is possible to fuel up naturally with supplements and a proper diet."
+            });
+            //13
+            Topics.Add(new Topic()
+            {
+                Name = "Eye Health 2",
+                Description = "Your eyes are an important part of your health. There are many things you can do to keep them healthy and make sure you are seeing your best."
+            });
 
             this.Brands = new List<Brand>();
             //0
@@ -118,6 +174,42 @@ namespace FoodSupplementsSystem.Data.Migrations
             Brands.Add(new Brand()
             {
                 Name = "Douglas Labs",
+                WebSite = "https://www.douglaslabs.com"
+            });
+            //6
+            Brands.Add(new Brand()
+            {
+                Name = "Nordic Naturals 2",
+                WebSite = "https://www.nordicnaturals.com"
+            });
+            //7
+            Brands.Add(new Brand()
+            {
+                Name = "Pure Encapsulation 2",
+                WebSite = "https://www.pureencapsulations.com"
+            });
+            //8
+            Brands.Add(new Brand()
+            {
+                Name = "Life Extension 2",
+                WebSite = "http://www.lifeextension.com"
+            });
+            //9
+            Brands.Add(new Brand()
+            {
+                Name = "American Biologics 2",
+                WebSite = "http://americanbiologics.com/renewal_factor1.shtml"
+            });
+            //10
+            Brands.Add(new Brand()
+            {
+                Name = "Anabolic Laboratories 2",
+                WebSite = "http://www.anaboliclabs.com"
+            });
+            //11
+            Brands.Add(new Brand()
+            {
+                Name = "Douglas Labs 2",
                 WebSite = "https://www.douglaslabs.com"
             });
 
