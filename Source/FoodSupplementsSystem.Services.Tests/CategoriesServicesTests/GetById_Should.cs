@@ -28,7 +28,7 @@ namespace FoodSupplementsSystem.Services.Tests.CategoriesServicesTests
             //Arrange
             var categoriesMock = new Mock<IRepository<Category>>();
             int categoryId = 1;
-            Category category = new Category() { Id = 1, Name = "Category1" };
+            Category category = new Category() { Id = categoryId, Name = "Category1" };
 
             categoriesMock.Setup(c => c.GetById(categoryId)).Returns(category);
 
