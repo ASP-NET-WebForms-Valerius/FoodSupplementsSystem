@@ -175,7 +175,7 @@
         <div class="raw">
             <div class="col-md-4 table-bordered">
                 <asp:Button ID="ButtonGoBack" runat="server" 
-                    CssClass="btn btn-default"
+                    CssClass="btn btn-primary"
                     Text="Go back" 
                     OnClick="ButtonGoBack_Click" />
             </div>

@@ -39,6 +39,10 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             this.BindDataButtonsRemoveFilters();
         }
 
+
+        // ----------------------------------------------
+        // Helper Functions Folowing
+        //      \/
         private bool SessionAndThisSupplementAreSame(ISupplementFiltersProperties sessoinSupplementFilters, ISupplementFilters thisSupplementFilters)
         {
             if (sessoinSupplementFilters.CategoryEnabled != thisSupplementFilters.CategoryEnabled)
@@ -68,7 +72,6 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
 
             return true;
         }
-
         protected ISupplementFiltersProperties SupplementFiltersPropertiesTransferToSessionElement(ISupplementFilters fromThisSupplement)
         {
             ISupplementFiltersProperties sessionElement = new SessionSupplementFilters();
@@ -96,7 +99,6 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             this.SupplementFilters.TopicName = fromSessionElement.TopicName;
 
         }
-        
         private void GetSessionItemToThis()
         {
             ISupplementFiltersProperties sessionSupplementFilters = (SessionSupplementFilters)this.Session["SupplementFilters"];
@@ -121,47 +123,17 @@ namespace FoodSupplementsSystem.Web.FoodSupplements
             Session["SupplementFilters"] = sessionSupplementFilters;
         }
 
-        //private void UpdateSessionSupplemetFilters()
-        //{
-        //    ISupplementFiltersProperties sessionSupplementFilters = (SessionSupplementFilters)this.Session["SupplementFilters"];
-        //    if (sessionSupplementFilters == null)
-        //    {
-        //        sessionSupplementFilters = new SessionSupplementFilters();
-        //        //sessionSupplementFilters = this.SupplementFiltersTransferProperties(this.SupplementFilters, sessionSupplementFilters);
-        //        Session["SupplementFilters"] = sessionSupplementFilters;
-        //    }
-        //    else if (sessionSupplementFilters != null && this.SupplementFilters != null)
-        //    {
-        //        if (!this.SessionAndThisSupplementAreSame(sessionSupplementFilters, this.SupplementFilters))
-        //        {
-        //            sessionSupplementFilters = this.SupplementFiltersTransferProperties(this.SupplementFilters, sessionSupplementFilters);
-        //            Session["SupplementFilters"] = sessionSupplementFilters;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        this.SupplementFilters = this.SupplementFiltersTransferProperties(sessionSupplementFilters, this.SupplementFilters);
-        //    }
-        //}
-       
-
-
-        // ----------------------------------------------
-        // Helper Functions Folowing
-        //      \/
         private void BindListViewSupplements()
         {
             this.ListViewSupplements.DataSource = this.SupplementFilters.GetFilteredSupplements();
             this.ListViewSupplements.DataBind();
         }
-
         private void BindDataPagersSupplements()
         {
             this.DataPagersSupplements.PagedControlID = this.ListViewSupplements.ID.ToString(); // "ListViewSupplements";
             this.DataPagersSupplements.DataBind();
             this.DataPagersSupplements.PageSize = this.ItemsPerPaga;
         }
-
         private void BindDataButtonsRemoveFilters()
         {
             this.PlaceHolderRemoveCategoryFilterButtons.DataBind();
