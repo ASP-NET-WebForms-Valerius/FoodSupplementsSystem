@@ -23,9 +23,9 @@ namespace FoodSupplementsSystem.Web.Admin
 
         }
 
-        public IEnumerable<Brand> gvBrands_GetData()
+        public IQueryable<Brand> gvBrands_GetData()
         {
-            return this.brandsServices.GetAll().OrderBy(x => x.Id);
+            return this.brandsServices.GetAll().OrderBy(x => x.Id).ToList().AsQueryable();
         }
 
         public void gvBrands_UpdateItem(int id)

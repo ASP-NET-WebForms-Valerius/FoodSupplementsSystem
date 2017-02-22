@@ -23,9 +23,9 @@ namespace FoodSupplementsSystem.Web.Admin
 
         }
 
-        public IEnumerable<Topic> gvTopics_GetData()
+        public IQueryable<Topic> gvTopics_GetData()
         {
-            return this.topicsServices.GetAll().OrderBy(x => x.Id);
+            return this.topicsServices.GetAll().OrderBy(x => x.Id).ToList().AsQueryable();
         }
 
         public void gvTopics_UpdateItem(int id)

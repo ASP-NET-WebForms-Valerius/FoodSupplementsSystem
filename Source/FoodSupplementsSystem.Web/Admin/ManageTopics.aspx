@@ -6,7 +6,7 @@
         SelectMethod="gvTopics_GetData"
         AutoGenerateColumns="true"
         AllowPaging="true"
-        PageSize="10"
+        PageSize="8"
         UpdateMethod="gvTopics_UpdateItem"
         DeleteMethod="gvTopics_DeleteItem">
         <Columns>

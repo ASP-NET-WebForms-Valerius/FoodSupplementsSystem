@@ -6,7 +6,7 @@
         SelectMethod="gvBrands_GetData"
         AutoGenerateColumns="true"
         AllowPaging="true"
-        PageSize="10"
+        PageSize="8"
         UpdateMethod="gvBrands_UpdateItem"
         DeleteMethod="gvBrands_DeleteItem">
         <Columns>
