@@ -1,34 +1,30 @@
-﻿using System;
+﻿using FoodSupplementsSystem.Data.Models;
+using FoodSupplementsSystem.Services.Contracts;
+using FoodSupplementsSystem.Web.App_Start;
+using Ninject;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Data.Entity.Infrastructure;
-
-using FoodSupplementsSystem.Data;
-using FoodSupplementsSystem.Services;
-using FoodSupplementsSystem.Data.Models;
+using System.Linq;
+using System.Web.UI;
 
 namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
 {
     public partial class aSupplements : Page
     {
+        public aSupplements()
+        {
+            this.SupplementsServices = NinjectWebCommon.Kernel.Get<ISupplementsServices>();
+        }
 
+        protected ISupplementsServices SupplementsServices { get; private set; }
+        
         protected string ErrorMessage { get; private set; }
         protected string SuccessMessage { get; private set; }
 
-        public FoodSupplementsSystemDbContext DbContext { get; private set; }
-        public UnitOfWork UnitOfWork { get; private set; }
-        protected SupplementsServices SupplementsServices { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.DbContext = new FoodSupplementsSystemDbContext();
-            this.UnitOfWork = new UnitOfWork(this.DbContext);
-            this.SupplementsServices = new SupplementsServices(this.UnitOfWork.SupplementRepository);
-
-            this.SuccessMessage = "Succsess Succsess Succsess Succsess Succsess Succsess Succsess Succsess Succsess Succsess ";
 
             if (this.Page.IsPostBack)
             {
@@ -39,25 +35,52 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
             this.BindPlaceHoldersMessages();
         }
 
+        // ----------------------------------------------
+        // Helper Functions Folowing
+        //      \/
         private void BindPlaceHoldersMessages()
         {
             this.PlaceHolderErrorMessage.DataBind();
             this.PlaceHolderSuccessMessage.DataBind();
         }
 
+        protected int GetAverageRatingValue(List<Rating> supplementrRatings)
+        {
+            int sum = 0;
+
+            foreach (Rating rating in supplementrRatings.ToArray())
+            {
+                sum += rating.Value;
+            }
+
+            // Deviding by Zero check
+            int averageValue = 0;
+            // TODO Refactore magic numbers
+            if (supplementrRatings.Count > 0 && supplementrRatings.Count <= 5)
+            {
+                averageValue = sum / supplementrRatings.Count;
+            }
+            else
+            {
+                averageValue = 0;
+            }
+
+            return averageValue;
+        }
+
+        // ----------------------------------------------
+        // Events Folowing
+        //      \/
         protected void ButtonAcknoledgeErrorMessages_Click(object sender, EventArgs e)
         {
             this.ErrorMessage = string.Empty;
             this.PlaceHolderErrorMessage.Visible = !string.IsNullOrEmpty(this.ErrorMessage);
-            //this.PlaceHolderErrorMessage.DataBind();
         }
         protected void ButtonAcknoledgeSuccessMessages_Click(object sender, EventArgs e)
         {
             this.SuccessMessage = string.Empty;
             this.PlaceHolderSuccessMessage.Visible = !string.IsNullOrEmpty(this.SuccessMessage);
-            //this.PlaceHolderSuccessMessage.DataBind();
         }
-       
 
         // The return type can be changed to IEnumerable, however to support
         // paging and sorting, the following parameters must be added:

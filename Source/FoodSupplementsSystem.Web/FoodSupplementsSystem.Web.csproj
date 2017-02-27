@@ -313,8 +313,8 @@
     <Content Include="Configuration\CustomErrors.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="FoodSupplements\Web.config" />
     <Content Include="Configuration\Consts.general.config" />
+    <None Include="Properties\PublishProfiles\FoodSupplementsLocal.pubxml" />
     <None Include="Properties\PublishProfiles\My IIS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="FoodSupplements\Details.aspx" />
@@ -730,9 +730,6 @@
       <Project>{16FE41E2-4365-489D-9464-565B23924D91}</Project>
       <Name>FoodSupplementsSystem.Services</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

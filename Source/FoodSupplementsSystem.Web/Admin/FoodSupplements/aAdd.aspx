@@ -5,8 +5,8 @@
     <div class="container">
         <div class="raw">
 
-            <div class="raw table-bordered">
-                <div class="col-md-10 table-bordered">
+            <div class="raw">
+                <div class="col-md-10 table-bordered-none-byMe">
                     <h1 class="red-fg">Add new supplement <a href="../aDefault.aspx" class="nav-link">admin</a> page</h1>
                 </div>
             </div>    
@@ -14,7 +14,7 @@
             <!-- Add the extra clearfix for only the required viewport -->
             <div class="clearfix visible-md"></div>
             <div class="raw">
-                <div class="col-md-8 pull-right table-bordered">
+                <div class="col-md-8 pull-right table-bordered-none-byMe">
 
                     <%--<asp:ValidationSummary ShowModelStateErrors="true" runat="server" />--%>
 
@@ -43,9 +43,9 @@
 
             <!-- Add the extra clearfix for only the required viewport -->
             <div class="clearfix visible-md"></div>
-            <!-- Detail row -->
+            <!-- Details row -->
             <div class="raw">
-                <div class="col-md-8 table-bordered">  
+                <div class="col-md-10 table-bordered-none-byMe">  
                     <asp:FormView ID="FormViewAddSupplement" runat="server" 
                         ItemType="FoodSupplementsSystem.Data.Models.Supplement"
                         SelectMethod="FormViewAddSupplement_GetItem"
@@ -55,7 +55,7 @@
                     
                         <ItemTemplate>  
                             <div class="row">  
-                                <div class="col-md-12 table-bordered">        
+                                <div class="col-md-12 table-bordered-none-byMe">        
                                     <p><strong>Name: </strong><%#: Item.Name %></p>                            
                                     <p><strong>ImageUrl: </strong><%#: Item.ImageUrl %></p>                            
                                     <p><strong>Ingredients: </strong><%#: Item.Ingredients %></p>                            
@@ -73,7 +73,7 @@
                             <!-- Add the extra clearfix for only the required viewport -->
                             <div class="clearfix visible-md"></div>
                             <div class="row">
-                                <div class="col-md-8 table-bordered">
+                                <div class="col-md-8 table-bordered-none-byMe">
                                     <asp:LinkButton ID="LinkButtonInsert" runat="server"
                                         CssClass="btn btn-primary btn-sm"
                                         Width="75%"
@@ -90,7 +90,7 @@
                         </ItemTemplate>
                         <EditItemTemplate>
                             <div class="row">  
-                                <div class="col-md-12 table-bordered">        
+                                <div class="col-md-12 table-bordered-none-byMe">        
                                     <p><strong>Name: </strong></p> 
                                     <asp:TextBox runat="server" ID="TextBoxName" Text="<%#: BindItem.Name %>" />                            
                                     <p><strong>ImageUrl: </strong></p> 
@@ -123,7 +123,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-8 table-bordered">
+                                <div class="col-md-8 table-bordered-none-byMe">
                                     <asp:LinkButton ID="LinkButtonEdit" runat="server" 
                                         CssClass="btn btn-success btn-sm" 
                                         Width="75%"

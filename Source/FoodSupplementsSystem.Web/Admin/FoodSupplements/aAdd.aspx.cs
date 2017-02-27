@@ -37,10 +37,6 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
             this.TopicsServices = new TopicsServices(this.UnitOfWork.TopicRepository);
             this.BrandsServices = new BrandsServices(this.UnitOfWork.BrandRepository);
 
-            this.SuccessMessage = "Succsess Succsess Succsess Succsess Succsess Succsess Succsess Succsess Succsess Succsess ";
-            
-
-
             if (this.Page.IsPostBack)
             {
                 this.GetSessionItemsToProperties();
@@ -370,6 +366,8 @@ namespace FoodSupplementsSystem.Web.Admin.FoodSupplements
             {
                 this.SupplementsServices.Add(item);
             }
+
+            this.Response.Redirect("~/admin/foodsupplements/asupplements");
         }
 
         //public void FormViewAddSupplement_InsertItem()

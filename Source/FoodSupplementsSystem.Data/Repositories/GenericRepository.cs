@@ -82,7 +82,7 @@ namespace FoodSupplementsSystem.Data.Repositories
 
         public virtual IEnumerable<T> All()
         {
-            return this.DbSet.AsQueryable();
+            return this.DbSet.Select(s => s);
         }
 
         public virtual T GetById(int id)
